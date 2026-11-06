@@ -136,7 +136,7 @@ T16 → T17 → T18 → T19
 
 ---
 
-### T4: Add ESLint
+### T4: Add ESLint ✅
 
 **What**: Add `eslint.config.js` with typescript-eslint type-aware recommended rules (both tsconfigs), eslint-plugin-react-hooks recommended rules for `src/web`, and ignores for `dist/`, `data/`, `test/fixtures/`. Add the `lint` script (`eslint .`).
 **Where**: `eslint.config.js`
@@ -146,8 +146,8 @@ T16 → T17 → T18 → T19
 
 **Done when**:
 
-- [ ] `npm run lint` exits 0 on the repo
-- [ ] Gate passes: `npm run typecheck && npm run lint && npx vitest run`
+- [x] `npm run lint` exits 0 on the repo
+- [x] Gate passes: `npm run typecheck && npm run lint && npx vitest run`
 
 **Tests**: none (config; SKEL-19 is proven by T17)
 **Gate**: build (without format and build, which don't exist yet)
