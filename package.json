@@ -9,12 +9,13 @@
   "scripts": {
     "dev": "concurrently --names web,api \"vite\" \"node --watch src/server/index.ts\"",
     "build": "vite build",
-    "typecheck": "tsc -p tsconfig.web.json && tsc -p tsconfig.node.json",
+    "typecheck": "tsc -p tsconfig.web.json && tsc -p tsconfig.node.json && tsc -p tsconfig.e2e.json",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest run",
-    "start": "node src/server/index.ts"
+    "start": "node src/server/index.ts",
+    "e2e": "playwright test"
   },
   "dependencies": {
     "@fastify/static": "^10.1.10",

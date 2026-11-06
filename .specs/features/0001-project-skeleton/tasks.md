@@ -378,7 +378,7 @@ T16 → T17 → T18 → T19
 
 ---
 
-### T16: Add the Playwright end-to-end tests
+### T16: Add the Playwright end-to-end tests ✅
 
 **What**: Add `playwright.config.ts` (Chromium; `webServer` runs `npm run build && npm start` with `PORT=3100` and a temp `DATABASE_PATH`) and `e2e/status.spec.ts`; add the `e2e` script.
 **Where**: `e2e/status.spec.ts`
@@ -388,9 +388,9 @@ T16 → T17 → T18 → T19
 
 **Done when**:
 
-- [ ] E2E: shows "Server: connected" and "Database: connected"; no horizontal scroll at 360 px and 1280 px; "Português" survives a reload
-- [ ] Gate passes: `npm run typecheck && npx vitest run && npm run e2e`
-- [ ] Test count: 35 unit/component/integration + 3 e2e pass
+- [x] E2E: shows "Server: connected" and "Database: connected"; no horizontal scroll at 360 px and 1280 px; "Português" survives a reload
+- [x] Gate passes: `npm run typecheck && npx vitest run && npm run e2e`
+- [x] Test count: 35 unit/component/integration + 3 e2e pass
 
 **Tests**: e2e
 **Gate**: full
@@ -567,7 +567,7 @@ Proof: `npx vitest run test/repo.test.ts -t "Node major is pinned in .nvmrc, eng
 **Settled mid-build:** 2026-11-06 - asked to start T4 while T3 was not done; user chose "Do T3, then T4 (Recommended)"; T5 also adds `.gitattributes` (`* text=auto eol=lf`, `core.autocrlf` is on) and ignores `.specs/` in `.prettierignore` (skill scripts generate files there) - user: "go for it"
 **Dispatched:** none
 **Walked:** 2026-11-06 (T15, partial; the full walk runs after T19) - `npm run dev`, Edge via Playwright at `http://localhost:5173`: en-US locale shows "Server: connected", "Database: connected", "Checked at 4:34 PM" with no horizontal scroll at 360 and 1280 px; clicking "Português" shows the pt-BR texts and `<html lang="pt-BR">`, kept after a reload; a pt-BR browser locale opens in pt-BR. Found: with the API stopped, Vite's dev proxy answers `502`, so the page shows "Server: connected" (AC 7 expects "can't connect") - raised with the user, not fixed.
-**Out-of-list files:** T13 `src/web/test-setup.ts` (Testing Library `cleanup` after each test; Vitest globals are off); T15 `tsconfig.web.json` (`types: ["vite/client"]` so TS 6 accepts the CSS side-effect import), `vite.config.ts`, `package.json` scripts
+**Out-of-list files:** T13 `src/web/test-setup.ts` (Testing Library `cleanup` after each test; Vitest globals are off); T15 `tsconfig.web.json` (`types: ["vite/client"]` so TS 6 accepts the CSS side-effect import), `vite.config.ts`, `package.json` scripts; T16 `tsconfig.e2e.json` (Node + DOM types, because `evaluate()` callbacks run in the browser; `e2e` moved out of `tsconfig.node.json`), `tsconfig.json` (reference), `eslint.config.js` (third project), `package.json` `typecheck` (third `tsc`)
 
 ---
 

@@ -178,12 +178,12 @@ Implicit-requirement sweep:
 | SKEL-06 | P1: Layers connected - DB can't connect | Execute (T13) | Implemented |
 | SKEL-07 | P1: Layers connected - server can't connect | Execute (T13) | Implemented |
 | SKEL-08 | P1: Layers connected - checked-at time | Execute (T13) | Implemented |
-| SKEL-09 | P1: Layers connected - 360/1280 px widths | Design | Pending |
+| SKEL-09 | P1: Layers connected - 360/1280 px widths | Execute (T16) | Implemented |
 | SKEL-10 | P1: Languages - pt browser default | Execute (T10) | Implemented |
 | SKEL-11 | P1: Languages - English browser default | Execute (T10) | Implemented |
 | SKEL-12 | P1: Languages - switch to Português | Execute (T14) | Implemented |
 | SKEL-13 | P1: Languages - switch to English | Execute (T14) | Implemented |
-| SKEL-14 | P1: Languages - remembered on reload | Design | Pending |
+| SKEL-14 | P1: Languages - remembered on reload | Execute (T16) | Implemented |
 | SKEL-15 | P1: Languages - unknown saved value | Execute (T10) | Implemented |
 | SKEL-16 | P1: Languages - `lang` attribute | Execute (T11) | Implemented |
 | SKEL-17 | P1: One command - typecheck passes | Design | Pending |
@@ -191,7 +191,7 @@ Implicit-requirement sweep:
 | SKEL-19 | P1: One command - lint | Design | Pending |
 | SKEL-20 | P1: One command - format check | Design | Pending |
 | SKEL-21 | P1: One command - tests | Design | Pending |
-| SKEL-22 | P1: One command - e2e | Design | Pending |
+| SKEL-22 | P1: One command - e2e | Execute (T16) | Implemented |
 | SKEL-23 | P1: One command - check | Design | Pending |
 | SKEL-24 | P1: Run - dev | Execute (T15) | Implemented |
 | SKEL-25 | P1: Run - build + start on LAN | Execute (T9) | Implemented |
