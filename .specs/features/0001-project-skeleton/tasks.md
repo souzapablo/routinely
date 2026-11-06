@@ -296,7 +296,7 @@ T16 → T17 → T18 → T19
 
 ---
 
-### T12: Add the useHealth hook
+### T12: Add the useHealth hook ✅
 
 **What**: `useHealth()` fetches `/api/health` once on mount, aborts after 5 seconds with its own `setTimeout` + `AbortController` (so fake timers drive it), maps the result with `toHealthView`, and returns `{ state: "checking" }` or `{ state: "done", view, checkedAt }`.
 **Where**: `src/web/health/useHealth.ts`
@@ -306,9 +306,9 @@ T16 → T17 → T18 → T19
 
 **Done when**:
 
-- [ ] `renderHook` tests: starts `checking`; a 200 gives connected/connected; a fetch that never answers gives unreachable/unreachable after 5 s and not before; unmounting aborts the request
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
-- [ ] Test count: 27 tests pass (23 + 4)
+- [x] `renderHook` tests: starts `checking`; a 200 gives connected/connected; a fetch that never answers gives unreachable/unreachable after 5 s and not before; unmounting aborts the request
+- [x] Gate passes: `npm run typecheck && npx vitest run`
+- [x] Test count: 27 tests pass (23 + 4)
 
 **Tests**: component
 **Gate**: quick
