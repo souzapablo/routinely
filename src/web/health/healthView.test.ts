@@ -25,6 +25,16 @@ describe("toHealthView", () => {
     ).toEqual({ server: "connected", db: "unreachable" });
   });
 
+  it("shows database unreachable on 503 even when the body says ok", () => {
+    expect(
+      toHealthView({
+        kind: "response",
+        status: 503,
+        body: { status: "ok", db: "ok" },
+      }),
+    ).toEqual({ server: "connected", db: "unreachable" });
+  });
+
   it("shows server connected and database unreachable when the body fails the schema", () => {
     expect(
       toHealthView({ kind: "response", status: 200, body: { status: "ok" } }),
