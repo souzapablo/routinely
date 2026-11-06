@@ -1,0 +1,5 @@
+.specs/
+dist/
+data/
+package-lock.json
+test/fixtures/

@@ -9,6 +9,8 @@
   "scripts": {
     "typecheck": "tsc -p tsconfig.web.json && tsc -p tsconfig.node.json",
     "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "test": "vitest run"
   },
   "dependencies": {

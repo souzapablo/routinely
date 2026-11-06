@@ -155,7 +155,7 @@ T16 → T17 → T18 → T19
 
 ---
 
-### T5: Add Prettier
+### T5: Add Prettier ✅
 
 **What**: Add `.prettierrc.json`, `.prettierignore` (`dist/`, `data/`, `package-lock.json`, `test/fixtures/`), and the `format` / `format:check` scripts; format the repo once.
 **Where**: `.prettierrc.json`
@@ -165,8 +165,8 @@ T16 → T17 → T18 → T19
 
 **Done when**:
 
-- [ ] `npm run format:check` exits 0
-- [ ] Gate passes: `npm run typecheck && npm run lint && npm run format:check && npx vitest run`
+- [x] `npm run format:check` exits 0
+- [x] Gate passes: `npm run typecheck && npm run lint && npm run format:check && npx vitest run`
 
 **Tests**: none (config; SKEL-20 is proven by T17)
 **Gate**: build (without build, which doesn't exist yet)
@@ -564,7 +564,7 @@ Proof: `npx vitest run test/repo.test.ts -t "Node major is pinned in .nvmrc, eng
 
 ## Handoff
 
-**Settled mid-build:** 2026-11-06 - asked to start T4 while T3 was not done; user chose "Do T3, then T4 (Recommended)"
+**Settled mid-build:** 2026-11-06 - asked to start T4 while T3 was not done; user chose "Do T3, then T4 (Recommended)"; T5 also adds `.gitattributes` (`* text=auto eol=lf`, `core.autocrlf` is on) and ignores `.specs/` in `.prettierignore` (skill scripts generate files there) - user: "go for it"
 **Dispatched:** none
 **Walked:** none
 

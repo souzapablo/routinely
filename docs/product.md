@@ -14,13 +14,13 @@ Keeping routines like running, reading or calling family breaks down because the
 
 ## Core concepts
 
-| Concept | Meaning |
-| --- | --- |
-| Anchor | Repeats on the same days and times every week. Locked in place on the grid; it can't be dragged. |
+| Concept           | Meaning                                                                                              |
+| ----------------- | ---------------------------------------------------------------------------------------------------- |
+| Anchor            | Repeats on the same days and times every week. Locked in place on the grid; it can't be dragged.     |
 | Flexible activity | A weekly goal with a count and a duration, e.g. "Run 5 km, 2× a week, 45 min". It has no fixed slot. |
-| Placement | One occurrence of a flexible activity, dropped into a specific day and time of a specific week. |
-| Category | Every flexible activity has one: Movement, Home, Errands, Rest or People. Each has a color. |
-| Done | Any anchor occurrence or placement can be checked off. |
+| Placement         | One occurrence of a flexible activity, dropped into a specific day and time of a specific week.      |
+| Category          | Every flexible activity has one: Movement, Home, Errands, Rest or People. Each has a color.          |
+| Done              | Any anchor occurrence or placement can be checked off.                                               |
 
 ## What v1 must do
 
@@ -61,11 +61,11 @@ Keeping routines like running, reading or calling family breaks down because the
 ## Design principles
 
 - **Never make me feel bad for not doing something.** This rule overrides every other one. In practice:
-    - No streaks, and nothing that resets or "breaks".
-    - Nothing undone is called missed, failed, overdue, late or skipped, in any language.
-    - No red, warning icons or alert styling on anything undone. Red is only for real errors (e.g. "not saved") and for blocked drops while dragging.
-    - Progress counts only what got done ("2 of 5 done"), never what's left undone or a gap from a target.
-    - No nudges, comparisons or messages about inactivity. An empty or quiet week is fine ("take the day off").
+  - No streaks, and nothing that resets or "breaks".
+  - Nothing undone is called missed, failed, overdue, late or skipped, in any language.
+  - No red, warning icons or alert styling on anything undone. Red is only for real errors (e.g. "not saved") and for blocked drops while dragging.
+  - Progress counts only what got done ("2 of 5 done"), never what's left undone or a gap from a target.
+  - No nudges, comparisons or messages about inactivity. An empty or quiet week is fine ("take the day off").
 - **Calm over clever:** gentle wording, soft colors, no celebratory noise or pressure.
 - **Anchors look locked:** they're dark slate with a hatch and a lock icon. Trying to drag one shakes it and explains how to edit it instead.
 - **Color carries meaning:** it shows the category, never decoration.
