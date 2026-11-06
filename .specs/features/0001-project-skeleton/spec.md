@@ -63,8 +63,9 @@ Routinely has a product brief and a stack decision (ADR-001), but no code. Befor
 7. IF the health check fails with a network error or gets no answer within 5 seconds THEN the status page SHALL show "Server: can't connect" and "Database: can't connect".
 8. WHEN the health check answers THEN the status page SHALL show "Checked at {time}", with the time of the answer formatted for the active language (e.g. "2:05 PM" in English, "14:05" in pt-BR).
 9. The status page SHALL render without horizontal scrolling at window widths of 360 px and 1280 px.
+10. IF the health check returns a status other than `200` or `503` (for example `502` from the dev proxy while the API is down) THEN the status page SHALL show "Server: can't connect" and "Database: can't connect".
 
-**Independent Test**: Run `npm run dev`, open the page, and see "Server: connected" and "Database: connected". Then point `DATABASE_PATH` at an unreadable path and see "Database: can't connect".
+**Independent Test**: Run `npm run dev`, open the page, and see "Server: connected" and "Database: connected". Then stop the API, keep the web dev server running, reload, and see "Server: can't connect" and "Database: can't connect".
 
 ---
 
@@ -121,8 +122,9 @@ Routinely has a product brief and a stack decision (ADR-001), but no code. Befor
 3. WHEN the server starts listening THEN it SHALL log one line with the address and port it listens on.
 4. IF the port is already in use when the server starts THEN the server SHALL log the port number and exit with a non-zero code.
 5. WHEN a browser on the LAN requests any non-`/api` path from the running built app THEN the server SHALL return the web app's `index.html`.
+6. IF the database at `DATABASE_PATH` can't be opened when the server starts THEN the server SHALL log `Can't open the database at <path>` to stderr and exit with code `1`.
 
-**Independent Test**: Run `npm run build && npm start`, open `http://<laptop-ip>:3000` on the phone, and see the status page connected.
+**Independent Test**: Run `npm run build && npm start`, open `http://<laptop-ip>:3000` on the phone, and see the status page connected. Start it with `DATABASE_PATH` pointing at a folder and see it exit 1 naming the path.
 
 ---
 
@@ -202,8 +204,10 @@ Implicit-requirement sweep:
 | SKEL-30 | P1: Repo - CI workflow | Execute (T18) | Implemented |
 | SKEL-31 | P1: Repo - CLAUDE.md | Execute (T19) | Implemented |
 | SKEL-32 | P1: Repo - Node version pinned | Execute (T18) | Implemented |
+| SKEL-33 | P1: Layers connected - unexpected status | Verification fix | Pending |
+| SKEL-34 | P1: Run - database can't open | Verification fix | Pending |
 
-**Coverage:** 32 total, 0 mapped to tasks, 32 unmapped ⚠️ (mapped in Tasks)
+**Coverage:** 34 total, 34 mapped (SKEL-33 and SKEL-34 added after verification)
 
 ---
 

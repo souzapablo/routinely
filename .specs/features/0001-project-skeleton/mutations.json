@@ -1,0 +1,23 @@
+[
+  {
+    "file": "src/web/i18n/index.ts",
+    "old": "  navigator.languages,",
+    "new": "  [\"en-US\"],",
+    "proof": "npx vitest run --project web",
+    "label": "first-visit language ignores the browser (navigator.languages -> [\"en-US\"])"
+  },
+  {
+    "file": "src/web/health/healthView.ts",
+    "old": "    result.status === 200 && parsed.success && parsed.data.db === \"ok\";",
+    "new": "    parsed.success && parsed.data.db === \"ok\";",
+    "proof": "npx vitest run src/web/health/healthView.test.ts src/web/StatusPage.test.tsx",
+    "label": "database state ignores the HTTP status (drop status === 200)"
+  },
+  {
+    "file": "src/web/health/useHealth.ts",
+    "old": "const timeoutMs = 5000;",
+    "new": "const timeoutMs = 5001;",
+    "proof": "npx vitest run src/web/health/useHealth.test.ts -t \"fails after 5 seconds without an answer\"",
+    "label": "health check timeout 5000 -> 5001 ms"
+  }
+]
