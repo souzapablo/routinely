@@ -235,7 +235,7 @@ T16 → T17 → T18 → T19
 
 ---
 
-### T9: Add the server entry
+### T9: Add the server entry ✅
 
 **What**: `src/server/index.ts` reads `PORT` (default `3000`) and `DATABASE_PATH` (default `data/routinely.db`), opens the database, builds the app with `webRoot` `dist/web`, listens on `0.0.0.0`, logs `Routinely listening on http://0.0.0.0:<port>`, and on `EADDRINUSE` logs `Port <port> is already in use` to stderr and exits `1`. Adds the `start` script.
 **Where**: `src/server/index.ts`
@@ -245,9 +245,9 @@ T16 → T17 → T18 → T19
 
 **Done when**:
 
-- [ ] Child-process tests: the server answers `/api/health` on the given `PORT`, prints exactly one listening line, and exits `1` naming the port when the port is taken
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
-- [ ] Test count: 16 tests pass (13 + 3)
+- [x] Child-process tests: the server answers `/api/health` on the given `PORT`, prints exactly one listening line, and exits `1` naming the port when the port is taken
+- [x] Gate passes: `npm run typecheck && npx vitest run`
+- [x] Test count: 16 tests pass (13 + 3)
 
 **Tests**: integration
 **Gate**: quick

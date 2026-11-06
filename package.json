@@ -11,7 +11,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "start": "node src/server/index.ts"
   },
   "dependencies": {
     "@fastify/static": "^10.1.10",

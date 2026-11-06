@@ -194,9 +194,9 @@ Implicit-requirement sweep:
 | SKEL-22 | P1: One command - e2e | Design | Pending |
 | SKEL-23 | P1: One command - check | Design | Pending |
 | SKEL-24 | P1: Run - dev | Design | Pending |
-| SKEL-25 | P1: Run - build + start on LAN | Design | Pending |
-| SKEL-26 | P1: Run - startup log | Design | Pending |
-| SKEL-27 | P1: Run - port in use | Design | Pending |
+| SKEL-25 | P1: Run - build + start on LAN | Execute (T9) | Implemented |
+| SKEL-26 | P1: Run - startup log | Execute (T9) | Implemented |
+| SKEL-27 | P1: Run - port in use | Execute (T9) | Implemented |
 | SKEL-28 | P1: Run - SPA fallback | Execute (T8) | Implemented |
 | SKEL-29 | P1: Repo - git + .gitignore | Design | Pending |
 | SKEL-30 | P1: Repo - CI workflow | Design | Pending |
