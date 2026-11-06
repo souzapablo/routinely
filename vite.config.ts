@@ -3,6 +3,14 @@ import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   plugins: [react()],
+  build: {
+    outDir: "dist/web",
+    emptyOutDir: true,
+  },
+  server: {
+    // In development the API runs separately on port 3000 (npm run dev).
+    proxy: { "/api": "http://localhost:3000" },
+  },
   test: {
     projects: [
       {

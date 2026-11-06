@@ -7,6 +7,8 @@
     "node": ">=26 <27"
   },
   "scripts": {
+    "dev": "concurrently --names web,api \"vite\" \"node --watch src/server/index.ts\"",
+    "build": "vite build",
     "typecheck": "tsc -p tsconfig.web.json && tsc -p tsconfig.node.json",
     "lint": "eslint .",
     "format": "prettier --write .",

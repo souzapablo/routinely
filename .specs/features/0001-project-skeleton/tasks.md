@@ -356,7 +356,7 @@ T16 → T17 → T18 → T19
 
 ---
 
-### T15: Add the app shell, styles and dev setup
+### T15: Add the app shell, styles and dev setup ✅
 
 **What**: Add `index.html`, `src/web/main.tsx` (imports i18n, renders `App`), `src/web/App.tsx` (`StatusPage` + `LanguageSwitch`), `src/web/styles.css` (prototype light/dark tokens, layout that fits 360 px), Vite `build.outDir` `dist/web` and the `/api` proxy to port 3000, and the `dev` (`concurrently`) and `build` scripts.
 **Where**: `src/web/App.tsx`, `src/web/main.tsx`, `index.html`, `src/web/styles.css`
@@ -366,11 +366,11 @@ T16 → T17 → T18 → T19
 
 **Done when**:
 
-- [ ] Component test: `App` renders the heading and both language buttons
-- [ ] `npm run build` writes `dist/web/index.html`
-- [ ] `npm run dev` shows "Server: connected" and "Database: connected" at `http://localhost:5173` (walked by hand)
-- [ ] Gate passes: `npm run typecheck && npm run lint && npm run format:check && npx vitest run && npm run build`
-- [ ] Test count: 35 tests pass (34 + 1)
+- [x] Component test: `App` renders the heading and both language buttons
+- [x] `npm run build` writes `dist/web/index.html`
+- [x] `npm run dev` shows "Server: connected" and "Database: connected" at `http://localhost:5173` (walked by hand)
+- [x] Gate passes: `npm run typecheck && npm run lint && npm run format:check && npx vitest run && npm run build`
+- [x] Test count: 35 tests pass (34 + 1)
 
 **Tests**: component
 **Gate**: build
@@ -566,7 +566,8 @@ Proof: `npx vitest run test/repo.test.ts -t "Node major is pinned in .nvmrc, eng
 
 **Settled mid-build:** 2026-11-06 - asked to start T4 while T3 was not done; user chose "Do T3, then T4 (Recommended)"; T5 also adds `.gitattributes` (`* text=auto eol=lf`, `core.autocrlf` is on) and ignores `.specs/` in `.prettierignore` (skill scripts generate files there) - user: "go for it"
 **Dispatched:** none
-**Walked:** none
+**Walked:** 2026-11-06 (T15, partial; the full walk runs after T19) - `npm run dev`, Edge via Playwright at `http://localhost:5173`: en-US locale shows "Server: connected", "Database: connected", "Checked at 4:34 PM" with no horizontal scroll at 360 and 1280 px; clicking "Português" shows the pt-BR texts and `<html lang="pt-BR">`, kept after a reload; a pt-BR browser locale opens in pt-BR. Found: with the API stopped, Vite's dev proxy answers `502`, so the page shows "Server: connected" (AC 7 expects "can't connect") - raised with the user, not fixed.
+**Out-of-list files:** T13 `src/web/test-setup.ts` (Testing Library `cleanup` after each test; Vitest globals are off); T15 `tsconfig.web.json` (`types: ["vite/client"]` so TS 6 accepts the CSS side-effect import), `vite.config.ts`, `package.json` scripts
 
 ---
 

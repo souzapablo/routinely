@@ -193,7 +193,7 @@ Implicit-requirement sweep:
 | SKEL-21 | P1: One command - tests | Design | Pending |
 | SKEL-22 | P1: One command - e2e | Design | Pending |
 | SKEL-23 | P1: One command - check | Design | Pending |
-| SKEL-24 | P1: Run - dev | Design | Pending |
+| SKEL-24 | P1: Run - dev | Execute (T15) | Implemented |
 | SKEL-25 | P1: Run - build + start on LAN | Execute (T9) | Implemented |
 | SKEL-26 | P1: Run - startup log | Execute (T9) | Implemented |
 | SKEL-27 | P1: Run - port in use | Execute (T9) | Implemented |
