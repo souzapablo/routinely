@@ -97,7 +97,7 @@ T16 → T17 → T18 → T19
 
 ---
 
-### T2: Add TypeScript configs and the shared health contract
+### T2: Add TypeScript configs and the shared health contract ✅
 
 **What**: Add `tsconfig.json` (references only), `tsconfig.web.json` (DOM, `src/web` + `src/shared`) and `tsconfig.node.json` (Node types, `src/server` + `src/shared` + `test` + root config files), all `strict`, `noEmit`, `erasableSyntaxOnly`, `allowImportingTsExtensions`, `verbatimModuleSyntax`. Add `src/shared/health.ts` with the `HealthResponse` zod schema and type, and the `typecheck` script.
 **Where**: `tsconfig.node.json`, `tsconfig.web.json`, `src/shared/health.ts`
@@ -107,8 +107,8 @@ T16 → T17 → T18 → T19
 
 **Done when**:
 
-- [ ] `npm run typecheck` exits 0
-- [ ] An `enum` in `src/shared` makes `npm run typecheck` fail (checked by hand, then removed)
+- [x] `npm run typecheck` exits 0
+- [x] An `enum` in `src/shared` makes `npm run typecheck` fail (checked by hand, then removed)
 
 **Tests**: none (config + schema; SKEL-17/18 are proven by T17)
 **Gate**: bootstrap - `npm run typecheck`
