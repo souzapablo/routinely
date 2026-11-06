@@ -9,7 +9,12 @@ export type HealthView = {
 };
 
 export function toHealthView(result: HealthResult): HealthView {
-  if (result.kind === "failed") {
+  // Our API only answers 200 or 503. Any other status (a proxy's 502 or 504
+  // while the API is down) means the request never reached it.
+  if (
+    result.kind === "failed" ||
+    (result.status !== 200 && result.status !== 503)
+  ) {
     return { server: "unreachable", db: "unreachable" };
   }
   const parsed = HealthResponse.safeParse(result.body);

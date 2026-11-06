@@ -44,6 +44,15 @@ describe("toHealthView", () => {
     });
   });
 
+  it("shows server and database unreachable on a status other than 200 or 503", () => {
+    for (const status of [502, 504, 500, 404]) {
+      expect(
+        toHealthView({ kind: "response", status, body: "Bad Gateway" }),
+        `status ${status}`,
+      ).toEqual({ server: "unreachable", db: "unreachable" });
+    }
+  });
+
   it("shows server and database unreachable when the request failed", () => {
     expect(toHealthView({ kind: "failed" })).toEqual({
       server: "unreachable",

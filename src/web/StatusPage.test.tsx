@@ -66,6 +66,23 @@ describe("StatusPage", () => {
     expect(screen.getByText("Database: can't connect")).toBeInTheDocument();
   });
 
+  it("shows both can't connect on an unexpected status", async () => {
+    // What Vite's dev proxy answers when the API isn't running.
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(() =>
+        Promise.resolve(new Response("Bad Gateway", { status: 502 })),
+      ),
+    );
+
+    render(<StatusPage />);
+
+    expect(
+      await screen.findByText("Server: can't connect"),
+    ).toBeInTheDocument();
+    expect(screen.getByText("Database: can't connect")).toBeInTheDocument();
+  });
+
   it("shows both can't connect on a network error", async () => {
     vi.stubGlobal(
       "fetch",
