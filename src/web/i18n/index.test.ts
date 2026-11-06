@@ -40,6 +40,23 @@ describe("i18n", () => {
     expect(document.documentElement.lang).toBe("pt-BR");
   });
 
+  it("starts in pt-BR on a first visit from a Portuguese browser", async () => {
+    vi.spyOn(Navigator.prototype, "languages", "get").mockReturnValue([
+      "pt-BR",
+      "en-US",
+    ]);
+    // Earlier tests leave a saved choice behind (afterEach switches back to
+    // English, which saves it). A first visit has nothing saved.
+    localStorage.clear();
+    // A fresh copy of the module runs its start-up code again, this time
+    // with the browser above and nothing saved.
+    vi.resetModules();
+    const fresh = (await import("./index.ts")).default;
+
+    expect(fresh.language).toBe("pt-BR");
+    expect(document.documentElement.lang).toBe("pt-BR");
+  });
+
   it("has the same keys in English and pt-BR", () => {
     expect(keysOf(ptBR)).toEqual(keysOf(en));
   });
