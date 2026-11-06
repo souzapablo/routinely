@@ -174,7 +174,7 @@ T16 → T17 → T18 → T19
 
 ---
 
-### T6: Add the database module
+### T6: Add the database module ✅
 
 **What**: `openDatabase(path)` creates missing parent folders, opens the file with `node:sqlite` `DatabaseSync`, and returns `{ ping(), close() }`; `ping` runs `SELECT 1` and throws on failure.
 **Where**: `src/server/db.ts`
@@ -184,10 +184,10 @@ T16 → T17 → T18 → T19
 
 **Done when**:
 
-- [ ] Opening `<tmp>/a/b/routinely.db` creates both folders and the file
-- [ ] `ping()` succeeds on an open database and throws after `close()`
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
-- [ ] Test count: 7 tests pass (4 + 3)
+- [x] Opening `<tmp>/a/b/routinely.db` creates both folders and the file
+- [x] `ping()` succeeds on an open database and throws after `close()`
+- [x] Gate passes: `npm run typecheck && npx vitest run`
+- [x] Test count: 7 tests pass (4 + 3)
 
 **Tests**: integration
 **Gate**: quick

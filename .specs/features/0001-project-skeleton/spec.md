@@ -172,7 +172,7 @@ Implicit-requirement sweep:
 | --- | --- | --- | --- |
 | SKEL-01 | P1: Layers connected - health 200 | Design | Pending |
 | SKEL-02 | P1: Layers connected - health 503 | Design | Pending |
-| SKEL-03 | P1: Layers connected - create DB file | Design | Pending |
+| SKEL-03 | P1: Layers connected - create DB file | Execute (T6) | Implemented |
 | SKEL-04 | P1: Layers connected - loading text | Design | Pending |
 | SKEL-05 | P1: Layers connected - all connected | Design | Pending |
 | SKEL-06 | P1: Layers connected - DB can't connect | Design | Pending |
