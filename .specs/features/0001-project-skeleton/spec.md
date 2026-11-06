@@ -198,9 +198,9 @@ Implicit-requirement sweep:
 | SKEL-26 | P1: Run - startup log | Execute (T9) | Implemented |
 | SKEL-27 | P1: Run - port in use | Execute (T9) | Implemented |
 | SKEL-28 | P1: Run - SPA fallback | Execute (T8) | Implemented |
-| SKEL-29 | P1: Repo - git + .gitignore | Design | Pending |
+| SKEL-29 | P1: Repo - git + .gitignore | Execute (T19) | Implemented |
 | SKEL-30 | P1: Repo - CI workflow | Execute (T18) | Implemented |
-| SKEL-31 | P1: Repo - CLAUDE.md | Design | Pending |
+| SKEL-31 | P1: Repo - CLAUDE.md | Execute (T19) | Implemented |
 | SKEL-32 | P1: Repo - Node version pinned | Execute (T18) | Implemented |
 
 **Coverage:** 32 total, 0 mapped to tasks, 32 unmapped ⚠️ (mapped in Tasks)

@@ -439,7 +439,7 @@ T16 → T17 → T18 → T19
 
 ---
 
-### T19: Add CLAUDE.md
+### T19: Add CLAUDE.md ✅
 
 **What**: Add `CLAUDE.md` (commands `dev`, `build`, `start`, `check`, `test`, `e2e`; first-time `npx playwright install chromium`; pointers to `docs/product.md`, `docs/adr/` and `.specs/STATE.md`; rules: run `npm run check` before calling a task done, never make the user feel bad for undone items), plus repo tests for `CLAUDE.md` and `.gitignore` (`git check-ignore`).
 **Where**: `CLAUDE.md`, `test/repo.test.ts` (modify)
@@ -449,9 +449,9 @@ T16 → T17 → T18 → T19
 
 **Done when**:
 
-- [ ] Repo tests pass: `CLAUDE.md` names the six commands and both doc paths; `git check-ignore` matches `node_modules/x`, `dist/x`, `data/routinely.db`, `.env`
-- [ ] Gate passes: `npm run check`
-- [ ] Test count: 45 tests pass (43 + 2)
+- [x] Repo tests pass: `CLAUDE.md` names the six commands and both doc paths; `git check-ignore` matches `node_modules/x`, `dist/x`, `data/routinely.db`, `.env`
+- [x] Gate passes: `npm run check`
+- [x] Test count: 45 tests pass (43 + 2)
 
 **Tests**: integration
 **Gate**: build

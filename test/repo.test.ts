@@ -1,3 +1,4 @@
+import { spawnSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -19,6 +20,37 @@ function workflow(): Workflow {
 }
 
 describe("repo", () => {
+  it("gitignore excludes node_modules, build output, data and env files", () => {
+    for (const path of [
+      "node_modules/x",
+      "dist/x",
+      "data/routinely.db",
+      ".env",
+    ]) {
+      const result = spawnSync("git", ["check-ignore", "--quiet", path], {
+        cwd: root,
+      });
+      expect(result.status, `${path} should be ignored`).toBe(0);
+    }
+  });
+
+  it("CLAUDE.md lists the commands and points to the docs", () => {
+    const text = read("CLAUDE.md");
+
+    for (const command of [
+      "npm run dev",
+      "npm run build",
+      "npm start",
+      "npm run check",
+      "npm test",
+      "npm run e2e",
+    ]) {
+      expect(text, command).toContain(`\`${command}\``);
+    }
+    expect(text).toContain("`docs/product.md`");
+    expect(text).toContain("`docs/adr/`");
+  });
+
   it("CI runs npm ci, check and e2e on push and pull_request", () => {
     const ci = workflow();
 
