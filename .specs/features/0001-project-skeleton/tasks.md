@@ -419,7 +419,7 @@ T16 → T17 → T18 → T19
 
 ---
 
-### T18: Add the GitHub Actions workflow
+### T18: Add the GitHub Actions workflow ✅
 
 **What**: Add `.github/workflows/ci.yml` (on `push` and `pull_request`; `actions/setup-node` with `node-version-file: .nvmrc` and npm cache; `npm ci`, `npx playwright install --with-deps chromium`, `npm run check`, `npm run e2e`) and `test/repo.test.ts` with the workflow and Node-pin tests (parses YAML with `yaml`).
 **Where**: `.github/workflows/ci.yml`, `test/repo.test.ts`
@@ -429,9 +429,9 @@ T16 → T17 → T18 → T19
 
 **Done when**:
 
-- [ ] Repo tests pass: both triggers run the three commands; `.nvmrc` major = `engines` major and CI reads `.nvmrc`
-- [ ] Gate passes: `npm run check`
-- [ ] Test count: 43 tests pass (41 + 2)
+- [x] Repo tests pass: both triggers run the three commands; `.nvmrc` major = `engines` major and CI reads `.nvmrc`
+- [x] Gate passes: `npm run check`
+- [x] Test count: 43 tests pass (41 + 2)
 
 **Tests**: integration
 **Gate**: build
@@ -567,7 +567,7 @@ Proof: `npx vitest run test/repo.test.ts -t "Node major is pinned in .nvmrc, eng
 **Settled mid-build:** 2026-11-06 - asked to start T4 while T3 was not done; user chose "Do T3, then T4 (Recommended)"; T5 also adds `.gitattributes` (`* text=auto eol=lf`, `core.autocrlf` is on) and ignores `.specs/` in `.prettierignore` (skill scripts generate files there) - user: "go for it"
 **Dispatched:** none
 **Walked:** 2026-11-06 (T15, partial; the full walk runs after T19) - `npm run dev`, Edge via Playwright at `http://localhost:5173`: en-US locale shows "Server: connected", "Database: connected", "Checked at 4:34 PM" with no horizontal scroll at 360 and 1280 px; clicking "Português" shows the pt-BR texts and `<html lang="pt-BR">`, kept after a reload; a pt-BR browser locale opens in pt-BR. Found: with the API stopped, Vite's dev proxy answers `502`, so the page shows "Server: connected" (AC 7 expects "can't connect") - raised with the user, not fixed.
-**Out-of-list files:** T13 `src/web/test-setup.ts` (Testing Library `cleanup` after each test; Vitest globals are off); T15 `tsconfig.web.json` (`types: ["vite/client"]` so TS 6 accepts the CSS side-effect import), `vite.config.ts`, `package.json` scripts; T16 `tsconfig.e2e.json` (Node + DOM types, because `evaluate()` callbacks run in the browser; `e2e` moved out of `tsconfig.node.json`), `tsconfig.json` (reference), `eslint.config.js` (third project), `package.json` `typecheck` (third `tsc`); T17 `test/fixtures/hooks-violation.tsx`, `test/fixtures/unformatted.ts`, `tsconfig.node.json` (`exclude: test/fixtures`). The lint and format tests copy their fixture into `src/web/` and `test/` for the run, because ESLint and Prettier skip ignored files even when named; `npm test` is proven with `vitest list --json`, since running it from a test would recurse
+**Out-of-list files:** T13 `src/web/test-setup.ts` (Testing Library `cleanup` after each test; Vitest globals are off); T15 `tsconfig.web.json` (`types: ["vite/client"]` so TS 6 accepts the CSS side-effect import), `vite.config.ts`, `package.json` scripts; T16 `tsconfig.e2e.json` (Node + DOM types, because `evaluate()` callbacks run in the browser; `e2e` moved out of `tsconfig.node.json`), `tsconfig.json` (reference), `eslint.config.js` (third project), `package.json` `typecheck` (third `tsc`); T17 `test/fixtures/hooks-violation.tsx`, `test/fixtures/unformatted.ts`, `tsconfig.node.json` (`exclude: test/fixtures`). The lint and format tests copy their fixture into `src/web/` and `test/` for the run, because ESLint and Prettier skip ignored files even when named; `npm test` is proven with `vitest list --json`, since running it from a test would recurse; T18 `package.json` + `package-lock.json` (`yaml` dev dependency); actions pinned to `actions/checkout@v7` and `actions/setup-node@v7` (latest majors on 2026-11-06)
 
 ---
 
