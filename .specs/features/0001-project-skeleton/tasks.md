@@ -215,7 +215,7 @@ T16 → T17 → T18 → T19
 
 ---
 
-### T8: Serve the built web app with an SPA fallback
+### T8: Serve the built web app with an SPA fallback ✅
 
 **What**: When `webRoot` is given, `buildApp` serves its files with `@fastify/static` and returns `index.html` for any non-`/api` GET that matches no file.
 **Where**: `src/server/app.ts` (modify)
@@ -225,9 +225,9 @@ T16 → T17 → T18 → T19
 
 **Done when**:
 
-- [ ] With a temp `webRoot` holding `index.html` and `assets/app.js`: `/assets/app.js` returns the file, `/some/page` returns `index.html`, `/api/nope` still returns 404 JSON
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
-- [ ] Test count: 13 tests pass (10 + 3)
+- [x] With a temp `webRoot` holding `index.html` and `assets/app.js`: `/assets/app.js` returns the file, `/some/page` returns `index.html`, `/api/nope` still returns 404 JSON
+- [x] Gate passes: `npm run typecheck && npx vitest run`
+- [x] Test count: 13 tests pass (10 + 3)
 
 **Tests**: integration
 **Gate**: quick

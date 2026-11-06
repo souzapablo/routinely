@@ -197,7 +197,7 @@ Implicit-requirement sweep:
 | SKEL-25 | P1: Run - build + start on LAN | Design | Pending |
 | SKEL-26 | P1: Run - startup log | Design | Pending |
 | SKEL-27 | P1: Run - port in use | Design | Pending |
-| SKEL-28 | P1: Run - SPA fallback | Design | Pending |
+| SKEL-28 | P1: Run - SPA fallback | Execute (T8) | Implemented |
 | SKEL-29 | P1: Repo - git + .gitignore | Design | Pending |
 | SKEL-30 | P1: Repo - CI workflow | Design | Pending |
 | SKEL-31 | P1: Repo - CLAUDE.md | Design | Pending |
