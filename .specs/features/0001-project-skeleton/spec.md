@@ -181,8 +181,8 @@ Implicit-requirement sweep:
 | SKEL-09 | P1: Layers connected - 360/1280 px widths | Design | Pending |
 | SKEL-10 | P1: Languages - pt browser default | Execute (T10) | Implemented |
 | SKEL-11 | P1: Languages - English browser default | Execute (T10) | Implemented |
-| SKEL-12 | P1: Languages - switch to Português | Design | Pending |
-| SKEL-13 | P1: Languages - switch to English | Design | Pending |
+| SKEL-12 | P1: Languages - switch to Português | Execute (T14) | Implemented |
+| SKEL-13 | P1: Languages - switch to English | Execute (T14) | Implemented |
 | SKEL-14 | P1: Languages - remembered on reload | Design | Pending |
 | SKEL-15 | P1: Languages - unknown saved value | Execute (T10) | Implemented |
 | SKEL-16 | P1: Languages - `lang` attribute | Execute (T11) | Implemented |

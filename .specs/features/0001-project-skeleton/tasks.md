@@ -336,7 +336,7 @@ T16 → T17 → T18 → T19
 
 ---
 
-### T14: Add the language switch
+### T14: Add the language switch ✅
 
 **What**: `LanguageSwitch` shows "English" and "Português" and changes the i18next language on click, without a reload.
 **Where**: `src/web/LanguageSwitch.tsx`
@@ -346,9 +346,9 @@ T16 → T17 → T18 → T19
 
 **Done when**:
 
-- [ ] Tests render `LanguageSwitch` with `StatusPage`: picking "Português" shows every spec pt-BR string (checking, connected and can't-connect states); picking "English" shows the English strings again
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
-- [ ] Test count: 34 tests pass (32 + 2)
+- [x] Tests render `LanguageSwitch` with `StatusPage`: picking "Português" shows every spec pt-BR string (checking, connected and can't-connect states); picking "English" shows the English strings again
+- [x] Gate passes: `npm run typecheck && npx vitest run`
+- [x] Test count: 34 tests pass (32 + 2)
 
 **Tests**: component
 **Gate**: quick
