@@ -179,12 +179,12 @@ Implicit-requirement sweep:
 | SKEL-07 | P1: Layers connected - server can't connect | Design | Pending |
 | SKEL-08 | P1: Layers connected - checked-at time | Design | Pending |
 | SKEL-09 | P1: Layers connected - 360/1280 px widths | Design | Pending |
-| SKEL-10 | P1: Languages - pt browser default | Design | Pending |
-| SKEL-11 | P1: Languages - English browser default | Design | Pending |
+| SKEL-10 | P1: Languages - pt browser default | Execute (T10) | Implemented |
+| SKEL-11 | P1: Languages - English browser default | Execute (T10) | Implemented |
 | SKEL-12 | P1: Languages - switch to Português | Design | Pending |
 | SKEL-13 | P1: Languages - switch to English | Design | Pending |
 | SKEL-14 | P1: Languages - remembered on reload | Design | Pending |
-| SKEL-15 | P1: Languages - unknown saved value | Design | Pending |
+| SKEL-15 | P1: Languages - unknown saved value | Execute (T10) | Implemented |
 | SKEL-16 | P1: Languages - `lang` attribute | Design | Pending |
 | SKEL-17 | P1: One command - typecheck passes | Design | Pending |
 | SKEL-18 | P1: One command - typecheck fails | Design | Pending |

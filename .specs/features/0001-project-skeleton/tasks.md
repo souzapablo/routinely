@@ -255,7 +255,7 @@ T16 → T17 → T18 → T19
 
 ---
 
-### T10: Add the language detection rule
+### T10: Add the language detection rule ✅
 
 **What**: `detectLanguage(saved, browserLanguages)` returns a saved `en` / `pt-BR`; otherwise `pt-BR` when the first browser language starts with `pt`, else `en`.
 **Where**: `src/web/i18n/detectLanguage.ts`
@@ -265,9 +265,9 @@ T16 → T17 → T18 → T19
 
 **Done when**:
 
-- [ ] Tests cover: `pt-BR` and `pt-PT` browser → pt-BR; `en-US`, `es`, empty list → en; saved `en` beats a `pt` browser; saved `fr` is ignored
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
-- [ ] Test count: 20 tests pass (16 + 4)
+- [x] Tests cover: `pt-BR` and `pt-PT` browser → pt-BR; `en-US`, `es`, empty list → en; saved `en` beats a `pt` browser; saved `fr` is ignored
+- [x] Gate passes: `npm run typecheck && npx vitest run`
+- [x] Test count: 20 tests pass (16 + 4)
 
 **Tests**: unit
 **Gate**: quick
