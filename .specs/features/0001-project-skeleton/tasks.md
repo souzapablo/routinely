@@ -77,7 +77,7 @@ T16 → T17 → T18 → T19
 
 ## Task Breakdown
 
-### T1: Create the repo and package manifest
+### T1: Create the repo and package manifest ✅
 
 **What**: Run `git init`, add `.gitignore`, `.nvmrc` (`26`), and `package.json` with `engines.node` `>=26 <27`, `"type": "module"`, and the dependencies from design.md Tech Decisions at the versions that resolve together (TypeScript pinned to `6.0.3`). Then run `npm install` to produce `package-lock.json`.
 **Where**: `package.json`
@@ -87,9 +87,9 @@ T16 → T17 → T18 → T19
 
 **Done when**:
 
-- [ ] `git status` works and `node_modules/` is not listed
-- [ ] `npm install` exits 0 with no peer-dependency errors
-- [ ] `npx tsc --version` prints `Version 6.0.3`
+- [x] `git status` works and `node_modules/` is not listed
+- [x] `npm install` exits 0 with no peer-dependency errors
+- [x] `npx tsc --version` prints `Version 6.0.3`
 
 **Tests**: none (config; SKEL-29 and SKEL-32 are proven by T18 and T19)
 **Gate**: bootstrap - `npm install`

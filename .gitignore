@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Local SQLite database
+data/
+
+# Environment files
+.env
+.env.*
+
+# Playwright output
+test-results/
+playwright-report/
