@@ -116,7 +116,7 @@ T16 → T17 → T18 → T19
 
 ---
 
-### T3: Add the Vitest projects and the health view rule
+### T3: Add the Vitest projects and the health view rule ✅
 
 **What**: Add `vite.config.ts` with the React plugin and two Vitest projects: `web` (jsdom, `src/web/**/*.test.{ts,tsx}`, jest-dom setup) and `server` (node, `src/server/**/*.test.ts`, `test/**/*.test.ts`). Add the `test` script (`vitest run`). Add `src/web/health/healthView.ts` (`toHealthView`) with its unit tests.
 **Where**: `src/web/health/healthView.ts`
@@ -126,9 +126,9 @@ T16 → T17 → T18 → T19
 
 **Done when**:
 
-- [ ] `toHealthView` returns connected/connected for `200` with a valid body, connected/unreachable for `503`, connected/unreachable for a body that fails the schema, and unreachable/unreachable for `{ kind: "failed" }`
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
-- [ ] Test count: 4 tests pass
+- [x] `toHealthView` returns connected/connected for `200` with a valid body, connected/unreachable for `503`, connected/unreachable for a body that fails the schema, and unreachable/unreachable for `{ kind: "failed" }`
+- [x] Gate passes: `npm run typecheck && npx vitest run`
+- [x] Test count: 4 tests pass
 
 **Tests**: unit
 **Gate**: quick
@@ -564,7 +564,7 @@ Proof: `npx vitest run test/repo.test.ts -t "Node major is pinned in .nvmrc, eng
 
 ## Handoff
 
-**Settled mid-build:** none
+**Settled mid-build:** 2026-11-06 - asked to start T4 while T3 was not done; user chose "Do T3, then T4 (Recommended)"
 **Dispatched:** none
 **Walked:** none
 
