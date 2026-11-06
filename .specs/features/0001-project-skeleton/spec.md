@@ -185,7 +185,7 @@ Implicit-requirement sweep:
 | SKEL-13 | P1: Languages - switch to English | Design | Pending |
 | SKEL-14 | P1: Languages - remembered on reload | Design | Pending |
 | SKEL-15 | P1: Languages - unknown saved value | Execute (T10) | Implemented |
-| SKEL-16 | P1: Languages - `lang` attribute | Design | Pending |
+| SKEL-16 | P1: Languages - `lang` attribute | Execute (T11) | Implemented |
 | SKEL-17 | P1: One command - typecheck passes | Design | Pending |
 | SKEL-18 | P1: One command - typecheck fails | Design | Pending |
 | SKEL-19 | P1: One command - lint | Design | Pending |

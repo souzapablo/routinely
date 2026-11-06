@@ -1,0 +1,15 @@
+{
+  "status": {
+    "heading": "Routinely",
+    "checking": "Verificando…",
+    "server": {
+      "connected": "Servidor: conectado",
+      "unreachable": "Servidor: sem conexão"
+    },
+    "db": {
+      "connected": "Banco de dados: conectado",
+      "unreachable": "Banco de dados: sem conexão"
+    },
+    "checkedAt": "Verificado às {{time}}"
+  }
+}

@@ -275,7 +275,7 @@ T16 → T17 → T18 → T19
 
 ---
 
-### T11: Set up i18n with English and pt-BR
+### T11: Set up i18n with English and pt-BR ✅
 
 **What**: `src/web/i18n/index.ts` initializes i18next + react-i18next with `en.json` and `pt-BR.json` (every string from the spec), starts in `detectLanguage(localStorage, navigator.languages)`, and on `languageChanged` saves `routinely.lang` (in `try/catch`) and sets `document.documentElement.lang`.
 **Where**: `src/web/i18n/index.ts`, `src/web/i18n/en.json`, `src/web/i18n/pt-BR.json`
@@ -285,10 +285,10 @@ T16 → T17 → T18 → T19
 
 **Done when**:
 
-- [ ] Tests: changing the language sets `<html lang>` and writes `routinely.lang`; a throwing `localStorage` doesn't break the change
-- [ ] Both JSON files have the same keys (tested)
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
-- [ ] Test count: 23 tests pass (20 + 3)
+- [x] Tests: changing the language sets `<html lang>` and writes `routinely.lang`; a throwing `localStorage` doesn't break the change
+- [x] Both JSON files have the same keys (tested)
+- [x] Gate passes: `npm run typecheck && npx vitest run`
+- [x] Test count: 23 tests pass (20 + 3)
 
 **Tests**: unit
 **Gate**: quick

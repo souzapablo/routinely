@@ -1,0 +1,15 @@
+{
+  "status": {
+    "heading": "Routinely",
+    "checking": "Checking…",
+    "server": {
+      "connected": "Server: connected",
+      "unreachable": "Server: can't connect"
+    },
+    "db": {
+      "connected": "Database: connected",
+      "unreachable": "Database: can't connect"
+    },
+    "checkedAt": "Checked at {{time}}"
+  }
+}
