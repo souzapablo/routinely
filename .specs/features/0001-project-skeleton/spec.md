@@ -173,11 +173,11 @@ Implicit-requirement sweep:
 | SKEL-01 | P1: Layers connected - health 200 | Execute (T7) | Implemented |
 | SKEL-02 | P1: Layers connected - health 503 | Execute (T7) | Implemented |
 | SKEL-03 | P1: Layers connected - create DB file | Execute (T6) | Implemented |
-| SKEL-04 | P1: Layers connected - loading text | Design | Pending |
-| SKEL-05 | P1: Layers connected - all connected | Design | Pending |
-| SKEL-06 | P1: Layers connected - DB can't connect | Design | Pending |
-| SKEL-07 | P1: Layers connected - server can't connect | Design | Pending |
-| SKEL-08 | P1: Layers connected - checked-at time | Design | Pending |
+| SKEL-04 | P1: Layers connected - loading text | Execute (T13) | Implemented |
+| SKEL-05 | P1: Layers connected - all connected | Execute (T13) | Implemented |
+| SKEL-06 | P1: Layers connected - DB can't connect | Execute (T13) | Implemented |
+| SKEL-07 | P1: Layers connected - server can't connect | Execute (T13) | Implemented |
+| SKEL-08 | P1: Layers connected - checked-at time | Execute (T13) | Implemented |
 | SKEL-09 | P1: Layers connected - 360/1280 px widths | Design | Pending |
 | SKEL-10 | P1: Languages - pt browser default | Execute (T10) | Implemented |
 | SKEL-11 | P1: Languages - English browser default | Execute (T10) | Implemented |

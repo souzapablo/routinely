@@ -316,7 +316,7 @@ T16 → T17 → T18 → T19
 
 ---
 
-### T13: Add the status page
+### T13: Add the status page ✅
 
 **What**: `StatusPage` renders the heading "Routinely", "Checking…" while checking, then the server and database lines and "Checked at {time}" (time via `Intl.DateTimeFormat` in the active language); failure lines use `--bad`.
 **Where**: `src/web/StatusPage.tsx`
@@ -326,9 +326,9 @@ T16 → T17 → T18 → T19
 
 **Done when**:
 
-- [ ] Tests with a mocked `fetch`: checking state; 200; 503; network error; checked-at time shows `2:05 PM` in en and `14:05` in pt-BR for a fixed clock
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
-- [ ] Test count: 32 tests pass (27 + 5)
+- [x] Tests with a mocked `fetch`: checking state; 200; 503; network error; checked-at time shows `2:05 PM` in en and `14:05` in pt-BR for a fixed clock
+- [x] Gate passes: `npm run typecheck && npx vitest run`
+- [x] Test count: 32 tests pass (27 + 5)
 
 **Tests**: component
 **Gate**: quick
