@@ -195,7 +195,7 @@ T16 → T17 → T18 → T19
 
 ---
 
-### T7: Add the Fastify app and health route
+### T7: Add the Fastify app and health route ✅
 
 **What**: `buildApp({ db })` returns a Fastify instance with `GET /api/health` answering `200 {"status":"ok","db":"ok"}` when `db.ping()` succeeds and `503 {"status":"error","db":"error"}` when it throws, and `404` JSON for unknown `/api/*` paths.
 **Where**: `src/server/app.ts`, `src/server/routes/health.ts`
@@ -205,9 +205,9 @@ T16 → T17 → T18 → T19
 
 **Done when**:
 
-- [ ] `app.inject()` tests cover 200, 503 and an unknown `/api/nope` → 404
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
-- [ ] Test count: 10 tests pass (7 + 3)
+- [x] `app.inject()` tests cover 200, 503 and an unknown `/api/nope` → 404
+- [x] Gate passes: `npm run typecheck && npx vitest run`
+- [x] Test count: 10 tests pass (7 + 3)
 
 **Tests**: integration
 **Gate**: quick
