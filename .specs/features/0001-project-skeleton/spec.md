@@ -186,13 +186,13 @@ Implicit-requirement sweep:
 | SKEL-14 | P1: Languages - remembered on reload | Execute (T16) | Implemented |
 | SKEL-15 | P1: Languages - unknown saved value | Execute (T10) | Implemented |
 | SKEL-16 | P1: Languages - `lang` attribute | Execute (T11) | Implemented |
-| SKEL-17 | P1: One command - typecheck passes | Design | Pending |
-| SKEL-18 | P1: One command - typecheck fails | Design | Pending |
-| SKEL-19 | P1: One command - lint | Design | Pending |
-| SKEL-20 | P1: One command - format check | Design | Pending |
-| SKEL-21 | P1: One command - tests | Design | Pending |
+| SKEL-17 | P1: One command - typecheck passes | Execute (T17) | Implemented |
+| SKEL-18 | P1: One command - typecheck fails | Execute (T17) | Implemented |
+| SKEL-19 | P1: One command - lint | Execute (T17) | Implemented |
+| SKEL-20 | P1: One command - format check | Execute (T17) | Implemented |
+| SKEL-21 | P1: One command - tests | Execute (T17) | Implemented |
 | SKEL-22 | P1: One command - e2e | Execute (T16) | Implemented |
-| SKEL-23 | P1: One command - check | Design | Pending |
+| SKEL-23 | P1: One command - check | Execute (T17) | Implemented |
 | SKEL-24 | P1: Run - dev | Execute (T15) | Implemented |
 | SKEL-25 | P1: Run - build + start on LAN | Execute (T9) | Implemented |
 | SKEL-26 | P1: Run - startup log | Execute (T9) | Implemented |
