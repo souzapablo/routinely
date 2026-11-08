@@ -48,8 +48,33 @@ await i18n.use(initReactI18next).init({
     "pt-BR": { translation: ptBR },
   },
   interpolation: { escapeValue: false }, // React already escapes text
+  // Re-render when strings are added, so an edited JSON file shows up in
+  // `npm run dev` without a reload (see the hot update below).
+  react: { bindI18nStore: "added" },
   initAsync: false,
 });
+
+// In `npm run dev`, take an edited en.json or pt-BR.json in place instead
+// of letting Vite reload the page. Production builds drop this block.
+if (import.meta.hot) {
+  import.meta.hot.accept(["./en.json", "./pt-BR.json"], ([newEn, newPtBR]) => {
+    const bundles = [
+      ["en", newEn],
+      ["pt-BR", newPtBR],
+    ] as const;
+    for (const [language, module] of bundles) {
+      if (module) {
+        i18n.addResourceBundle(
+          language,
+          "translation",
+          module.default,
+          true,
+          true,
+        );
+      }
+    }
+  });
+}
 document.documentElement.lang = initialLanguage;
 
 i18n.on("languageChanged", (language) => {
