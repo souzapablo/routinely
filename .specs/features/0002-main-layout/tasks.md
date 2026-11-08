@@ -771,8 +771,8 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `Tray.test.tsx` "shows the header, N left and the hint", "shows meta, pips and Find a time", "shows a fully placed activity with its swatch", "ends with New flexible activity", "shows the empty text and 0 left"
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] `Tray.test.tsx` "shows the header, N left and the hint", "shows meta, pips and Find a time", "shows a fully placed activity with its swatch", "ends with New flexible activity", "shows the empty text and 0 left"
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: component
 **Gate**: quick

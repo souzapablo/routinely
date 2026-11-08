@@ -175,10 +175,10 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | MAIN-15 | P1: Main view - today count | Execute | In progress (T31) |
 | MAIN-16 | P1: Main view - days you showed up | Execute | In progress (T31) |
 | MAIN-17 | P1: Main view - week done meter | Execute | In progress (T31) |
-| MAIN-18 | P1: Main view - tray header | Execute | In progress (T24) |
-| MAIN-19 | P1: Main view - tray items | Execute | In progress (T24) |
-| MAIN-20 | P1: Main view - fully placed items | Execute | In progress (T24) |
-| MAIN-21 | P1: Main view - new flexible button | Design | Pending |
+| MAIN-18 | P1: Main view - tray header | Execute | In progress (T34) |
+| MAIN-19 | P1: Main view - tray items | Execute | In progress (T34) |
+| MAIN-20 | P1: Main view - fully placed items | Execute | In progress (T34) |
+| MAIN-21 | P1: Main view - new flexible button | Execute | In progress (T34) |
 | MAIN-22 | P1: Main view - top bar | Execute | In progress (T29) |
 | MAIN-23 | P1: Main view - disabled controls | Execute | In progress (T30) |
 | MAIN-24 | P1: Main view - no undone shaming | Design | Pending |
@@ -188,7 +188,7 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | MAIN-28 | Edge: no now-line outside hours | Execute | In progress (T25) |
 | MAIN-29 | Edge: anchor clipped to hours | Execute | In progress (T25) |
 | MAIN-30 | Edge: long names ellipsis | Execute | In progress (T5) |
-| MAIN-31 | Edge: empty tray | Execute | In progress (T24) |
+| MAIN-31 | Edge: empty tray | Execute | In progress (T34) |
 | STATUS-01 | P1: Status page - `/status` | Design | Pending |
 | STATUS-02 | P1: Status page - unknown paths | Design | Pending |
 | STATUS-03 | P1: Status page - language kept | Design | Pending |

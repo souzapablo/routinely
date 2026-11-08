@@ -38,5 +38,17 @@
   "grid": {
     "markDone": "Mark {{name}} done",
     "unplace": "Move {{name}} back to the list"
+  },
+  "tray": {
+    "title": "Fit in this week",
+    "left": "{{n}} left",
+    "hint": "No fixed day or time. Drag one onto a free slot, or let Routinely find one.",
+    "meta": "{{times}}× this week · {{duration}}",
+    "metaPlaced": "{{times}}× this week · {{duration}} · {{placed}} placed",
+    "allPlaced": "All placed this week",
+    "allDone": "All done this week",
+    "findTime": "Find a time",
+    "newFlexible": "+ New flexible activity",
+    "empty": "Nothing here yet. Add something you'd like to fit into your week."
   }
 }

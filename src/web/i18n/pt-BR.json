@@ -38,5 +38,17 @@
   "grid": {
     "markDone": "Marcar {{name}} como feito",
     "unplace": "Mover {{name}} de volta para a lista"
+  },
+  "tray": {
+    "title": "Encaixe nesta semana",
+    "left": "{{n}} para encaixar",
+    "hint": "Sem dia ou horário fixo. Arraste um para um horário livre, ou deixe o Routinely encontrar um.",
+    "meta": "{{times}}× nesta semana · {{duration}}",
+    "metaPlaced": "{{times}}× nesta semana · {{duration}} · {{placed}} no calendário",
+    "allPlaced": "Tudo no calendário nesta semana",
+    "allDone": "Tudo feito nesta semana",
+    "findTime": "Encontrar um horário",
+    "newFlexible": "+ Nova atividade flexível",
+    "empty": "Nada aqui ainda. Adicione algo que você gostaria de encaixar na sua semana."
   }
 }
