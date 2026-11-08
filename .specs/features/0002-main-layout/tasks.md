@@ -561,9 +561,9 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `progress.test.ts` "counts today's done items", "counts days you showed up", "sums the week's done and total" (done placements beyond times per week are capped)
-- [ ] Tests: a week with nothing done gives 0 everywhere, never negative
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] `progress.test.ts` "counts today's done items", "counts days you showed up", "sums the week's done and total" (done placements beyond times per week are capped)
+- [x] Tests: a week with nothing done gives 0 everywhere, never negative
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: unit
 **Gate**: quick
