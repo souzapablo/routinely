@@ -165,7 +165,7 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | MAIN-05 | P1: Main view - today column | Design | Pending |
 | MAIN-06 | P1: Main view - now-line | Design | Pending |
 | MAIN-07 | P1: Main view - anchor blocks | Design | Pending |
-| MAIN-08 | P1: Main view - placement blocks | Design | Pending |
+| MAIN-08 | P1: Main view - placement blocks | Execute | In progress (T14) |
 | MAIN-09 | P1: Main view - tiny blocks | Design | Pending |
 | MAIN-10 | P1: Main view - done anchor | Execute | In progress (T11) |
 | MAIN-11 | P1: Main view - done placement | Execute | In progress (T11) |
@@ -177,7 +177,7 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | MAIN-17 | P1: Main view - week done meter | Execute | In progress (T13) |
 | MAIN-18 | P1: Main view - tray header | Execute | In progress (T12) |
 | MAIN-19 | P1: Main view - tray items | Design | Pending |
-| MAIN-20 | P1: Main view - fully placed items | Design | Pending |
+| MAIN-20 | P1: Main view - fully placed items | Execute | In progress (T14) |
 | MAIN-21 | P1: Main view - new flexible button | Design | Pending |
 | MAIN-22 | P1: Main view - top bar | Design | Pending |
 | MAIN-23 | P1: Main view - disabled controls | Execute | In progress (T9) |

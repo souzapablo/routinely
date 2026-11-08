@@ -378,8 +378,9 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `Swatch.test.tsx`: each tone and shape sets its class; `aria-hidden`
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
+- [x] `Swatch.test.tsx`: each tone and shape sets its class; `aria-hidden`
+- [x] Gate passes: `npm run typecheck && npx vitest run` (also `npm run check`)
+- Notes: `categoryTones` maps each category to its `bg`/`ink`/`line` token names (Movement sage, Home sky, Errands apricot, Rest lilac, People rose, per MAIN-08). `src/shared/planner.ts` does not exist until T20, so the tone type is derived from `categoryTones` keys; T20 can point `Category` at it or the reverse. Swatch fill is the category's `-ink` color or `--anchor`; the square's 3 px radius is read from the captures, not from the prototype source. `shape` defaults to `dot`.
 
 **Tests**: component
 **Gate**: integration

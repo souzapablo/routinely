@@ -1,0 +1,40 @@
+.swatch {
+  display: inline-block;
+  flex: none;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.square {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+.movement {
+  background: var(--sage-ink);
+}
+
+.home {
+  background: var(--sky-ink);
+}
+
+.errands {
+  background: var(--apricot-ink);
+}
+
+.rest {
+  background: var(--lilac-ink);
+}
+
+.people {
+  background: var(--rose-ink);
+}
+
+.anchor {
+  background: var(--anchor);
+}
