@@ -600,8 +600,8 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `grid.test.ts` "positions blocks by start and end" (09:00–18:00 → top 132, height 396), "clips blocks to the grid hours" (05:00–07:00 → top 0, height 44; 23:00–23:30 → null), "marks blocks under 40 px as tiny" (30 min tiny, 60 min not), "places the now-line at the current time" (07:48 → 79.2), "draws no now-line outside 06:00–23:00" (05:59, 23:00), "isNow is true from start up to but not including end"
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] `grid.test.ts` "positions blocks by start and end" (09:00–18:00 → top 132, height 396), "clips blocks to the grid hours" (05:00–07:00 → top 0, height 44; 23:00–23:30 → null), "marks blocks under 40 px as tiny" (30 min tiny, 60 min not), "places the now-line at the current time" (07:48 → 79.2), "draws no now-line outside 06:00–23:00" (05:59, 23:00), "isNow is true from start up to but not including end"
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: unit
 **Gate**: quick
