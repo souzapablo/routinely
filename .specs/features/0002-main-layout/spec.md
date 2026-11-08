@@ -154,7 +154,7 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | DS-03 | P1: Design system - structural elements allowed | Design | Pending |
 | DS-04 | P1: Design system - tokens | Design | Pending |
 | DS-05 | P1: Design system - dark tokens | Design | Pending |
-| DS-06 | P1: Design system - stories | Design | Pending |
+| DS-06 | P1: Design system - stories | Execute | In progress (T4, T5) |
 | DS-07 | P1: Design system - self-hosted fonts | Design | Pending |
 | DS-08 | P1: Design system - Icon wraps lucide | Execute | Implemented (T4) |
 | DS-09 | P1: Design system - disabled controls | Design | Pending |
@@ -187,7 +187,7 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | MAIN-27 | P1: Main view - no horizontal scroll | Design | Pending |
 | MAIN-28 | Edge: no now-line outside hours | Design | Pending |
 | MAIN-29 | Edge: anchor clipped to hours | Design | Pending |
-| MAIN-30 | Edge: long names ellipsis | Design | Pending |
+| MAIN-30 | Edge: long names ellipsis | Execute | In progress (T5) |
 | MAIN-31 | Edge: empty tray | Design | Pending |
 | STATUS-01 | P1: Status page - `/status` | Design | Pending |
 | STATUS-02 | P1: Status page - unknown paths | Design | Pending |

@@ -197,8 +197,9 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `Text.test.tsx`: renders the chosen element; each prop adds its class; children pass through
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
+- [x] `Text.test.tsx`: renders the chosen element; each prop adds its class; children pass through
+- [x] Gate passes: `npm run typecheck && npx vitest run` (also `npm run check`)
+- Notes: sizes and weights come from the prototype CSS: `md` 15 px (body), `sm` 13.5 px (subtitles, hints), `xs` 12.5 px (meta lines); `medium` is 550 (item names). A prop left out adds no class, so the text inherits size, weight and color from its parent (block names keep their category color). A base class resets the `p` margin; spacing comes from layout. By hand: mapping `strike` to the mono class, or ignoring `as`, fails `Text.test.tsx`.
 
 **Tests**: component
 **Gate**: integration
