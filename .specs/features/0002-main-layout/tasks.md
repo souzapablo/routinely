@@ -480,11 +480,11 @@ T36 → T37
 
 **Done when**:
 
-- [ ] "lint names every raw element outside src/web/ui": copied to `src/web/raw-elements.tmp.tsx`, lint exits non-zero and the output names all 14 elements
-- [ ] "lint allows raw elements inside src/web/ui": copied to `src/web/ui/raw-elements.tmp.tsx`, lint exits 0
-- [ ] "lint allows structural elements outside src/web/ui": exits 0
-- [ ] The existing hooks-violation harness test still passes
-- [ ] Gate passes: `npm run check`
+- [x] "lint names every raw element outside src/web/ui": copied to `src/web/raw-elements.tmp.tsx`, lint exits non-zero and the output names all 14 elements
+- [x] "lint allows raw elements inside src/web/ui": copied to `src/web/ui/raw-elements.tmp.tsx`, lint exits 0
+- [x] "lint allows structural elements outside src/web/ui": exits 0
+- [x] The existing hooks-violation harness test still passes
+- [x] Gate passes: `npm run check`
 
 **Tests**: integration
 **Gate**: build
