@@ -695,8 +695,8 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `WeekHeader.test.tsx` "shows This week and the range" and "draws the week controls disabled"
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] `WeekHeader.test.tsx` "shows This week and the range" and "draws the week controls disabled"
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: component
 **Gate**: quick

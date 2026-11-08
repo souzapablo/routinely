@@ -160,7 +160,7 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | DS-09 | P1: Design system - disabled controls | Execute | In progress (T9, T10, T11) |
 | MAIN-01 | P1: Main view - desktop capture | Design | Pending |
 | MAIN-02 | P1: Main view - phone capture | Design | Pending |
-| MAIN-03 | P1: Main view - week header | Execute | In progress (T26) |
+| MAIN-03 | P1: Main view - week header | Execute | In progress (T30) |
 | MAIN-04 | P1: Main view - grid days and hours | Execute | In progress (T26) |
 | MAIN-05 | P1: Main view - today column | Execute | In progress (T21) |
 | MAIN-06 | P1: Main view - now-line | Execute | In progress (T28) |
@@ -180,7 +180,7 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | MAIN-20 | P1: Main view - fully placed items | Execute | In progress (T24) |
 | MAIN-21 | P1: Main view - new flexible button | Design | Pending |
 | MAIN-22 | P1: Main view - top bar | Execute | In progress (T29) |
-| MAIN-23 | P1: Main view - disabled controls | Execute | In progress (T9) |
+| MAIN-23 | P1: Main view - disabled controls | Execute | In progress (T30) |
 | MAIN-24 | P1: Main view - no undone shaming | Design | Pending |
 | MAIN-25 | P1: Main view - i18n texts | Design | Pending |
 | MAIN-26 | P1: Main view - pt-BR | Execute | In progress (T26) |

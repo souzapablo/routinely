@@ -16,5 +16,11 @@
     "brand": "Routinely",
     "exampleWeek": "Example week",
     "addActivity": "Add activity"
+  },
+  "weekHeader": {
+    "title": "This week",
+    "previous": "Previous week",
+    "next": "Next week",
+    "today": "Today"
   }
 }
