@@ -6,7 +6,7 @@ import { Text } from "../../ui/Text/Text.tsx";
 import styles from "./WeekHeader.module.css";
 
 export interface WeekHeaderProps {
-  /** The week's Monday to Sunday, already formatted. */
+  /** The week's Sunday to Saturday, already formatted. */
   rangeLabel: string;
 }
 

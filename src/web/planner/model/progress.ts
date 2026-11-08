@@ -20,7 +20,7 @@ export function todaySummary(items: DayItem[]): Progress {
 }
 
 export interface ShowedUp {
-  /** One entry per day, Monday first. */
+  /** One entry per day, Sunday first. */
   days: boolean[];
   count: number;
 }

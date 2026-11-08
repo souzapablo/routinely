@@ -154,4 +154,12 @@
 - **Date**: 2026-11-08
 - **Status**: active (AD-019)
 
+### AD-020
+- **Decision**: The week runs Sunday to Saturday. `DayIndex` is the calendar weekday (Sunday 0 … Saturday 6, as `Date.getDay()`), and a week key is the week's Sunday.
+- **Reason**: User: "sunday should be the first day of the week, not monday". Numbering days by calendar weekday keeps a stored day meaning the same weekday if the first day later becomes a setting ("maybe letter this could be a setting, but not right now").
+- **Trade-off**: Fixed for now; a setting would change `weekStartOf` and the display order, and any rule that compares day indexes as positions in the week (the example week's "before today") would then need the offset.
+- **Scope**: `src/web/planner/model/week.ts`, `src/shared/planner.ts`, every feature that stores days or weeks
+- **Date**: 2026-11-08
+- **Status**: active (AD-020)
+
 ## Handoff

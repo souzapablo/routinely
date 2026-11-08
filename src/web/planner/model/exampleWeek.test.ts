@@ -2,7 +2,8 @@ import { describe, expect, it } from "vitest";
 import { exampleWeek } from "./exampleWeek.ts";
 
 const SUNDAY = new Date(2026, 10, 8, 10, 0);
-const MONDAY = new Date(2026, 10, 9, 10, 0);
+const SATURDAY = new Date(2026, 10, 14, 10, 0);
+const NEXT_SUNDAY = new Date(2026, 10, 15, 10, 0);
 
 describe("exampleWeek", () => {
   it("holds the prototype's anchors", () => {
@@ -10,21 +11,21 @@ describe("exampleWeek", () => {
       {
         id: "work",
         name: "Work",
-        days: [0, 1, 2, 3, 4],
+        days: [1, 2, 3, 4, 5],
         start: 9 * 60,
         end: 18 * 60,
       },
       {
         id: "gym",
         name: "Gym class",
-        days: [1, 3],
+        days: [2, 4],
         start: 7 * 60,
         end: 8 * 60,
       },
       {
         id: "therapy",
         name: "Therapy session",
-        days: [2],
+        days: [3],
         start: 19 * 60,
         end: 20 * 60,
       },
@@ -81,46 +82,46 @@ describe("exampleWeek", () => {
       }),
     );
     expect(placements).toEqual([
-      { activityId: "run", week: "2026-11-02", day: 0, start: 19 * 60 },
-      { activityId: "read", week: "2026-11-02", day: 1, start: 21 * 60 + 30 },
-      { activityId: "read", week: "2026-11-02", day: 3, start: 21 * 60 + 30 },
-      { activityId: "call", week: "2026-11-02", day: 5, start: 11 * 60 },
+      { activityId: "run", week: "2026-11-08", day: 1, start: 19 * 60 },
+      { activityId: "read", week: "2026-11-08", day: 2, start: 21 * 60 + 30 },
+      { activityId: "read", week: "2026-11-08", day: 4, start: 21 * 60 + 30 },
+      { activityId: "call", week: "2026-11-08", day: 6, start: 11 * 60 },
     ]);
   });
 
   it("dates placements to the week of now", () => {
-    const weeks = exampleWeek(MONDAY).placements.map((p) => p.week);
+    const weeks = exampleWeek(NEXT_SUNDAY).placements.map((p) => p.week);
     expect(weeks).toEqual([
-      "2026-11-09",
-      "2026-11-09",
-      "2026-11-09",
-      "2026-11-09",
+      "2026-11-15",
+      "2026-11-15",
+      "2026-11-15",
+      "2026-11-15",
     ]);
   });
 
-  it("on Sunday marks every Mon–Sat item done except Thursday's Gym class", () => {
-    const data = exampleWeek(SUNDAY);
+  it("on Saturday marks every Sun–Fri item done except Thursday's Gym class", () => {
+    const data = exampleWeek(SATURDAY);
     const done = data.doneAnchors
       .map((d) => `${d.anchorId}:${d.week}:${d.day}`)
       .sort();
     expect(done).toEqual(
       [
-        "work:2026-11-02:0",
-        "work:2026-11-02:1",
-        "work:2026-11-02:2",
-        "work:2026-11-02:3",
-        "work:2026-11-02:4",
-        "gym:2026-11-02:1",
-        "therapy:2026-11-02:2",
+        "work:2026-11-08:1",
+        "work:2026-11-08:2",
+        "work:2026-11-08:3",
+        "work:2026-11-08:4",
+        "work:2026-11-08:5",
+        "gym:2026-11-08:2",
+        "therapy:2026-11-08:3",
       ].sort(),
     );
     expect([...data.donePlacementIds].sort()).toEqual(
-      data.placements.map((p) => p.id).sort(),
+      ["read-thu", "read-tue", "run-mon"].sort(),
     );
   });
 
-  it("on Monday marks nothing done", () => {
-    const data = exampleWeek(MONDAY);
+  it("on Sunday marks nothing done", () => {
+    const data = exampleWeek(SUNDAY);
     expect(data.doneAnchors).toEqual([]);
     expect(data.donePlacementIds).toEqual([]);
   });

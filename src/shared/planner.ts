@@ -1,12 +1,12 @@
 export type Category = "movement" | "home" | "errands" | "rest" | "people";
 
-/** Monday is 0. */
+/** The calendar weekday: Sunday is 0, Saturday is 6. */
 export type DayIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
 /** Minutes since midnight, a multiple of 15. */
 export type Minutes = number;
 
-/** The Monday of a week, `YYYY-MM-DD`. */
+/** The Sunday a week starts on, `YYYY-MM-DD`. */
 export type WeekKey = string;
 
 export interface Anchor {

@@ -38,7 +38,7 @@ Keeping routines like running, reading or calling family breaks down because the
 - **Data:** a small backend and database running on **my own local server**. No cloud hosting and no third-party accounts.
 - **Access:** reachable **only on my local network**, by me. Nothing is exposed to the internet: no port forwarding, tunnels or VPN. No login in v1, because the network boundary is the access control.
 - **Languages:** English and Portuguese (pt-BR) from v1. Every UI string goes through i18n, and dates and times follow the active locale.
-- **Grid defaults:** the week starts Monday; the visible day runs 06:00–23:00; all times snap to 15 min.
+- **Grid defaults:** the week starts Sunday; the visible day runs 06:00–23:00; all times snap to 15 min.
 
 ## Success
 
@@ -49,6 +49,7 @@ Keeping routines like running, reading or calling family breaks down because the
 - Mobile day view (the week grid scrolls sideways on phones)
 - Reminders and push notifications
 - Sunday check-in / weekly review prompt
+- Choosing which day the week starts on
 - Energy tags and the insights screen
 - One-off exceptions to anchors (e.g. skipping therapy just this week)
 - Multiple users, accounts, login, or sharing with a therapist

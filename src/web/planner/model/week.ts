@@ -3,8 +3,7 @@ import type { DayIndex, WeekKey } from "../../../shared/planner.ts";
 // All rules work in local time: the week is the owner's calendar week.
 
 export function dayIndex(date: Date): DayIndex {
-  // getDay() has Sunday as 0; the planner's week starts on Monday.
-  return ((date.getDay() + 6) % 7) as DayIndex;
+  return date.getDay() as DayIndex;
 }
 
 function addDays(date: Date, days: number): Date {
@@ -16,14 +15,15 @@ function startOfDay(date: Date): Date {
   return addDays(date, 0);
 }
 
-export function mondayOf(date: Date): Date {
-  return addDays(date, -dayIndex(date));
+/** The Sunday on or before `date`, at midnight: the week starts on Sunday. */
+export function weekStartOf(date: Date): Date {
+  return addDays(date, -date.getDay());
 }
 
 export function weekKey(date: Date): WeekKey {
-  const monday = mondayOf(date);
+  const start = weekStartOf(date);
   const pad = (n: number) => String(n).padStart(2, "0");
-  return `${monday.getFullYear()}-${pad(monday.getMonth() + 1)}-${pad(monday.getDate())}`;
+  return `${start.getFullYear()}-${pad(start.getMonth() + 1)}-${pad(start.getDate())}`;
 }
 
 export function minutesOfDay(date: Date): number {
@@ -36,12 +36,12 @@ export interface WeekDay {
   isToday: boolean;
 }
 
-export function weekDays(monday: Date, today: Date): WeekDay[] {
+export function weekDays(weekStart: Date, today: Date): WeekDay[] {
   const todayStart = startOfDay(today).getTime();
   return Array.from({ length: 7 }, (_, i) => {
-    const date = addDays(monday, i);
+    const date = addDays(weekStart, i);
     return {
-      index: i as DayIndex,
+      index: dayIndex(date),
       date,
       isToday: date.getTime() === todayStart,
     };
