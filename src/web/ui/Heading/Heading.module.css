@@ -1,0 +1,29 @@
+/* Sizes and weights are the prototype's: the week title 28 px (24 px on
+   phones), the Today heading 17 px, the tray heading 16 px. */
+.heading {
+  margin: 0;
+  font-family: var(--f-display);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.page {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.section {
+  font-size: 17px;
+  font-weight: 650;
+}
+
+.card {
+  font-size: 16px;
+  font-weight: 650;
+}
+
+@media (max-width: 640px) {
+  .page {
+    font-size: 24px;
+  }
+}

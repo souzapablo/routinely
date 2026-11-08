@@ -217,8 +217,9 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `Heading.test.tsx`: `level` sets `h1`/`h2`/`h3`; `size` sets its class independent of level
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
+- [x] `Heading.test.tsx`: `level` sets `h1`/`h2`/`h3`; `size` sets its class independent of level
+- [x] Gate passes: `npm run typecheck && npx vitest run` (also lint and format check)
+- Notes: sizes and weights come from the prototype CSS: `page` 28 px / 700 (24 px under 640 px), `section` 17 px / 650, `card` 16 px / 650; every level gets the display font, `-0.01em` tracking, balanced wrapping and no margin. No `size` adds no size class. Props extend the native heading props (design.md), so `id` passes through for `aria-labelledby`.
 
 **Tests**: component
 **Gate**: integration
