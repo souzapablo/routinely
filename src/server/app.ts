@@ -1,5 +1,6 @@
 import fastifyStatic from "@fastify/static";
 import Fastify, { type FastifyInstance } from "fastify";
+import { isApiPath } from "../shared/apiPath.ts";
 import type { Database } from "./db.ts";
 import { registerHealthRoute } from "./routes/health.ts";
 
@@ -17,7 +18,7 @@ export function buildApp(deps: {
     // Any GET outside /api that matches no file is a page of the web app:
     // send index.html and let the browser-side code render it.
     app.setNotFoundHandler((request, reply) => {
-      if (request.method === "GET" && !request.url.startsWith("/api/")) {
+      if (request.method === "GET" && !isApiPath(request.url)) {
         return reply.sendFile("index.html");
       }
       return reply.code(404).send({

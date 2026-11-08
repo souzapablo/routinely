@@ -1,5 +1,6 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vitest/config";
+import { apiPathPattern } from "./src/shared/apiPath.ts";
 
 export default defineConfig({
   plugins: [react()],
@@ -9,7 +10,8 @@ export default defineConfig({
   },
   server: {
     // In development the API runs separately on port 3000 (npm run dev).
-    proxy: { "/api": "http://localhost:3000" },
+    // A key starting with ^ is a regular expression to Vite.
+    proxy: { [apiPathPattern.source]: "http://localhost:3000" },
   },
   test: {
     projects: [

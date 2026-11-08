@@ -63,5 +63,26 @@ describe("buildApp", () => {
       expect(res.headers["content-type"]).toMatch(/^application\/json/);
       expect(res.json()).toMatchObject({ statusCode: 404 });
     });
+
+    it.each(["/api", "/api?x=1"])(
+      "answers 404 JSON for %s, which belongs to the api",
+      async (url) => {
+        const app = buildApp({ db: workingDb, webRoot });
+
+        const res = await app.inject({ method: "GET", url });
+
+        expect(res.statusCode).toBe(404);
+        expect(res.headers["content-type"]).toMatch(/^application\/json/);
+      },
+    );
+
+    it("returns index.html for /apiary, which only starts like the api", async () => {
+      const app = buildApp({ db: workingDb, webRoot });
+
+      const res = await app.inject({ method: "GET", url: "/apiary" });
+
+      expect(res.statusCode).toBe(200);
+      expect(res.body).toBe(indexHtml);
+    });
   });
 });
