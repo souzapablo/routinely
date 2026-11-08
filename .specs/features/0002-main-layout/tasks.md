@@ -438,9 +438,10 @@ T36 → T37
 
 **Done when**:
 
-- [ ] Existing `LanguageSwitch.test.tsx` passes unchanged
-- [ ] No raw element left in the file
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Existing `LanguageSwitch.test.tsx` passes unchanged
+- [x] No raw element left in the file
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web` (also `npm run check` and `npm run e2e`)
+- Notes: the switch is a `Stack as="nav"` row (gap 8 px, end-aligned) of `size="sm"` Buttons, so its text drops from 14 px to the design system's 12 px. Its `.language-switch` rules are gone from `styles.css`; `.app` and `.status` stay until T18.
 
 **Tests**: component
 **Gate**: quick

@@ -1,5 +1,7 @@
 import { useTranslation } from "react-i18next";
 import type { Language } from "./i18n/detectLanguage.ts";
+import { Button } from "./ui/Button/Button.tsx";
+import { Stack } from "./ui/Stack/Stack.tsx";
 
 // Each language is named in itself, so it reads the same in both languages
 // and isn't a translated string.
@@ -12,18 +14,18 @@ export function LanguageSwitch() {
   const { i18n } = useTranslation();
 
   return (
-    <nav className="language-switch">
+    <Stack as="nav" direction="row" gap={3} justify="end">
       {options.map(({ language, label }) => (
-        <button
+        <Button
           key={language}
-          type="button"
+          size="sm"
           lang={language}
-          aria-pressed={i18n.language === language}
+          pressed={i18n.language === language}
           onClick={() => void i18n.changeLanguage(language)}
         >
           {label}
-        </button>
+        </Button>
       ))}
-    </nav>
+    </Stack>
   );
 }
