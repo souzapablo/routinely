@@ -657,8 +657,8 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `useNow.test.ts` (fake timers): value changes after 60 s, not before; no timer left after unmount
-- [ ] Gate passes: `npm run check`
+- [x] `useNow.test.ts` (fake timers): value changes after 60 s, not before; no timer left after unmount
+- [x] Gate passes: `npm run check`
 
 **Tests**: unit
 **Gate**: build (end of phase)
