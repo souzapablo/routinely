@@ -398,8 +398,9 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `StatusIndicator.test.tsx`: `role="status"` with the text; tone sets its class
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
+- [x] `StatusIndicator.test.tsx`: `role="status"` with the text; tone sets its class
+- [x] Gate passes: `npm run typecheck && npx vitest run` (also `npm run check`)
+- Notes: styles follow the prototype's `.save`: 7 px dot (`--faint`, `--ok`, `--accent`, `--bad` for `neutral`, `ok`, `busy`, `error`), 12.5 px `--muted` text, 6 px gap, 12 px text at 640 px and below. The dot is an `aria-hidden` child span rather than `::before` so tests can find it. The prototype's `margin-left: auto` is the top bar's layout and stays out of the component (T29, TopBar, places it).
 
 **Tests**: component
 **Gate**: integration
