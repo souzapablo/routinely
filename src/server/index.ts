@@ -2,8 +2,9 @@ import type { AddressInfo } from "node:net";
 import { fileURLToPath } from "node:url";
 import { buildApp } from "./app.ts";
 import { type Database, openDatabase } from "./db.ts";
+import { portFrom } from "./port.ts";
 
-const port = Number(process.env.PORT ?? 3000);
+const port = portFrom(process.env.PORT);
 const databasePath = process.env.DATABASE_PATH ?? "data/routinely.db";
 const webRoot = fileURLToPath(new URL("../../dist/web", import.meta.url));
 
