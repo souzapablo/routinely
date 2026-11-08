@@ -1,7 +1,7 @@
 import { expect, type Page, test } from "@playwright/test";
 
-// Sunday morning of the example week, in the machine's local time zone (the
-// browser uses the same zone).
+// Sunday morning, the first day of the example week, in the machine's local
+// time zone (the browser uses the same zone).
 const SUNDAY_MORNING = new Date(2026, 10, 8, 7, 48);
 
 test.beforeEach(async ({ page }) => {
@@ -239,7 +239,7 @@ test("shows pt-BR texts and 24-hour times", async ({ page }) => {
   await expect(page.getByText("Semana de exemplo")).toBeVisible();
   await expect(page.getByText("Encaixe nesta semana")).toBeVisible();
   await expect(
-    page.getByText(/^2 de nov\.\s–\s8 de nov\. de 2026$/),
+    page.getByText(/^8 de nov\.\s–\s14 de nov\. de 2026$/),
   ).toBeVisible();
   await expect(page.getByText("Hoje · domingo, 8 de nov.")).toBeVisible();
 

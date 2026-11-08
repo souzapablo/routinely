@@ -69,12 +69,12 @@ The planner's week runs Monday to Sunday. The owner's week starts on Sunday, so 
 
 | Requirement ID | Story | Phase | Status |
 | --- | --- | --- | --- |
-| SWS-01 | P1: Sunday start - grid columns | Execute | Pending |
-| SWS-02 | P1: Sunday start - Sunday begins a week | Execute | Pending |
-| SWS-03 | P1: Sunday start - week range | Execute | Pending |
-| SWS-04 | P1: Sunday start - Days you showed up | Execute | Pending |
-| SWS-05 | P1: Sunday start - week key | Execute | Pending |
-| SWS-06 | P1: Sunday start - day index | Execute | Pending |
-| SWS-07 | P1: Example week - same weekdays | Execute | Pending |
-| SWS-08 | P1: Example week - nothing done on Sunday | Execute | Pending |
-| SWS-09 | P1: Example week - done through Friday on Saturday | Execute | Pending |
+| SWS-01 | P1: Sunday start - grid columns | Execute | Implemented |
+| SWS-02 | P1: Sunday start - Sunday begins a week | Execute | Implemented |
+| SWS-03 | P1: Sunday start - week range | Execute | Implemented |
+| SWS-04 | P1: Sunday start - Days you showed up | Execute | Implemented |
+| SWS-05 | P1: Sunday start - week key | Execute | Implemented |
+| SWS-06 | P1: Sunday start - day index | Execute | Implemented |
+| SWS-07 | P1: Example week - same weekdays | Execute | Implemented |
+| SWS-08 | P1: Example week - nothing done on Sunday | Execute | Implemented |
+| SWS-09 | P1: Example week - done through Friday on Saturday | Execute | Implemented |

@@ -37,21 +37,21 @@ export function formatHourLabel(minutes: Minutes, lang: string): string {
   return new Intl.DateTimeFormat(lang, options).format(atMinutes(minutes));
 }
 
-export function formatWeekRange(monday: Date, lang: string): string {
-  const sunday = addDays(monday, 6);
-  const sameYear = monday.getFullYear() === sunday.getFullYear();
-  // formatRange would shorten "Nov 2 – Nov 8" to "Nov 2 – 8"; the header
+export function formatWeekRange(weekStart: Date, lang: string): string {
+  const weekEnd = addDays(weekStart, 6);
+  const sameYear = weekStart.getFullYear() === weekEnd.getFullYear();
+  // formatRange would shorten "Nov 8 – Nov 14" to "Nov 8 – 14"; the header
   // names both months. The thin spaces match Intl's own range separator.
   const from = new Intl.DateTimeFormat(lang, {
     month: "short",
     day: "numeric",
     year: sameYear ? undefined : "numeric",
-  }).format(monday);
+  }).format(weekStart);
   const to = new Intl.DateTimeFormat(lang, {
     month: "short",
     day: "numeric",
     year: "numeric",
-  }).format(sunday);
+  }).format(weekEnd);
   return `${from}\u2009–\u2009${to}`;
 }
 

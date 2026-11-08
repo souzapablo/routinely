@@ -4,7 +4,7 @@ import "../../i18n/index.ts";
 import styles from "./WeekGrid.module.css";
 import { WeekGrid, type GridDay } from "./WeekGrid.tsx";
 
-const weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const hourLabels = Array.from({ length: 17 }, (_, i) => {
   const hour = 6 + i;
   return `${hour % 12 || 12} ${hour < 12 ? "AM" : "PM"}`;
@@ -14,7 +14,7 @@ function days(todayIndex: number | null): GridDay[] {
   return weekdays.map((weekday, i) => ({
     key: weekday,
     weekday,
-    dayNumber: String(2 + i),
+    dayNumber: String(1 + i),
     isToday: i === todayIndex,
     blocks: [],
   }));
@@ -63,7 +63,7 @@ describe("WeekGrid", () => {
       true,
     ]);
     expect(heads[6]?.querySelector(`.${styles.dayNumber}`)).toHaveTextContent(
-      "8",
+      "7",
     );
   });
 
@@ -85,7 +85,7 @@ describe("WeekGrid", () => {
     ).toEqual(weekdays);
     expect(
       heads.map((h) => h.querySelector(`.${styles.dayNumber}`)?.textContent),
-    ).toEqual(["2", "3", "4", "5", "6", "7", "8"]);
+    ).toEqual(["1", "2", "3", "4", "5", "6", "7"]);
     expect(columns).toHaveLength(7);
     expect(hours.map((h) => h.textContent)).toEqual(hourLabels);
   });

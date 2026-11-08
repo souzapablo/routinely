@@ -13,7 +13,7 @@ export interface GridDay {
 }
 
 export interface WeekGridProps {
-  /** Seven days, Monday first. */
+  /** Seven days, Sunday first. */
   days: GridDay[];
   /** One label per hour row, from the top of the grid. */
   hourLabels: string[];

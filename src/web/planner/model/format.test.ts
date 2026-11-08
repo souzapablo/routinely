@@ -17,20 +17,20 @@ const plain = (text: string) => text.replace(/[\u2009\u202f\u00a0]/g, " ");
 
 describe("formatWeekRange", () => {
   it("formats the week range", () => {
-    expect(plain(formatWeekRange(local(2026, 11, 2), "en"))).toBe(
-      "Nov 2 – Nov 8, 2026",
+    expect(plain(formatWeekRange(local(2026, 11, 8), "en"))).toBe(
+      "Nov 8 – Nov 14, 2026",
     );
   });
 
   it("names both years across a year boundary", () => {
-    expect(plain(formatWeekRange(local(2026, 12, 28), "en"))).toBe(
-      "Dec 28, 2026 – Jan 3, 2027",
+    expect(plain(formatWeekRange(local(2026, 12, 27), "en"))).toBe(
+      "Dec 27, 2026 – Jan 2, 2027",
     );
   });
 
   it("follows pt-BR", () => {
-    expect(plain(formatWeekRange(local(2026, 11, 2), "pt-BR"))).toBe(
-      "2 de nov. – 8 de nov. de 2026",
+    expect(plain(formatWeekRange(local(2026, 11, 8), "pt-BR"))).toBe(
+      "8 de nov. – 14 de nov. de 2026",
     );
   });
 });

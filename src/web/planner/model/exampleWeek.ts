@@ -9,9 +9,9 @@ import type {
 import { dayIndex, weekKey } from "./week.ts";
 
 const anchors: Anchor[] = [
-  { id: "work", name: "Work", days: [0, 1, 2, 3, 4], start: 540, end: 1080 },
-  { id: "gym", name: "Gym class", days: [1, 3], start: 420, end: 480 },
-  { id: "therapy", name: "Therapy session", days: [2], start: 1140, end: 1200 },
+  { id: "work", name: "Work", days: [1, 2, 3, 4, 5], start: 540, end: 1080 },
+  { id: "gym", name: "Gym class", days: [2, 4], start: 420, end: 480 },
+  { id: "therapy", name: "Therapy session", days: [3], start: 1140, end: 1200 },
 ];
 
 const activities: FlexibleActivity[] = [
@@ -52,15 +52,15 @@ const placementSlots: {
   day: DayIndex;
   start: number;
 }[] = [
-  { id: "run-mon", activityId: "run", day: 0, start: 1140 },
-  { id: "read-tue", activityId: "read", day: 1, start: 1290 },
-  { id: "read-thu", activityId: "read", day: 3, start: 1290 },
-  { id: "call-sat", activityId: "call", day: 5, start: 660 },
+  { id: "run-mon", activityId: "run", day: 1, start: 1140 },
+  { id: "read-tue", activityId: "read", day: 2, start: 1290 },
+  { id: "read-thu", activityId: "read", day: 4, start: 1290 },
+  { id: "call-sat", activityId: "call", day: 6, start: 660 },
 ];
 
 // The prototype's example leaves Thursday's gym class undone, so the view
 // shows an undone item on a past day.
-const notDone = { anchorId: "gym", day: 3 };
+const notDone = { anchorId: "gym", day: 4 };
 
 export function exampleWeek(now: Date): PlannerData {
   const week = weekKey(now);

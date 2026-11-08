@@ -30,7 +30,7 @@ import { trayItems, trayLeft } from "./model/tray.ts";
 import {
   dayIndex,
   minutesOfDay,
-  mondayOf,
+  weekStartOf,
   weekDays,
   weekKey,
 } from "./model/week.ts";
@@ -57,7 +57,7 @@ export function PlannerPage() {
 
   const week = weekKey(now);
   const minutes = minutesOfDay(now);
-  const days = weekDays(mondayOf(now), now);
+  const days = weekDays(weekStartOf(now), now);
   const time = (start: number, end: number) =>
     formatTimeRange(start, end, lang);
 
@@ -95,7 +95,7 @@ export function PlannerPage() {
 
   return (
     <main className={styles.page}>
-      <WeekHeader rangeLabel={formatWeekRange(mondayOf(now), lang)} />
+      <WeekHeader rangeLabel={formatWeekRange(weekStartOf(now), lang)} />
       <div className={styles.today}>
         <TodayStrip
           dateLabel={formatTodayDate(now, lang)}

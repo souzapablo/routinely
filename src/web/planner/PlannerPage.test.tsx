@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import en from "../i18n/en.json";
 import i18n from "../i18n/index.ts";
 import ptBR from "../i18n/pt-BR.json";
+import todayStyles from "./components/TodayStrip.module.css";
 import gridStyles from "./components/WeekGrid.module.css";
 import { PlannerPage } from "./PlannerPage.tsx";
 
@@ -37,7 +38,7 @@ function leaves(value: unknown, prefix = ""): [string, string][] {
 }
 
 describe("PlannerPage", () => {
-  it("shows This week and Nov 2 – Nov 8, 2026", () => {
+  it("shows This week and Nov 8 – Nov 14, 2026 on Sunday", () => {
     renderAt(SUNDAY_MORNING);
 
     expect(
@@ -45,23 +46,23 @@ describe("PlannerPage", () => {
     ).toBeInTheDocument();
     expect(
       // Testing Library reads Intl's thin spaces as plain spaces.
-      screen.getByText("Nov 2 – Nov 8, 2026"),
+      screen.getByText("Nov 8 – Nov 14, 2026"),
     ).toBeInTheDocument();
   });
 
-  it("draws seven days from Monday and hours 6 AM to 10 PM", () => {
+  it("draws seven days from Sunday and hours 6 AM to 10 PM", () => {
     const { container } = renderAt(SUNDAY_MORNING);
 
     const heads = Array.from(container.querySelectorAll(`.${gridStyles.day}`));
     expect(
       heads.map((h) => h.querySelector(`.${gridStyles.weekday}`)?.textContent),
-    ).toEqual(["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]);
+    ).toEqual(["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]);
     expect(
       heads.map(
         (h) => h.querySelector(`.${gridStyles.dayNumber}`)?.textContent,
       ),
-    ).toEqual(["2", "3", "4", "5", "6", "7", "8"]);
-    expect(heads[6]).toHaveClass(gridStyles.today);
+    ).toEqual(["8", "9", "10", "11", "12", "13", "14"]);
+    expect(heads[0]).toHaveClass(gridStyles.today);
 
     const hours = Array.from(
       container.querySelectorAll(`.${gridStyles.hourLabel}`),
@@ -70,6 +71,34 @@ describe("PlannerPage", () => {
     expect(hours).toHaveLength(17);
     expect(hours[0]).toBe("6 AM");
     expect(hours[16]).toBe("10 PM");
+  });
+
+  it("lists Days you showed up Sunday first", () => {
+    const { container } = renderAt(THURSDAY_GYM);
+
+    const dots = Array.from(
+      container.querySelectorAll(`.${todayStyles.dots} > div`),
+    );
+    expect(dots.map((d) => d.textContent)).toEqual([
+      "S",
+      "M",
+      "T",
+      "W",
+      "T",
+      "F",
+      "S",
+    ]);
+    // Nov 1 is a Sunday with nothing planned; Monday to Wednesday are done.
+    expect(dots.map((d) => d.classList.contains(todayStyles.on))).toEqual([
+      false,
+      true,
+      true,
+      true,
+      false,
+      false,
+      false,
+    ]);
+    expect(dots[4]).toHaveClass(todayStyles.today);
   });
 
   it("lists today's items in time order", () => {
