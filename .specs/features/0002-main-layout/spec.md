@@ -154,10 +154,10 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | DS-03 | P1: Design system - structural elements allowed | Design | Pending |
 | DS-04 | P1: Design system - tokens | Design | Pending |
 | DS-05 | P1: Design system - dark tokens | Design | Pending |
-| DS-06 | P1: Design system - stories | Execute | In progress (T4, T5, T6, T7, T8) |
+| DS-06 | P1: Design system - stories | Execute | In progress (T4, T5, T6, T7, T8, T9) |
 | DS-07 | P1: Design system - self-hosted fonts | Design | Pending |
 | DS-08 | P1: Design system - Icon wraps lucide | Execute | Implemented (T4) |
-| DS-09 | P1: Design system - disabled controls | Design | Pending |
+| DS-09 | P1: Design system - disabled controls | Execute | In progress (T9) |
 | MAIN-01 | P1: Main view - desktop capture | Design | Pending |
 | MAIN-02 | P1: Main view - phone capture | Design | Pending |
 | MAIN-03 | P1: Main view - week header | Design | Pending |
@@ -180,7 +180,7 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | MAIN-20 | P1: Main view - fully placed items | Design | Pending |
 | MAIN-21 | P1: Main view - new flexible button | Design | Pending |
 | MAIN-22 | P1: Main view - top bar | Design | Pending |
-| MAIN-23 | P1: Main view - disabled controls | Design | Pending |
+| MAIN-23 | P1: Main view - disabled controls | Execute | In progress (T9) |
 | MAIN-24 | P1: Main view - no undone shaming | Design | Pending |
 | MAIN-25 | P1: Main view - i18n texts | Design | Pending |
 | MAIN-26 | P1: Main view - pt-BR | Design | Pending |

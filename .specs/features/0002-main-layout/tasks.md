@@ -277,9 +277,10 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `Button.test.tsx` "disabled and inert buttons are skipped by Tab": both carry `disabled` and `userEvent.tab()` skips them
-- [ ] Tests: variant classes, `iconOnly` accessible name, `collapseLabel` keeps the accessible name, `pressed` sets `aria-pressed`, `inert` has no faded class, click calls `onClick` when enabled
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
+- [x] `Button.test.tsx` "disabled and inert buttons are skipped by Tab": both carry `disabled` and `userEvent.tab()` skips them
+- [x] Tests: variant classes, `iconOnly` accessible name, `collapseLabel` keeps the accessible name, `pressed` sets `aria-pressed`, `inert` has no faded class, click calls `onClick` when enabled
+- [x] Gate passes: `npm run typecheck && npx vitest run` (also `npm run check`)
+- Notes: styles follow the prototype's `.btn`, `.btn.sq`, `.find` (`size="sm"` + `variant="accent"`) and `.newflex` (`dashed`). `pressed` fills with the accent. The collapsed label is hidden with the same clip technique as `VisuallyHidden`, so it stays the accessible name. Labels are strings, so `iconOnly` can use the label as `aria-label`. `inert` overrides the native HTML `inert` attribute and is never passed to the DOM.
 
 **Tests**: component
 **Gate**: integration
