@@ -1,0 +1,78 @@
+.tray {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.hint {
+  margin-top: -6px;
+}
+
+/* When the page fits the window, only the list scrolls; the heading and the
+   new-item button stay in view. */
+.items {
+  display: grid;
+  gap: 8px;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 4px 10px;
+  padding: 10px 10px 10px 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--surface);
+}
+
+.full {
+  background: var(--sunk);
+}
+
+.grip {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  color: var(--faint);
+}
+
+.find {
+  grid-row: 1 / span 3;
+  grid-column: 3;
+}
+
+.meta,
+.pips {
+  grid-column: 2;
+}
+
+.pips {
+  display: flex;
+  gap: 4px;
+}
+
+.pip {
+  width: 16px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--line);
+}
+
+.placed {
+  background: var(--faint);
+}
+
+.done {
+  background: var(--accent);
+}

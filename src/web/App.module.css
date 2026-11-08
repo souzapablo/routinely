@@ -1,0 +1,25 @@
+.app {
+  padding-inline: 16px;
+}
+
+/* The status card keeps the narrow column it had before the planner existed. */
+.status {
+  max-width: 640px;
+  margin: 0 auto;
+  padding-block: 28px;
+}
+
+/* Wide screens: the app is exactly the window, and the planner fits inside it. */
+@media (min-width: 981px) {
+  .app {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    padding-inline: 24px;
+  }
+
+  .app > main {
+    flex: 1;
+    min-height: 0;
+  }
+}

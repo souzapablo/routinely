@@ -1,0 +1,14 @@
+/* Gap scale for layout components. The prototype has no scale; these are its
+   most-used gaps. Its one-off 14, 18 and 28 px gaps stay in the CSS of the
+   component that needs them. Kept out of tokens.css, which is the
+   prototype's token block as is. */
+:root {
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 6px;
+  --space-3: 8px;
+  --space-4: 10px;
+  --space-5: 12px;
+  --space-6: 16px;
+  --space-7: 20px;
+}

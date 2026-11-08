@@ -1,0 +1,40 @@
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-block: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--f-display);
+  font-size: 19px;
+  font-weight: 700;
+}
+
+/* Pushes the status, Add activity and the language switch to the right. */
+.status {
+  margin-left: auto;
+  min-width: 0;
+}
+
+/* The language switch is not in the prototype; on narrow screens it takes a
+   second row so the first row keeps the prototype's phone layout. */
+@media (max-width: 640px) {
+  .bar {
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+
+  .status {
+    flex: 1;
+    margin-left: 0;
+  }
+
+  .language {
+    flex-basis: 100%;
+  }
+}

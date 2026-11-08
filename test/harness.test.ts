@@ -21,6 +21,26 @@ const fixtures = join(root, "test", "fixtures");
 const typeErrorFile = join(root, "test", "type-error.tmp.ts");
 const hooksViolationFile = join(root, "src", "web", "hooks-violation.tmp.tsx");
 const unformattedFile = join(root, "test", "unformatted.tmp.ts");
+const rawOutsideUiFile = join(root, "src", "web", "raw-elements.tmp.tsx");
+const rawInsideUiFile = join(root, "src", "web", "ui", "raw-elements.tmp.tsx");
+const structuralFile = join(root, "src", "web", "structural-elements.tmp.tsx");
+
+const rawElements = [
+  "button",
+  "input",
+  "select",
+  "textarea",
+  "a",
+  "label",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "p",
+  "span",
+];
 
 type Run = { code: number | null; output: string };
 
@@ -47,7 +67,14 @@ function normalize(path: string): string {
 
 describe("harness", () => {
   afterEach(() => {
-    for (const file of [typeErrorFile, hooksViolationFile, unformattedFile]) {
+    for (const file of [
+      typeErrorFile,
+      hooksViolationFile,
+      unformattedFile,
+      rawOutsideUiFile,
+      rawInsideUiFile,
+      structuralFile,
+    ]) {
       rmSync(file, { force: true });
     }
   });
@@ -99,6 +126,47 @@ describe("harness", () => {
       expect(result.code).not.toBe(0);
       expect(result.output).toContain("hooks-violation.tmp.tsx");
       expect(result.output).toContain("react-hooks/rules-of-hooks");
+    },
+    TIMEOUT,
+  );
+
+  it(
+    "lint names every raw element outside src/web/ui",
+    () => {
+      copyFileSync(join(fixtures, "raw-elements.tsx"), rawOutsideUiFile);
+
+      const result = run(`npx eslint ${rawOutsideUiFile}`);
+
+      expect(result.code).not.toBe(0);
+      for (const name of rawElements) {
+        expect(result.output).toContain(
+          `Use a component from src/web/ui instead of <${name}>`,
+        );
+      }
+    },
+    TIMEOUT,
+  );
+
+  it(
+    "lint allows raw elements inside src/web/ui",
+    () => {
+      copyFileSync(join(fixtures, "raw-elements.tsx"), rawInsideUiFile);
+
+      const result = run(`npx eslint ${rawInsideUiFile}`);
+
+      expect(result.code, result.output).toBe(0);
+    },
+    TIMEOUT,
+  );
+
+  it(
+    "lint allows structural elements outside src/web/ui",
+    () => {
+      copyFileSync(join(fixtures, "structural-elements.tsx"), structuralFile);
+
+      const result = run(`npx eslint ${structuralFile}`);
+
+      expect(result.code, result.output).toBe(0);
     },
     TIMEOUT,
   );

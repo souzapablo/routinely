@@ -3,7 +3,7 @@
   "promote_threshold": 2,
   "window_days": 45,
   "quarantine_threshold": 2,
-  "next_id": 7,
+  "next_id": 9,
   "lessons": [
     {
       "id": "L-001",
@@ -112,6 +112,42 @@
       ],
       "created": "2026-11-08T08:58:26Z",
       "last_seen": "2026-11-08T08:58:26Z"
+    },
+    {
+      "id": "L-007",
+      "key": "ac_gap::put text overflow ellipsis on the element that holds the text use text truncate not on a wrapper around a block level child and assert the ellipsis in e2e on every truncated text the captures show",
+      "text": "Put text-overflow: ellipsis on the element that holds the text (use Text truncate), not on a wrapper around a block-level child, and assert the ellipsis in e2e on every truncated text the captures show.",
+      "signal": "ac_gap",
+      "scope": "src/web css",
+      "status": "candidate",
+      "features": [
+        "0002-main-layout"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "src/web/planner/components/GridBlock.module.css:37 (src/web css)"
+      ],
+      "created": "2026-11-08T16:20:05Z",
+      "last_seen": "2026-11-08T16:20:05Z"
+    },
+    {
+      "id": "L-008",
+      "key": "surviving_mutant::when a layout decision names a position second row right aligned the e2e test asserts that position not only that nothing overlaps",
+      "text": "When a layout decision names a position (second row, right-aligned), the e2e test asserts that position, not only that nothing overlaps.",
+      "signal": "surviving_mutant",
+      "scope": "e2e layout",
+      "status": "candidate",
+      "features": [
+        "0002-main-layout"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "src/web/app/TopBar.module.css .language flex-basis (e2e layout)"
+      ],
+      "created": "2026-11-08T16:20:05Z",
+      "last_seen": "2026-11-08T16:20:05Z"
     }
   ]
 }

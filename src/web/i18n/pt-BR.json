@@ -11,5 +11,49 @@
       "unreachable": "Banco de dados: sem conexão"
     },
     "checkedAt": "Verificado às {{time}}"
+  },
+  "topBar": {
+    "brand": "Routinely",
+    "exampleWeek": "Semana de exemplo",
+    "addActivity": "Adicionar atividade"
+  },
+  "weekHeader": {
+    "title": "Esta semana",
+    "previous": "Semana anterior",
+    "next": "Próxima semana",
+    "today": "Hoje"
+  },
+  "today": {
+    "title": "Hoje · {{date}}",
+    "summary": "{{done}} de {{total}} feitos",
+    "freeDay": "Um dia livre",
+    "empty": "Nada planejado para hoje. Arraste algo da sua lista para hoje, ou tire o dia de folga.",
+    "showedUp": "Dias em que você apareceu",
+    "showedUpCount": "{{days}} de 7",
+    "showedUpLabel": "{{days}} dias nesta semana com pelo menos uma coisa feita",
+    "week": "Esta semana",
+    "weekDone": "{{done}} de {{total}} feitos",
+    "now": "Agora"
+  },
+  "grid": {
+    "markDone": "Marcar {{name}} como feito",
+    "unplace": "Mover {{name}} de volta para a lista"
+  },
+  "tray": {
+    "title": "Encaixe nesta semana",
+    "left": "{{n}} para encaixar",
+    "hint": "Sem dia ou horário fixo. Arraste um para um horário livre, ou deixe o Routinely encontrar um.",
+    "meta": "{{times}}× nesta semana · {{duration}}",
+    "metaPlaced": "{{times}}× nesta semana · {{duration}} · {{placed}} no calendário",
+    "allPlaced": "Tudo no calendário nesta semana",
+    "allDone": "Tudo feito nesta semana",
+    "findTime": "Encontrar um horário",
+    "newFlexible": "+ Nova atividade flexível",
+    "empty": "Nada aqui ainda. Adicione algo que você gostaria de encaixar na sua semana."
+  },
+  "duration": {
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} h",
+    "hoursMinutes": "{{hours}} h {{minutes}} min"
   }
 }

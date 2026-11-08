@@ -1,0 +1,130 @@
+/* Copied from the Routinely prototype (docs/product.md). Dark follows the OS
+   setting; data-theme on <html> overrides it either way. */
+:root {
+  --bg: #eef1f4;
+  --surface: #ffffff;
+  --sunk: #f5f7f9;
+  --ink: #18202c;
+  --muted: #5b6575;
+  --faint: #8a93a1;
+  --line: #d9dee5;
+  --line-soft: #e8ebf0;
+  --accent: #1f6f6b;
+  --accent-ink: #ffffff;
+  --accent-soft: #ddeeec;
+  --anchor: #28344a;
+  --anchor-ink: #eef2f8;
+  --anchor-sub: #aeb9cc;
+  --hatch: rgba(255, 255, 255, 0.05);
+  --ok: #1f7a4d;
+  --ok-soft: rgba(31, 122, 77, 0.12);
+  /* Red is kept for real errors only (docs/product.md). */
+  --bad: #b3373f;
+  --bad-soft: rgba(179, 55, 63, 0.12);
+  --sage-bg: #dceee2;
+  --sage-ink: #21573a;
+  --sage-line: #b4d8c0;
+  --sky-bg: #dce8f7;
+  --sky-ink: #234e7e;
+  --sky-line: #b7cdeb;
+  --apricot-bg: #f9e4d0;
+  --apricot-ink: #7f4413;
+  --apricot-line: #edc6a2;
+  --lilac-bg: #e8e0f6;
+  --lilac-ink: #53398a;
+  --lilac-line: #cfc0ec;
+  --rose-bg: #f6dde2;
+  --rose-ink: #86293f;
+  --rose-line: #ebbac5;
+  --shadow: 0 1px 2px rgba(24, 32, 44, 0.06), 0 8px 24px rgba(24, 32, 44, 0.08);
+  --f-display:
+    "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  --f-body:
+    "Instrument Sans Variable", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --f-mono:
+    "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --r: 10px;
+  --px: 44px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f131a;
+    --surface: #161b24;
+    --sunk: #12171f;
+    --ink: #e6eaf0;
+    --muted: #9aa4b4;
+    --faint: #6e7889;
+    --line: #2a313d;
+    --line-soft: #222833;
+    --accent: #4fb3ac;
+    --accent-ink: #0b1a19;
+    --accent-soft: #17302f;
+    --anchor: #2f3d57;
+    --anchor-ink: #eef2f8;
+    --anchor-sub: #a7b3c8;
+    --hatch: rgba(255, 255, 255, 0.045);
+    --ok: #5cc48f;
+    --ok-soft: rgba(92, 196, 143, 0.14);
+    --bad: #f07c83;
+    --bad-soft: rgba(240, 124, 131, 0.14);
+    --sage-bg: #1c3326;
+    --sage-ink: #a9ddbc;
+    --sage-line: #2d4f3a;
+    --sky-bg: #1b2a40;
+    --sky-ink: #a9c8f0;
+    --sky-line: #2c4363;
+    --apricot-bg: #3a2918;
+    --apricot-ink: #f2c495;
+    --apricot-line: #5a3f23;
+    --lilac-bg: #2a2240;
+    --lilac-ink: #cdbdf2;
+    --lilac-line: #413560;
+    --rose-bg: #3a1f27;
+    --rose-ink: #f1b3c1;
+    --rose-line: #5a2f3b;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0f131a;
+  --surface: #161b24;
+  --sunk: #12171f;
+  --ink: #e6eaf0;
+  --muted: #9aa4b4;
+  --faint: #6e7889;
+  --line: #2a313d;
+  --line-soft: #222833;
+  --accent: #4fb3ac;
+  --accent-ink: #0b1a19;
+  --accent-soft: #17302f;
+  --anchor: #2f3d57;
+  --anchor-ink: #eef2f8;
+  --anchor-sub: #a7b3c8;
+  --hatch: rgba(255, 255, 255, 0.045);
+  --ok: #5cc48f;
+  --ok-soft: rgba(92, 196, 143, 0.14);
+  --bad: #f07c83;
+  --bad-soft: rgba(240, 124, 131, 0.14);
+  --sage-bg: #1c3326;
+  --sage-ink: #a9ddbc;
+  --sage-line: #2d4f3a;
+  --sky-bg: #1b2a40;
+  --sky-ink: #a9c8f0;
+  --sky-line: #2c4363;
+  --apricot-bg: #3a2918;
+  --apricot-ink: #f2c495;
+  --apricot-line: #5a3f23;
+  --lilac-bg: #2a2240;
+  --lilac-ink: #cdbdf2;
+  --lilac-line: #413560;
+  --rose-bg: #3a1f27;
+  --rose-ink: #f1b3c1;
+  --rose-line: #5a2f3b;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+}

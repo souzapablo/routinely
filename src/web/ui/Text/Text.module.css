@@ -1,0 +1,57 @@
+/* Sizes and weights are the prototype's: 15 px body, 13.5 px subtitles and
+   hints, 12.5 px meta lines; 550 for item names. */
+.text {
+  margin: 0;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.faint {
+  color: var(--faint);
+}
+
+.error {
+  color: var(--bad);
+}
+
+.md {
+  font-size: 15px;
+}
+
+.sm {
+  font-size: 13.5px;
+}
+
+.xs {
+  font-size: 12.5px;
+}
+
+.mono {
+  font-family: var(--f-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.regular {
+  font-weight: 400;
+}
+
+.medium {
+  font-weight: 550;
+}
+
+.semibold {
+  font-weight: 600;
+}
+
+.truncate {
+  overflow: hidden;
+  min-width: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.strike {
+  text-decoration: line-through;
+}

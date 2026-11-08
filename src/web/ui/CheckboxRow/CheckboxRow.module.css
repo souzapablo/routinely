@@ -1,0 +1,45 @@
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--surface);
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.row:has(.box:disabled) {
+  cursor: default;
+}
+
+.row:has(.box:not(:disabled)):hover {
+  border-color: var(--faint);
+}
+
+.box {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.text {
+  display: grid;
+  min-width: 0;
+}
+
+/* The trailing slot sits at the far end, as the prototype's dot and pill do. */
+.text + * {
+  margin-left: auto;
+}
+
+.done {
+  background: var(--sunk);
+}
+
+.disabled {
+  opacity: 0.45;
+}

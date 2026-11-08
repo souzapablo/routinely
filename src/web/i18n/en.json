@@ -11,5 +11,49 @@
       "unreachable": "Database: can't connect"
     },
     "checkedAt": "Checked at {{time}}"
+  },
+  "topBar": {
+    "brand": "Routinely",
+    "exampleWeek": "Example week",
+    "addActivity": "Add activity"
+  },
+  "weekHeader": {
+    "title": "This week",
+    "previous": "Previous week",
+    "next": "Next week",
+    "today": "Today"
+  },
+  "today": {
+    "title": "Today · {{date}}",
+    "summary": "{{done}} of {{total}} done",
+    "freeDay": "A free day",
+    "empty": "Nothing planned today. Drag something from your list onto today, or take the day off.",
+    "showedUp": "Days you showed up",
+    "showedUpCount": "{{days}} of 7",
+    "showedUpLabel": "{{days}} days this week with at least one thing done",
+    "week": "This week",
+    "weekDone": "{{done}} of {{total}} done",
+    "now": "Now"
+  },
+  "grid": {
+    "markDone": "Mark {{name}} done",
+    "unplace": "Move {{name}} back to the list"
+  },
+  "tray": {
+    "title": "Fit in this week",
+    "left": "{{n}} left",
+    "hint": "No fixed day or time. Drag one onto a free slot, or let Routinely find one.",
+    "meta": "{{times}}× this week · {{duration}}",
+    "metaPlaced": "{{times}}× this week · {{duration}} · {{placed}} placed",
+    "allPlaced": "All placed this week",
+    "allDone": "All done this week",
+    "findTime": "Find a time",
+    "newFlexible": "+ New flexible activity",
+    "empty": "Nothing here yet. Add something you'd like to fit into your week."
+  },
+  "duration": {
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} h",
+    "hoursMinutes": "{{hours}} h {{minutes}} min"
   }
 }

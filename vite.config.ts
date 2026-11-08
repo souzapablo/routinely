@@ -22,6 +22,9 @@ export default defineConfig({
           environment: "jsdom",
           include: ["src/web/**/*.test.{ts,tsx}"],
           setupFiles: ["src/web/test-setup.ts"],
+          // Vitest empties CSS by default, `?raw` included; tokens.test.ts
+          // reads tokens.css as text.
+          css: { include: [/src\/web\/ui\/styles\/.+\.css/] },
         },
       },
       {
