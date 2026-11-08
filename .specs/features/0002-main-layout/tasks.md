@@ -638,8 +638,8 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `exampleWeek.test.ts`: on Sunday 2026-11-08 every Mon–Sat item is done except Thursday's Gym class; on a Monday nothing is done; placements carry the current week key; content matches the spec's Assumptions row
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] `exampleWeek.test.ts`: on Sunday 2026-11-08 every Mon–Sat item is done except Thursday's Gym class; on a Monday nothing is done; placements carry the current week key; content matches the spec's Assumptions row
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: unit
 **Gate**: quick
