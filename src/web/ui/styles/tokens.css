@@ -1,6 +1,5 @@
-/* Design tokens copied from the Routinely prototype (docs/product.md).
-   Light values live on :root; the dark values follow the OS setting unless
-   data-theme="light" is set, and apply always under data-theme="dark". */
+/* Copied from the Routinely prototype (docs/product.md). Dark follows the OS
+   setting; data-theme on <html> overrides it either way. */
 :root {
   --bg: #eef1f4;
   --surface: #ffffff;

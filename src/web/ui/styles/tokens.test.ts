@@ -39,8 +39,8 @@ function normalizeAll(tokens: Record<string, string>): Record<string, string> {
 const colorScheme = (block: string) =>
   /color-scheme\s*:\s*([\w-]+)\s*;/.exec(block)?.[1];
 
-// Light :root block of the prototype; font families use the self-hosted
-// names found in T1.
+// Light :root block of the prototype; font families use the names the
+// self-hosted font packages register.
 const light = {
   "--bg": "#EEF1F4",
   "--surface": "#FFFFFF",

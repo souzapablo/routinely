@@ -30,3 +30,4 @@ First time on a machine, before `npm run e2e`: `npx playwright install chromium`
 - Every UI string goes through i18n, in both `src/web/i18n/en.json` and `src/web/i18n/pt-BR.json`. Dates and times follow the active language.
 - Server and shared code run on Node's type stripping: erasable syntax only (no `enum`, `namespace` or parameter properties) and `.ts` extensions on relative imports.
 - Rules that change what the user sees live in plain functions with unit tests, not inside components.
+- Comment only what the code cannot say: why a non-obvious choice was made, a constraint, a workaround. Never cite the spec in code or comments: no task numbers, requirement or decision IDs, `SPEC_DEVIATION` markers or `.specs/` paths. That trace belongs in `.specs/` and the commit message. `npm test` fails on a comment that cites the spec.

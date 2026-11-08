@@ -1,4 +1,4 @@
-/* Self-hosted fonts (DS-07): nothing is requested from another host. */
+/* Fonts ship with the app, so the page never requests another host. */
 @import "@fontsource-variable/bricolage-grotesque/opsz.css";
 @import "@fontsource-variable/instrument-sans/index.css";
 @import "@fontsource/jetbrains-mono/400.css";
