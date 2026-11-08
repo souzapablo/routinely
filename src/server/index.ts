@@ -1,13 +1,21 @@
 import type { AddressInfo } from "node:net";
 import { fileURLToPath } from "node:url";
 import { buildApp } from "./app.ts";
-import { openDatabase } from "./db.ts";
+import { type Database, openDatabase } from "./db.ts";
 
 const port = Number(process.env.PORT ?? 3000);
 const databasePath = process.env.DATABASE_PATH ?? "data/routinely.db";
 const webRoot = fileURLToPath(new URL("../../dist/web", import.meta.url));
 
-const db = openDatabase(databasePath);
+let db: Database;
+try {
+  db = openDatabase(databasePath);
+} catch (error) {
+  // A plain message instead of a stack trace: the owner fixes DATABASE_PATH.
+  const reason = error instanceof Error ? `: ${error.message}` : "";
+  console.error(`Can't open the database at ${databasePath}${reason}`);
+  process.exit(1);
+}
 const app = buildApp({ db, webRoot });
 
 try {

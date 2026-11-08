@@ -109,6 +109,20 @@ describe("server entry", () => {
     ]);
   }, 15_000);
 
+  it("exits 1 and names the path when the database can't open", async () => {
+    // A folder is not a file SQLite can open.
+    started = startServer({
+      PORT: String(await freePort()),
+      DATABASE_PATH: tmp,
+    });
+
+    const code = await started.exited;
+
+    expect(code).toBe(1);
+    expect(started.stderr()).toContain(`Can't open the database at ${tmp}`);
+    expect(started.stdout()).not.toContain("listening");
+  }, 15_000);
+
   it("exits 1 and names the port when it is in use", async () => {
     const blocker = await listenOnFreePort();
     const port = portOf(blocker);

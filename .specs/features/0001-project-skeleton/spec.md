@@ -205,7 +205,7 @@ Implicit-requirement sweep:
 | SKEL-31 | P1: Repo - CLAUDE.md | Execute (T19) | Implemented |
 | SKEL-32 | P1: Repo - Node version pinned | Execute (T18) | Implemented |
 | SKEL-33 | P1: Layers connected - unexpected status | Verification fix (V4) | Implemented |
-| SKEL-34 | P1: Run - database can't open | Verification fix | Pending |
+| SKEL-34 | P1: Run - database can't open | Verification fix (V3) | Implemented |
 
 **Coverage:** 34 total, 34 mapped (SKEL-33 and SKEL-34 added after verification)
 
