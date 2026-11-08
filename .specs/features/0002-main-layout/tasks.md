@@ -109,9 +109,14 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `npm install` exits 0 with no peer-dependency errors
-- [ ] React Router exports and font family names/paths written here
-- [ ] Gate passes: `npm run check`
+- [x] `npm install` exits 0 with no peer-dependency errors (`npm ls` exits 0)
+- [x] React Router exports and font family names/paths written here:
+  - `react-router` 8.5.1 exports `BrowserRouter`, `MemoryRouter`, `Routes`, `Route`, `Navigate` (all functions, imported from `react-router`)
+  - Bricolage Grotesque: family `'Bricolage Grotesque Variable'`; optical-size axis via `import '@fontsource-variable/bricolage-grotesque/opsz.css'` (weight 200-800 plus `opsz`)
+  - Instrument Sans: family `'Instrument Sans Variable'`; `import '@fontsource-variable/instrument-sans'` (weight 400-700)
+  - JetBrains Mono: family `'JetBrains Mono'`; `import '@fontsource/jetbrains-mono/400.css'` and `import '@fontsource/jetbrains-mono/500.css'`
+  - Installed: lucide-react 1.70.0, storybook and @storybook/react-vite 10.6.6, fontsource packages 5.3.0
+- [x] Gate passes: `npm run check`
 
 **Tests**: none (dependencies only; DS-07 is proven by T37, DS-08 by T4)
 **Gate**: build
@@ -949,6 +954,6 @@ Proof: `npx playwright test e2e/status.spec.ts -g "keeps the picked language aft
 
 ## Handoff
 
-**Settled mid-build:** user: "approved, but do not start just commit" - execution mode (sub-agents or inline) not chosen yet; ask before T1
+**Settled mid-build:** user: "approved, but do not start just commit" - user asked to "start t1"; T1 done inline. Execution mode for T2-T37 (sub-agents or inline) not chosen yet; ask before T2
 **Dispatched:** none
 **Walked:** not yet. Pictures are taken with the clock fixed to Sunday 2026-11-08 07:48 local, light color scheme, English, by opening `/` at 1280×900 and 390×844 and saving a full-page screenshot.
