@@ -418,8 +418,9 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `BrandMark.test.tsx`: renders three bars, `aria-hidden="true"`
-- [ ] Gate passes: `npm run check`
+- [x] `BrandMark.test.tsx`: renders three bars, `aria-hidden="true"`
+- [x] Gate passes: `npm run check`
+- Notes: geometry and colors follow the prototype's `.mark`: 30 px square, 8 px radius, `--anchor` background; 5 px bars with 2 px radius at top 7/14/21 px, 6 px insets, the middle bar ending 11 px from the right and the bottom one starting 12 px from the left. "Sage" and "apricot" are the `--sage-bg` and `--apricot-bg` tokens, as in the prototype. The bars are child spans instead of `<i>` elements.
 
 **Tests**: component
 **Gate**: build (end of phase)
