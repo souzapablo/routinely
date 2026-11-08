@@ -8,6 +8,24 @@
   min-width: 740px;
 }
 
+/* Wide screens: the grid fills its card, and the hour rows fill the space
+   under the day names. They scroll inside only at the minimum hour height. */
+@media (min-width: 981px) {
+  .scroll,
+  .grid {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .body {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow-y: auto;
+  }
+}
+
 .head,
 .body {
   display: grid;

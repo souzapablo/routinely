@@ -26,9 +26,11 @@ function renderGrid(todayIndex: number | null, nowOffset: number | null) {
       days={days(todayIndex)}
       hourLabels={hourLabels}
       nowOffset={nowOffset}
+      pxPerHour={30}
     />,
   );
   return {
+    grid: container.querySelector<HTMLElement>(`.${styles.grid}`),
     heads: Array.from(container.querySelectorAll(`.${styles.day}`)),
     columns: Array.from(container.querySelectorAll(`.${styles.column}`)),
     nowLines: Array.from(
@@ -86,5 +88,10 @@ describe("WeekGrid", () => {
     ).toEqual(["2", "3", "4", "5", "6", "7", "8"]);
     expect(columns).toHaveLength(7);
     expect(hours.map((h) => h.textContent)).toEqual(hourLabels);
+  });
+
+  it("sizes the hour rows from the given hour height", () => {
+    const { grid } = renderGrid(null, null);
+    expect(grid?.style.getPropertyValue("--px")).toBe("30px");
   });
 });

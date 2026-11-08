@@ -50,7 +50,9 @@ export function GridBlock({ block }: GridBlockProps) {
 
   return (
     <div
-      className={styles.slot}
+      className={[styles.slot, block.tiny && styles.tinySlot]
+        .filter(Boolean)
+        .join(" ")}
       style={{ top: block.top, height: block.height }}
     >
       <div className={className} style={toneStyle(block.category)}>

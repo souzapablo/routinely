@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { GridDay } from "./components/WeekGrid.tsx";
 import { TodayStrip } from "./components/TodayStrip.tsx";
@@ -17,6 +17,7 @@ import {
 } from "./model/format.ts";
 import {
   blockGeometry,
+  fitHourHeight,
   GRID_END,
   GRID_START,
   isNow,
@@ -33,8 +34,13 @@ import {
   weekDays,
   weekKey,
 } from "./model/week.ts";
+import { useElementHeight } from "./useElementHeight.ts";
+import { useMediaQuery } from "./useMediaQuery.ts";
 import { useNow } from "./useNow.ts";
 import styles from "./PlannerPage.module.css";
+
+// Matches the breakpoint in PlannerPage.module.css.
+const FITS_WINDOW = "(min-width: 981px)";
 
 export function PlannerPage() {
   const { t, i18n } = useTranslation();
@@ -43,6 +49,11 @@ export function PlannerPage() {
   // The example is dated to the week the page opened in; the clock still
   // moves the now-line and the Now pill every minute.
   const [data] = useState(() => exampleWeek(now));
+  // On wide screens the page fills the window and the hours stretch or shrink
+  // to the height left under the day names; narrow screens scroll the page.
+  const fitsWindow = useMediaQuery(FITS_WINDOW);
+  const gridBody = useRef<HTMLDivElement>(null);
+  const pxPerHour = fitHourHeight(useElementHeight(gridBody, fitsWindow));
 
   const week = weekKey(now);
   const minutes = minutesOfDay(now);
@@ -56,7 +67,7 @@ export function PlannerPage() {
     dayNumber: formatDayNumber(day.date, lang),
     isToday: day.isToday,
     blocks: itemsForDay(data, week, day.index).flatMap((item) => {
-      const geometry = blockGeometry(item.start, item.end);
+      const geometry = blockGeometry(item.start, item.end, pxPerHour);
       if (!geometry) return [];
       return [
         {
@@ -113,7 +124,9 @@ export function PlannerPage() {
           <WeekGrid
             days={gridDays}
             hourLabels={hourLabels}
-            nowOffset={nowOffset(minutes)}
+            nowOffset={nowOffset(minutes, pxPerHour)}
+            pxPerHour={pxPerHour}
+            bodyRef={gridBody}
           />
         </div>
         <div className={styles.tray}>

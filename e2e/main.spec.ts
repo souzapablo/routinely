@@ -50,6 +50,46 @@ test("has no horizontal scroll at 390 and 1280", async ({ page }) => {
   expect(sideways.hidden).toBeGreaterThan(0);
 });
 
+test("fits the window at desktop sizes, with the tray list scrolling inside", async ({
+  page,
+}) => {
+  for (const [width, height] of [
+    [1280, 800],
+    [1440, 900],
+    [1920, 1080],
+  ] as const) {
+    await page.setViewportSize({ width, height });
+    await openPlanner(page);
+
+    const overflow = await page
+      .locator("html")
+      .evaluate((html) => html.scrollHeight - html.clientHeight);
+    expect(overflow, `vertical page scroll at ${width}x${height}`).toBe(0);
+
+    // Every hour row is on screen: the grid body does not scroll.
+    const body = page.locator('[class*="_body_"]');
+    const hidden = await body.evaluate(
+      (el) => el.scrollHeight - el.clientHeight,
+    );
+    expect(hidden, `grid hours cut at ${width}x${height}`).toBeLessThanOrEqual(
+      1,
+    );
+    await expect(page.getByText("10 PM")).toBeInViewport();
+  }
+
+  // At 1280x800 the tray has more items than room; only its list scrolls.
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await openPlanner(page);
+  const list = page.locator('[class*="_items_"]');
+  const scroll = await list.evaluate((el) => ({
+    overflowY: getComputedStyle(el).overflowY,
+    hidden: el.scrollHeight - el.clientHeight,
+  }));
+  expect(scroll.overflowY).toBe("auto");
+  expect(scroll.hidden).toBeGreaterThan(0);
+  await expect(page.getByText("+ New flexible activity")).toBeInViewport();
+});
+
 test("loads fonts from its own host", async ({ page, baseURL }) => {
   const origins = new Set<string>();
   page.on("request", (request) => {
@@ -98,15 +138,18 @@ test("draws the now-line in the accent color at the current time", async ({
   const placed = await line.evaluate((el) => {
     const column = el.parentElement;
     if (!column) throw new Error("the now-line has no column");
+    const hour = column.parentElement?.querySelector('[class*="_hour_"]');
+    if (!hour) throw new Error("the grid has no hour row");
     return {
       top: el.getBoundingClientRect().top - column.getBoundingClientRect().top,
+      pxPerHour: hour.getBoundingClientRect().height,
       inToday: column.className.includes("_today_"),
       background: getComputedStyle(el).backgroundColor,
     };
   });
 
-  // 07:48 is 108 minutes after 06:00, at 44 px an hour.
-  expect(placed.top).toBeCloseTo(79.2, 0);
+  // 07:48 is 1.8 hours after 06:00, at whatever height the hours fit into.
+  expect(placed.top).toBeCloseTo(1.8 * placed.pxPerHour, 0);
   expect(placed.inToday).toBe(true);
   expect(placed.background).toBe(await tokenColor(page, "--accent"));
   expect(placed.background).toBe("rgb(31, 111, 107)");

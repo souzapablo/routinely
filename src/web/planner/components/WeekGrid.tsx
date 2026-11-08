@@ -1,3 +1,4 @@
+import type { CSSProperties, Ref } from "react";
 import { Card } from "../../ui/Card/Card.tsx";
 import { GridBlock, type GridBlockModel } from "./GridBlock.tsx";
 import styles from "./WeekGrid.module.css";
@@ -18,13 +19,26 @@ export interface WeekGridProps {
   hourLabels: string[];
   /** Pixels down today's column; null draws no now-line. */
   nowOffset: number | null;
+  /** Height of one hour row; the blocks and the now-line use the same scale. */
+  pxPerHour: number;
+  /** The area under the day names, where the hour rows go. */
+  bodyRef?: Ref<HTMLDivElement>;
 }
 
-export function WeekGrid({ days, hourLabels, nowOffset }: WeekGridProps) {
+export function WeekGrid({
+  days,
+  hourLabels,
+  nowOffset,
+  pxPerHour,
+  bodyRef,
+}: WeekGridProps) {
   return (
     <Card>
       <div className={styles.scroll}>
-        <div className={styles.grid}>
+        <div
+          className={styles.grid}
+          style={{ "--px": `${pxPerHour}px` } as CSSProperties}
+        >
           <div className={styles.head}>
             <div className={styles.corner} />
             {days.map((day) => (
@@ -39,7 +53,7 @@ export function WeekGrid({ days, hourLabels, nowOffset }: WeekGridProps) {
               </div>
             ))}
           </div>
-          <div className={styles.body}>
+          <div ref={bodyRef} className={styles.body}>
             <div className={styles.hours}>
               {hourLabels.map((label) => (
                 <div key={label} className={styles.hour}>

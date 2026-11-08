@@ -1,6 +1,8 @@
 .tray {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 12px;
+  min-height: 0;
 }
 
 .header {
@@ -14,9 +16,13 @@
   margin-top: -6px;
 }
 
+/* When the page fits the window, only the list scrolls; the heading and the
+   new-item button stay in view. */
 .items {
   display: grid;
   gap: 8px;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 .item {

@@ -17,9 +17,40 @@
   min-width: 0;
 }
 
-.tray {
-  position: sticky;
-  top: 16px;
+/* Wide screens: nothing scrolls the page. The grid takes the height left
+   under Today and stretches its hours into it; the tray scrolls inside. */
+@media (min-width: 981px) {
+  .page {
+    display: flex;
+    flex-direction: column;
+    padding-block: 20px;
+  }
+
+  .planner {
+    flex: 1;
+    min-height: 0;
+    align-items: stretch;
+  }
+
+  .grid,
+  .tray {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .grid > * {
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* The tray card keeps its own height when its list is short. */
+  .tray > * {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    max-height: 100%;
+  }
 }
 
 /* Below 980 px the tray moves above the grid, which then scrolls sideways. */
@@ -29,7 +60,6 @@
   }
 
   .tray {
-    position: static;
     order: -1;
   }
 }
