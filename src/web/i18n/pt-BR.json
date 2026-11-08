@@ -34,5 +34,9 @@
     "week": "Esta semana",
     "weekDone": "{{done}} de {{total}} feitos",
     "now": "Agora"
+  },
+  "grid": {
+    "markDone": "Marcar {{name}} como feito",
+    "unplace": "Mover {{name}} de volta para a lista"
   }
 }

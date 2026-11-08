@@ -733,8 +733,8 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `GridBlock.test.tsx` "draws an anchor as a locked slate block", "draws a placement in its category color", "hides the time range on a tiny block", "draws a done anchor faded with its check filled", "strikes through a done placement"
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] `GridBlock.test.tsx` "draws an anchor as a locked slate block", "draws a placement in its category color", "hides the time range on a tiny block", "draws a done anchor faded with its check filled", "strikes through a done placement"
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: component
 **Gate**: quick

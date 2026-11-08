@@ -164,11 +164,11 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | MAIN-04 | P1: Main view - grid days and hours | Execute | In progress (T26) |
 | MAIN-05 | P1: Main view - today column | Execute | In progress (T21) |
 | MAIN-06 | P1: Main view - now-line | Execute | In progress (T28) |
-| MAIN-07 | P1: Main view - anchor blocks | Design | Pending |
-| MAIN-08 | P1: Main view - placement blocks | Execute | In progress (T25) |
-| MAIN-09 | P1: Main view - tiny blocks | Execute | In progress (T25) |
-| MAIN-10 | P1: Main view - done anchor | Execute | In progress (T11) |
-| MAIN-11 | P1: Main view - done placement | Execute | In progress (T11) |
+| MAIN-07 | P1: Main view - anchor blocks | Execute | In progress (T32) |
+| MAIN-08 | P1: Main view - placement blocks | Execute | In progress (T32) |
+| MAIN-09 | P1: Main view - tiny blocks | Execute | In progress (T32) |
+| MAIN-10 | P1: Main view - done anchor | Execute | In progress (T32) |
+| MAIN-11 | P1: Main view - done placement | Execute | In progress (T32) |
 | MAIN-12 | P1: Main view - Today list | Execute | In progress (T31) |
 | MAIN-13 | P1: Main view - Now pill | Execute | In progress (T31) |
 | MAIN-14 | P1: Main view - free day | Execute | In progress (T31) |

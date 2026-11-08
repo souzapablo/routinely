@@ -1,0 +1,99 @@
+/* The slot takes the model's top and height; its bottom padding leaves the
+   prototype's 3 px gap between a block and the next one. */
+.slot {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  z-index: 2;
+  padding-bottom: 3px;
+}
+
+.block {
+  height: 100%;
+  overflow: hidden;
+  padding: 5px 7px;
+  border-radius: 7px;
+  font-size: 12.5px;
+  line-height: 1.25;
+  user-select: none;
+}
+
+.tiny {
+  padding: 2px 6px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+
+.name {
+  flex: 1;
+  min-width: 0;
+}
+
+.time {
+  font-size: 11px;
+  opacity: 0.8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.anchor {
+  --check-tick: var(--anchor);
+  background: var(--anchor)
+    repeating-linear-gradient(135deg, transparent 0 7px, var(--hatch) 7px 14px);
+  color: var(--anchor-ink);
+}
+
+.lock {
+  display: grid;
+  flex: none;
+  color: var(--anchor-sub);
+}
+
+.anchor.done {
+  opacity: 0.62;
+}
+
+.placement {
+  --check-tick: var(--tone-bg);
+  background: var(--tone-bg);
+  color: var(--tone-ink);
+  border: 1px solid var(--tone-line);
+  box-shadow: 0 1px 0 rgb(0 0 0 / 3%);
+}
+
+.placement.done {
+  opacity: 0.75;
+}
+
+/* The prototype's borderless 16 px x, shown only while the block is hovered. */
+.unplace {
+  display: none;
+  flex: none;
+}
+
+.unplace > button {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  opacity: 0.7;
+}
+
+.placement:hover .unplace,
+.placement:focus-within .unplace {
+  display: grid;
+}
+
+@media (hover: none) {
+  .unplace {
+    display: grid;
+  }
+}
