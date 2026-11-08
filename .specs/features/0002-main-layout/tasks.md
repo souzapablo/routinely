@@ -581,8 +581,8 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `tray.test.ts` "counts times left to place" (over-placed activity counts 0, not negative), "builds pips done then placed then open", "marks fully placed and fully done activities", "shows zero left for no activities"
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] `tray.test.ts` "counts times left to place" (over-placed activity counts 0, not negative), "builds pips done then placed then open", "marks fully placed and fully done activities", "shows zero left for no activities"
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: unit
 **Gate**: quick
