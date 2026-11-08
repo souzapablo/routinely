@@ -20,3 +20,21 @@
   margin-left: auto;
   min-width: 0;
 }
+
+/* The language switch is not in the prototype; on narrow screens it takes a
+   second row so the first row keeps the prototype's phone layout. */
+@media (max-width: 640px) {
+  .bar {
+    flex-wrap: wrap;
+    row-gap: 10px;
+  }
+
+  .status {
+    flex: 1;
+    margin-left: 0;
+  }
+
+  .language {
+    flex-basis: 100%;
+  }
+}

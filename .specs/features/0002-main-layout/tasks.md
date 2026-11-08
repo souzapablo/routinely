@@ -809,9 +809,10 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `App.test.tsx` (`MemoryRouter`): "shows the planner at /", "shows the status page at /status under the top bar", "sends unknown paths to the planner"
-- [ ] `e2e/status.spec.ts` "shows server and database connected" and "keeps the picked language after a reload" pass at `/status`
-- [ ] Gate passes: `npm run check && npm run e2e`
+- [x] `App.test.tsx` (`MemoryRouter`): "shows the planner at /", "shows the status page at /status under the top bar", "sends unknown paths to the planner"
+- [x] `e2e/status.spec.ts` "shows server and database connected" and "keeps the picked language after a reload" pass at `/status`
+- [x] Gate passes: `npm run check && npm run e2e`
+- [x] Added mid-build (AD-019): the top bar wraps the language switch to a second row under 640 px; `e2e/status.spec.ts` "keeps the top bar parts apart on a phone" checks 360 and 390 px
 
 **Tests**: component, e2e
 **Gate**: full

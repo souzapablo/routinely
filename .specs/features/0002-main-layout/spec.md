@@ -189,9 +189,9 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | MAIN-29 | Edge: anchor clipped to hours | Execute | In progress (T25) |
 | MAIN-30 | Edge: long names ellipsis | Execute | In progress (T5) |
 | MAIN-31 | Edge: empty tray | Execute | In progress (T34) |
-| STATUS-01 | P1: Status page - `/status` | Design | Pending |
-| STATUS-02 | P1: Status page - unknown paths | Design | Pending |
-| STATUS-03 | P1: Status page - language kept | Design | Pending |
+| STATUS-01 | P1: Status page - `/status` | Execute | Implemented (T36) |
+| STATUS-02 | P1: Status page - unknown paths | Execute | Implemented (T36) |
+| STATUS-03 | P1: Status page - language kept | Execute | Implemented (T36) |
 
 **Coverage:** 43 total, 0 mapped to tasks, 43 unmapped (tasks not written yet)
 

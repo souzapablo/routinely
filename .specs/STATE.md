@@ -146,4 +146,12 @@
 - **Date**: 2026-11-08
 - **Status**: active (AD-018)
 
+### AD-019
+- **Decision**: Under 640 px the top bar wraps: mark, "Routinely", the status slot and the + button stay on the first row as in the phone capture, and the language switch moves to a right-aligned second row.
+- **Reason**: With the language switch (AD-012) on one row, 390 px pushed "Example week" under the Add button and cut "Português", and 360 px scrolled sideways. Asked "How should the top bar fit on narrow screens?"; user chose "Switch wraps to 2nd row (Recommended)".
+- **Trade-off**: The top bar is taller on phones than in the prototype.
+- **Scope**: Top bar
+- **Date**: 2026-11-08
+- **Status**: active (AD-019)
+
 ## Handoff

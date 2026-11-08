@@ -22,7 +22,9 @@ export function TopBar() {
       <Button variant="primary" icon="plus" collapseLabel inert>
         {t("topBar.addActivity")}
       </Button>
-      <LanguageSwitch />
+      <div className={styles.language}>
+        <LanguageSwitch />
+      </div>
     </header>
   );
 }
