@@ -3,9 +3,12 @@
   gap: 14px;
 }
 
-/* The prototype keeps the empty-day text in a short column. */
-.empty {
-  max-width: 230px;
+/* The prototype keeps the empty-day text in a short column above phone
+   width; on a phone it runs the card's full width. */
+@media (min-width: 641px) {
+  .empty {
+    max-width: 230px;
+  }
 }
 
 .top {

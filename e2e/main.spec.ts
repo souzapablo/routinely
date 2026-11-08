@@ -90,6 +90,37 @@ test("fits the window at desktop sizes, with the tray list scrolling inside", as
   await expect(page.getByText("+ New flexible activity")).toBeInViewport();
 });
 
+test("keeps the empty-day text in a short column except on a phone", async ({
+  page,
+}) => {
+  // Sunday has nothing planned, so Today shows its empty text.
+  const widthOf = async () => {
+    const text = page.getByText(/^Nothing planned today/);
+    return text.evaluate((el) => {
+      const card = el.closest("section");
+      if (!card) throw new Error("the empty text is outside the Today card");
+      const style = getComputedStyle(card);
+      return {
+        text: el.getBoundingClientRect().width,
+        room:
+          card.clientWidth -
+          parseFloat(style.paddingLeft) -
+          parseFloat(style.paddingRight),
+      };
+    });
+  };
+
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await openPlanner(page);
+  expect((await widthOf()).text).toBeLessThanOrEqual(230);
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await openPlanner(page);
+  const phone = await widthOf();
+  expect(phone.text).toBeGreaterThan(230);
+  expect(phone.text).toBeCloseTo(phone.room, 0);
+});
+
 test("loads fonts from its own host", async ({ page, baseURL }) => {
   const origins = new Set<string>();
   page.on("request", (request) => {
