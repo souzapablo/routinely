@@ -1,48 +1,5 @@
-/* Color tokens copied from the Routinely prototype (docs/product.md). */
-:root {
-  --bg: #eef1f4;
-  --surface: #ffffff;
-  --ink: #18202c;
-  --muted: #5b6575;
-  --line: #d9dee5;
-  --accent: #1f6f6b;
-  --accent-ink: #ffffff;
-  --bad: #b3373f;
-  --f-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
-  --f-body:
-    "Instrument Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-    sans-serif;
-  color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f131a;
-    --surface: #161b24;
-    --ink: #e6eaf0;
-    --muted: #9aa4b4;
-    --line: #2a313d;
-    --accent: #4fb3ac;
-    --accent-ink: #0b1a19;
-    --bad: #f07c83;
-    color-scheme: dark;
-  }
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--f-body);
-  font-size: 15px;
-  line-height: 1.5;
-}
+/* Skeleton-only rules. Tokens and base styles live in ui/styles/; these
+   move into the design system with LanguageSwitch (T17) and StatusPage (T18). */
 
 .app {
   max-width: 640px;

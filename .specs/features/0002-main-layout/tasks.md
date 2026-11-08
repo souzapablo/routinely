@@ -134,9 +134,10 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `tokens.test.ts` "light tokens match the prototype" checks every light value (`--bg #EEF1F4` ... `--rose-line #EBBAC5`, fonts, `--r 10px`)
-- [ ] `tokens.test.ts` "dark tokens match the prototype" checks every dark value
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] `tokens.test.ts` "light tokens match the prototype" checks every light value (`--bg #EEF1F4` ... `--rose-line #EBBAC5`, fonts, `--r 10px`)
+- [x] `tokens.test.ts` "dark tokens match the prototype" checks every dark value
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web` (also `npm run check` and `npm run e2e`)
+- Notes: the test reads `tokens.css?raw`, which needs `css.include` for `src/web/ui/styles` in the `web` Vitest project (Vitest empties CSS by default). `styles.css` keeps only the skeleton rules and is imported by `App.tsx` until T17/T18.
 
 **Tests**: unit
 **Gate**: quick
@@ -954,6 +955,6 @@ Proof: `npx playwright test e2e/status.spec.ts -g "keeps the picked language aft
 
 ## Handoff
 
-**Settled mid-build:** user: "approved, but do not start just commit" - user asked to "start t1"; T1 done inline. Execution mode for T2-T37 (sub-agents or inline) not chosen yet; ask before T2
+**Settled mid-build:** user: "approved, but do not start just commit" - user asked to "start t1"; T1 done inline. user chose "Inline, T2 only now" for T2; T2 done inline. Ask the execution mode again before T3
 **Dispatched:** none
 **Walked:** not yet. Pictures are taken with the clock fixed to Sunday 2026-11-08 07:48 local, light color scheme, English, by opening `/` at 1280×900 and 390×844 and saving a full-page screenshot.
