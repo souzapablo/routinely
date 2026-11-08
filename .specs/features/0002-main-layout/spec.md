@@ -156,7 +156,7 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | DS-05 | P1: Design system - dark tokens | Design | Pending |
 | DS-06 | P1: Design system - stories | Design | Pending |
 | DS-07 | P1: Design system - self-hosted fonts | Design | Pending |
-| DS-08 | P1: Design system - Icon wraps lucide | Design | Pending |
+| DS-08 | P1: Design system - Icon wraps lucide | Execute | Implemented (T4) |
 | DS-09 | P1: Design system - disabled controls | Design | Pending |
 | MAIN-01 | P1: Main view - desktop capture | Design | Pending |
 | MAIN-02 | P1: Main view - phone capture | Design | Pending |

@@ -176,9 +176,10 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `Icon.test.tsx`: renders an `svg` with `aria-hidden="true"` and the requested size for each name
-- [ ] "only Icon imports lucide-react" passes
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
+- [x] `Icon.test.tsx`: renders an `svg` with `aria-hidden="true"` and the requested size for each name
+- [x] "only Icon imports lucide-react" passes
+- [x] Gate passes: `npm run typecheck && npx vitest run`
+- Notes: `grip` is Lucide `GripVertical` (the prototype's two columns of three dots). The test identifies the drawn icon by Lucide's `lucide-<icon>` class. By hand: a stray `src/web/*.ts` importing `lucide-react` fails the rule; mapping `grip` to `Lock` or stroke 2 fails `Icon.test.tsx`. `npx storybook build --test` exits 0.
 
 **Tests**: component
 **Gate**: integration
