@@ -36,6 +36,7 @@ describe("Text", () => {
   const cases: [string, Omit<TextProps, "children">, string][] = [
     ["tone muted", { tone: "muted" }, "muted"],
     ["tone faint", { tone: "faint" }, "faint"],
+    ["tone error", { tone: "error" }, "error"],
     ["size md", { size: "md" }, "md"],
     ["size sm", { size: "sm" }, "sm"],
     ["size xs", { size: "xs" }, "xs"],
@@ -57,6 +58,7 @@ describe("Text", () => {
     const element = renderText({ tone: "default" });
     expect(element).not.toHaveClass(styles.muted);
     expect(element).not.toHaveClass(styles.faint);
+    expect(element).not.toHaveClass(styles.error);
   });
 
   it("combines classes from several props", () => {

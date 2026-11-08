@@ -459,9 +459,10 @@ T36 → T37
 
 **Done when**:
 
-- [ ] Existing `StatusPage.test.tsx` passes unchanged; `Text.test.tsx` covers `tone="error"`
-- [ ] No raw element left in the file; `styles.css` gone
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Existing `StatusPage.test.tsx` passes unchanged; `Text.test.tsx` covers `tone="error"`
+- [x] No raw element left in the file; `styles.css` gone
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web` (also `npm run check` and `npm run e2e`)
+- Notes: the page is a `main` holding a `Card padding="lg"` with a 12 px `Stack`: `Heading level={1} size="page"`, the server and database lines in a 4 px `Stack`, then the checked-at line as `Text tone="muted" size="sm"` (13.5 px, was 14 px). The skeleton's `.app` frame (640 px column, 16 px gap) moved from `styles.css` to `src/web/App.module.css`, since `App.tsx` imported `styles.css`; T36 replaces that `App`. `Text`'s `Error` story shows the new tone.
 
 **Tests**: component
 **Gate**: quick

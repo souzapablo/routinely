@@ -3,7 +3,8 @@ import styles from "./Text.module.css";
 
 export interface TextProps {
   as?: "p" | "span" | "div";
-  tone?: "default" | "muted" | "faint";
+  /** `error` is red, kept for real failures; never for something left undone. */
+  tone?: "default" | "muted" | "faint" | "error";
   size?: "md" | "sm" | "xs";
   mono?: boolean;
   weight?: "regular" | "medium" | "semibold";

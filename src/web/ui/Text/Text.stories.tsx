@@ -15,6 +15,9 @@ export const Muted: Story = {
   args: { tone: "muted", children: "No fixed day or time." },
 };
 export const Faint: Story = { args: { tone: "faint", children: "6 AM" } };
+export const Error: Story = {
+  args: { tone: "error", children: "Server: can't connect" },
+};
 
 export const Sizes: Story = {
   render: () => (

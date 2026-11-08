@@ -12,6 +12,10 @@
   color: var(--faint);
 }
 
+.error {
+  color: var(--bad);
+}
+
 .md {
   font-size: 15px;
 }
