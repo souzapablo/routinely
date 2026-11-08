@@ -174,7 +174,7 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | MAIN-14 | P1: Main view - free day | Design | Pending |
 | MAIN-15 | P1: Main view - today count | Design | Pending |
 | MAIN-16 | P1: Main view - days you showed up | Design | Pending |
-| MAIN-17 | P1: Main view - week done meter | Design | Pending |
+| MAIN-17 | P1: Main view - week done meter | Execute | In progress (T13) |
 | MAIN-18 | P1: Main view - tray header | Execute | In progress (T12) |
 | MAIN-19 | P1: Main view - tray items | Design | Pending |
 | MAIN-20 | P1: Main view - fully placed items | Design | Pending |

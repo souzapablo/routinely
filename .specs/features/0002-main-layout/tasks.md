@@ -358,8 +358,9 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `Meter.test.tsx`: fill width is `value/max` as a percentage; `max` 0 gives 0 %; ARIA values set
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
+- [x] `Meter.test.tsx`: fill width is `value/max` as a percentage; `max` 0 gives 0 %; ARIA values set
+- [x] Gate passes: `npm run typecheck && npx vitest run` (also `npm run check`)
+- Notes: styles follow the prototype's `.meter` (6 px, 3 px radius, `--line-soft` track, `--accent` fill, 0.4 s width transition, which the global reduced-motion rule turns off). The width is the unrounded `value/max` percentage, clamped to 0–100, from the exported `meterPercent`; the prototype rounds it, which draws the same. By hand: removing the `max` 0 guard fails 3 cases.
 
 **Tests**: component
 **Gate**: integration
