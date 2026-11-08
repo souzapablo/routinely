@@ -4,7 +4,7 @@
 > Canonical state lives in `.specs/lessons.json`. Edit lessons only via the script.
 > promote_threshold=2 distinct features · window_days=45 · quarantine_threshold=2
 
-## Confirmed (load these at Plan/Checks)
+## Confirmed (load these at Specify/Design)
 
 Corroborated across multiple features. Safe to apply as guidance.
 
@@ -49,6 +49,18 @@ Seen once or not yet corroborated. Tracked, not trusted.
 - features: 0001-project-skeleton
 - evidence: src/server/index.ts:6 (V6) (server-config)
 - last seen: 2026-11-08T08:58:26Z
+
+### L-007 - Put text-overflow: ellipsis on the element that holds the text (use Text truncate), not on a wrapper around a block-level child, and assert the ellipsis in e2e on every truncated text the captures show.
+- signal: `ac_gap` · recurrence: 1 feature(s) · scope: `src/web css` · harmful: 0
+- features: 0002-main-layout
+- evidence: src/web/planner/components/GridBlock.module.css:37 (src/web css)
+- last seen: 2026-11-08T16:20:05Z
+
+### L-008 - When a layout decision names a position (second row, right-aligned), the e2e test asserts that position, not only that nothing overlaps.
+- signal: `surviving_mutant` · recurrence: 1 feature(s) · scope: `e2e layout` · harmful: 0
+- features: 0002-main-layout
+- evidence: src/web/app/TopBar.module.css .language flex-basis (e2e layout)
+- last seen: 2026-11-08T16:20:05Z
 
 ## Quarantined (failed when applied - ignore)
 
