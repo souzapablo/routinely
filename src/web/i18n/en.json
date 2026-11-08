@@ -50,5 +50,10 @@
     "findTime": "Find a time",
     "newFlexible": "+ New flexible activity",
     "empty": "Nothing here yet. Add something you'd like to fit into your week."
+  },
+  "duration": {
+    "minutes": "{{minutes}} min",
+    "hours": "{{hours}} h",
+    "hoursMinutes": "{{hours}} h {{minutes}} min"
   }
 }

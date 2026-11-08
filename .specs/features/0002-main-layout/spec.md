@@ -160,8 +160,8 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | DS-09 | P1: Design system - disabled controls | Execute | In progress (T9, T10, T11) |
 | MAIN-01 | P1: Main view - desktop capture | Design | Pending |
 | MAIN-02 | P1: Main view - phone capture | Design | Pending |
-| MAIN-03 | P1: Main view - week header | Execute | In progress (T30) |
-| MAIN-04 | P1: Main view - grid days and hours | Execute | In progress (T33) |
+| MAIN-03 | P1: Main view - week header | Execute | In progress (T35) |
+| MAIN-04 | P1: Main view - grid days and hours | Execute | In progress (T35) |
 | MAIN-05 | P1: Main view - today column | Execute | In progress (T33) |
 | MAIN-06 | P1: Main view - now-line | Execute | In progress (T33) |
 | MAIN-07 | P1: Main view - anchor blocks | Execute | In progress (T32) |
@@ -169,8 +169,8 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | MAIN-09 | P1: Main view - tiny blocks | Execute | In progress (T32) |
 | MAIN-10 | P1: Main view - done anchor | Execute | In progress (T32) |
 | MAIN-11 | P1: Main view - done placement | Execute | In progress (T32) |
-| MAIN-12 | P1: Main view - Today list | Execute | In progress (T31) |
-| MAIN-13 | P1: Main view - Now pill | Execute | In progress (T31) |
+| MAIN-12 | P1: Main view - Today list | Execute | In progress (T35) |
+| MAIN-13 | P1: Main view - Now pill | Execute | In progress (T35) |
 | MAIN-14 | P1: Main view - free day | Execute | In progress (T31) |
 | MAIN-15 | P1: Main view - today count | Execute | In progress (T31) |
 | MAIN-16 | P1: Main view - days you showed up | Execute | In progress (T31) |
@@ -180,9 +180,9 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | MAIN-20 | P1: Main view - fully placed items | Execute | In progress (T34) |
 | MAIN-21 | P1: Main view - new flexible button | Execute | In progress (T34) |
 | MAIN-22 | P1: Main view - top bar | Execute | In progress (T29) |
-| MAIN-23 | P1: Main view - disabled controls | Execute | In progress (T30) |
+| MAIN-23 | P1: Main view - disabled controls | Execute | In progress (T35) |
 | MAIN-24 | P1: Main view - no undone shaming | Design | Pending |
-| MAIN-25 | P1: Main view - i18n texts | Design | Pending |
+| MAIN-25 | P1: Main view - i18n texts | Execute | In progress (T35) |
 | MAIN-26 | P1: Main view - pt-BR | Execute | In progress (T26) |
 | MAIN-27 | P1: Main view - no horizontal scroll | Design | Pending |
 | MAIN-28 | Edge: no now-line outside hours | Execute | In progress (T25) |

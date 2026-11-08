@@ -790,8 +790,8 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `PlannerPage.test.tsx` (system time fixed): "shows This week and Nov 2 – Nov 8, 2026", "draws seven days from Monday and hours 6 AM to 10 PM", "lists today's items in time order", "shows Now on the current item", "draws every planner control disabled", "renders no English text in pt-BR"
-- [ ] Gate passes: `npm run check`
+- [x] `PlannerPage.test.tsx` (system time fixed): "shows This week and Nov 2 – Nov 8, 2026", "draws seven days from Monday and hours 6 AM to 10 PM", "lists today's items in time order", "shows Now on the current item", "draws every planner control disabled", "renders no English text in pt-BR"
+- [x] Gate passes: `npm run check`
 
 **Tests**: component
 **Gate**: build (end of phase)
