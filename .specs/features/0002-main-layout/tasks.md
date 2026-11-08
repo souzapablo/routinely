@@ -338,8 +338,9 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `Badge.test.tsx`: each tone sets its class; text renders
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
+- [x] `Badge.test.tsx`: each tone sets its class; text renders
+- [x] Gate passes: `npm run typecheck && npx vitest run` (also `npm run check`)
+- Notes: styles follow the prototype's `.count` (12 px mono, muted, 1 px 9 px padding) and `.pill` (11.5 px semibold accent, 1 px 8 px padding), both bordered with `--line` and fully round. The prototype's `margin-left: auto` on `.pill` is left to the parent, as `CheckboxRow` already pushes its trailing slot to the end. By hand: dropping the tone class from `Badge.tsx` fails both `Badge.test.tsx` cases.
 
 **Tests**: component
 **Gate**: integration
