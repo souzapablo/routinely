@@ -153,9 +153,9 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | DS-02 | P1: Design system - allowed inside `ui/` | Design | Pending |
 | DS-03 | P1: Design system - structural elements allowed | Design | Pending |
 | DS-04 | P1: Design system - tokens | Design | Pending |
-| DS-05 | P1: Design system - dark tokens | Design | Pending |
+| DS-05 | P1: Design system - dark tokens | Execute | Implemented (T37) |
 | DS-06 | P1: Design system - stories | Execute | In progress (T4, T5, T6, T7, T8, T9, T10) |
-| DS-07 | P1: Design system - self-hosted fonts | Design | Pending |
+| DS-07 | P1: Design system - self-hosted fonts | Execute | Implemented (T37) |
 | DS-08 | P1: Design system - Icon wraps lucide | Execute | Implemented (T4) |
 | DS-09 | P1: Design system - disabled controls | Execute | In progress (T9, T10, T11) |
 | MAIN-01 | P1: Main view - desktop capture | Design | Pending |
@@ -163,7 +163,7 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | MAIN-03 | P1: Main view - week header | Execute | In progress (T35) |
 | MAIN-04 | P1: Main view - grid days and hours | Execute | In progress (T35) |
 | MAIN-05 | P1: Main view - today column | Execute | In progress (T33) |
-| MAIN-06 | P1: Main view - now-line | Execute | In progress (T33) |
+| MAIN-06 | P1: Main view - now-line | Execute | Implemented (T37) |
 | MAIN-07 | P1: Main view - anchor blocks | Execute | In progress (T32) |
 | MAIN-08 | P1: Main view - placement blocks | Execute | In progress (T32) |
 | MAIN-09 | P1: Main view - tiny blocks | Execute | In progress (T32) |
@@ -181,13 +181,13 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | MAIN-21 | P1: Main view - new flexible button | Execute | In progress (T34) |
 | MAIN-22 | P1: Main view - top bar | Execute | In progress (T29) |
 | MAIN-23 | P1: Main view - disabled controls | Execute | In progress (T35) |
-| MAIN-24 | P1: Main view - no undone shaming | Design | Pending |
+| MAIN-24 | P1: Main view - no undone shaming | Execute | Implemented (T37) |
 | MAIN-25 | P1: Main view - i18n texts | Execute | In progress (T35) |
-| MAIN-26 | P1: Main view - pt-BR | Execute | In progress (T26) |
-| MAIN-27 | P1: Main view - no horizontal scroll | Design | Pending |
+| MAIN-26 | P1: Main view - pt-BR | Execute | Implemented (T37) |
+| MAIN-27 | P1: Main view - no horizontal scroll | Execute | Implemented (T37) |
 | MAIN-28 | Edge: no now-line outside hours | Execute | In progress (T25) |
 | MAIN-29 | Edge: anchor clipped to hours | Execute | In progress (T25) |
-| MAIN-30 | Edge: long names ellipsis | Execute | In progress (T5) |
+| MAIN-30 | Edge: long names ellipsis | Execute | Implemented (T37) |
 | MAIN-31 | Edge: empty tray | Execute | In progress (T34) |
 | STATUS-01 | P1: Status page - `/status` | Execute | Implemented (T36) |
 | STATUS-02 | P1: Status page - unknown paths | Execute | Implemented (T36) |

@@ -830,8 +830,8 @@ T36 → T37
 
 **Done when**:
 
-- [ ] Tests: "has no horizontal scroll at 390 and 1280", "loads fonts from its own host" (every request same-origin; `document.fonts.check` true for the three families), "follows a dark color scheme" (body background `rgb(15, 19, 26)`), "draws the now-line in the accent color at the current time", "shows no error red and no undone wording" (no element's color, background or border computes to `--bad`; page text has none of missed/failed/overdue/late/skipped or perdido/falhou/atrasado/pulado in either language), "shows pt-BR texts and 24-hour times", "cuts long names with an ellipsis"
-- [ ] Gate passes: `npm run check && npm run e2e`
+- [x] Tests: "has no horizontal scroll at 390 and 1280", "loads fonts from its own host" (every request same-origin; `document.fonts.check` true for the three families), "follows a dark color scheme" (body background `rgb(15, 19, 26)`), "draws the now-line in the accent color at the current time", "shows no error red and no undone wording" (no element's color, background or border computes to `--bad`; page text has none of missed/failed/overdue/late/skipped or perdido/falhou/atrasado/pulado in either language), "shows pt-BR texts and 24-hour times", "cuts long names with an ellipsis"
+- [x] Gate passes: `npm run check && npm run e2e`
 
 **Tests**: e2e
 **Gate**: full
