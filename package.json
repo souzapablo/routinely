@@ -16,6 +16,7 @@
     "test": "vitest run",
     "start": "node src/server/index.ts",
     "e2e": "playwright test",
+    "storybook": "storybook dev -p 6006",
     "check": "npm run typecheck && npm run lint && npm run format:check && npm test && npm run build"
   },
   "dependencies": {

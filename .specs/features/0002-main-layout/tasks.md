@@ -155,9 +155,10 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `npx storybook build` exits 0 (outcome noted)
-- [ ] "every component has stories" passes (no components yet) and fails on a component folder without stories (checked by hand)
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
+- [x] `npx storybook build` exits 0 (outcome noted)
+- [x] "every component has stories" passes (no components yet) and fails on a component folder without stories (checked by hand)
+- [x] Gate passes: `npm run typecheck && npx vitest run` (also `npm run check`)
+- Notes: `npx storybook build --test` exits 0 with the root `vite.config.ts` (its `test` block does not get in the way); it warns "No story files found" until T4 adds the first story. By hand: a `Fake/Fake.tsx` with no stories file, and one whose stories file has only a default export, both fail the rule with `[ 'Fake' ]`; adding `export const Default` makes it pass.
 
 **Tests**: integration
 **Gate**: integration

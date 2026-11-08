@@ -14,3 +14,6 @@ data/
 # Playwright output
 test-results/
 playwright-report/
+
+# Storybook output
+storybook-static/

@@ -4,7 +4,7 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import tseslint from "typescript-eslint";
 
 export default defineConfig(
-  globalIgnores(["dist/", "data/", "test/fixtures/"]),
+  globalIgnores(["dist/", "data/", "test/fixtures/", "storybook-static/"]),
   js.configs.recommended,
   tseslint.configs.recommendedTypeChecked,
   {
