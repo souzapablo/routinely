@@ -22,5 +22,17 @@
     "previous": "Previous week",
     "next": "Next week",
     "today": "Today"
+  },
+  "today": {
+    "title": "Today · {{date}}",
+    "summary": "{{done}} of {{total}} done",
+    "freeDay": "A free day",
+    "empty": "Nothing planned today. Drag something from your list onto today, or take the day off.",
+    "showedUp": "Days you showed up",
+    "showedUpCount": "{{days}} of 7",
+    "showedUpLabel": "{{days}} days this week with at least one thing done",
+    "week": "This week",
+    "weekDone": "{{done}} of {{total}} done",
+    "now": "Now"
   }
 }

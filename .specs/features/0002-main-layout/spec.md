@@ -169,12 +169,12 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | MAIN-09 | P1: Main view - tiny blocks | Execute | In progress (T25) |
 | MAIN-10 | P1: Main view - done anchor | Execute | In progress (T11) |
 | MAIN-11 | P1: Main view - done placement | Execute | In progress (T11) |
-| MAIN-12 | P1: Main view - Today list | Execute | In progress (T26) |
-| MAIN-13 | P1: Main view - Now pill | Execute | In progress (T28) |
-| MAIN-14 | P1: Main view - free day | Design | Pending |
-| MAIN-15 | P1: Main view - today count | Execute | In progress (T23) |
-| MAIN-16 | P1: Main view - days you showed up | Execute | In progress (T23) |
-| MAIN-17 | P1: Main view - week done meter | Execute | In progress (T23) |
+| MAIN-12 | P1: Main view - Today list | Execute | In progress (T31) |
+| MAIN-13 | P1: Main view - Now pill | Execute | In progress (T31) |
+| MAIN-14 | P1: Main view - free day | Execute | In progress (T31) |
+| MAIN-15 | P1: Main view - today count | Execute | In progress (T31) |
+| MAIN-16 | P1: Main view - days you showed up | Execute | In progress (T31) |
+| MAIN-17 | P1: Main view - week done meter | Execute | In progress (T31) |
 | MAIN-18 | P1: Main view - tray header | Execute | In progress (T24) |
 | MAIN-19 | P1: Main view - tray items | Execute | In progress (T24) |
 | MAIN-20 | P1: Main view - fully placed items | Execute | In progress (T24) |

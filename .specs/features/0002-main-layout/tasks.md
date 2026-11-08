@@ -714,8 +714,8 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `TodayStrip.test.tsx` "shows a free day when today is empty", "lists items with checkbox, name, time and dot", "shows Now instead of the dot during an item", "shows days you showed up and the week meter"
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] `TodayStrip.test.tsx` "shows a free day when today is empty", "lists items with checkbox, name, time and dot", "shows Now instead of the dot during an item", "shows days you showed up and the week meter"
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: component
 **Gate**: quick
