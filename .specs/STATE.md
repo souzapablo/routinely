@@ -138,4 +138,12 @@
 - **Date**: 2026-11-08
 - **Status**: active (AD-017)
 
+### AD-018
+- **Decision**: The layout gap scale is `--space-0`…`--space-7` = 0, 4, 6, 8, 10, 12, 16, 20 px, in `src/web/ui/styles/spacing.css`. The prototype's one-off 14, 18 and 28 px gaps stay in the CSS of the component that uses them.
+- **Reason**: The prototype has no spacing scale and its main view uses ten gap values; `Stack`'s `gap` takes eight. Asked "Which values should --space-0 … --space-7 hold?"; user chose "0 4 6 8 10 12 16 20 (Recommended)".
+- **Trade-off**: Three gaps are not on the scale and are written as raw px in their components.
+- **Scope**: `src/web/ui`
+- **Date**: 2026-11-08
+- **Status**: active (AD-018)
+
 ## Handoff

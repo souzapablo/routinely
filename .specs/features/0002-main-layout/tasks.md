@@ -237,8 +237,9 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `Stack.test.tsx`: each prop maps to its class; `as` sets the element
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
+- [x] `Stack.test.tsx`: each prop maps to its class; `as` sets the element
+- [x] Gate passes: `npm run typecheck && npx vitest run` (also `npm run check`)
+- Notes: the gap scale is 0, 4, 6, 8, 10, 12, 16, 20 px as `--space-0`…`--space-7` in `src/web/ui/styles/spacing.css`, imported by `global.css` and checked by `spacing.test.ts` (AD-018). It sits outside `tokens.css` so that file stays the prototype's token block (C4 compares it whole). The prototype's one-off 14, 18 and 28 px gaps belong in the CSS of the component that uses them. `direction` defaults to `column`; a prop left out adds no class; `justify` takes `start`/`center`/`end`/`between`. Props extend the native `div` props without `className`/`style`, so `id` and `aria-labelledby` pass through for landmarks.
 
 **Tests**: component
 **Gate**: integration
