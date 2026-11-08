@@ -318,8 +318,9 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `CheckToggle.test.tsx`: `aria-pressed` follows `pressed`; accessible name is `label`; inert is disabled and skipped by Tab
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
+- [x] `CheckToggle.test.tsx`: `aria-pressed` follows `pressed`; accessible name is `label`; inert is disabled and skipped by Tab
+- [x] Gate passes: `npm run typecheck && npx vitest run` (also `npm run check`)
+- Notes: styles follow the prototype's `.chk`: 16 px circle, 1.5 px `currentColor` border at 0.7 opacity; pressed fills with `currentColor` at full opacity and shows the check. The Lucide check is drawn at 10 px with stroke 3 through CSS, which beats the SVG attributes. The tick takes `--check-tick`, which the block sets to its own background (the prototype strokes it in the block's background color); it falls back to `--surface`. Props extend the native `button` props without `disabled`: only `inert`, as the design lists. By hand: dropping `disabled={inert}` or fixing `aria-pressed` to `true` fails `CheckToggle.test.tsx`.
 
 **Tests**: component
 **Gate**: integration
