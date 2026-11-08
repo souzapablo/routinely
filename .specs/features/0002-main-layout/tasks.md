@@ -502,7 +502,8 @@ T36 → T37
 
 **Done when**:
 
-- [ ] Gate passes: `npm run check`
+- [x] Gate passes: `npm run check`
+- Notes: `Category` is written out as a union here; `Swatch`'s `categoryTones` keeps its own keys, so the two are not linked yet.
 
 **Tests**: none (types only; the matrix says build gate only)
 **Gate**: build
