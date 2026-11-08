@@ -56,6 +56,12 @@ test("keeps the top bar parts apart on a phone", async ({ page }) => {
       boxes.push(box);
     }
 
+    // The language switch takes its own row under the first one, on the right.
+    const [, , add, english, portuguese] = boxes;
+    expect(english.y).toBeGreaterThanOrEqual(add.y + add.height);
+    expect(english.y).toBe(portuguese.y);
+    expect(portuguese.x + portuguese.width).toBeCloseTo(add.x + add.width, 0);
+
     for (const box of boxes) {
       expect(box.x, `inside the window at ${width} px`).toBeGreaterThanOrEqual(
         0,

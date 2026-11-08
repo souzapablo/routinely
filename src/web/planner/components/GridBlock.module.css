@@ -37,9 +37,6 @@
 .time {
   font-size: 11px;
   opacity: 0.8;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .anchor {

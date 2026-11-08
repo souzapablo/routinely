@@ -182,23 +182,28 @@ test("cuts long names with an ellipsis", async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await openPlanner(page);
 
-  const name = page.getByText("Therapy session", { exact: true });
-  const cut = await name.evaluate((el) => {
-    const style = getComputedStyle(el);
-    return {
-      textOverflow: style.textOverflow,
-      whiteSpace: style.whiteSpace,
-      overflows: el.scrollWidth > el.clientWidth,
-      lines: Math.round(
-        el.getBoundingClientRect().height / parseFloat(style.lineHeight),
-      ),
-    };
-  });
+  // A long name, and a time range too wide for its column.
+  for (const text of [
+    page.getByText("Therapy session", { exact: true }),
+    page.getByText(/^9:00\sAM\s–\s6:00\sPM$/).first(),
+  ]) {
+    const cut = await text.evaluate((el) => {
+      const style = getComputedStyle(el);
+      return {
+        textOverflow: style.textOverflow,
+        whiteSpace: style.whiteSpace,
+        overflows: el.scrollWidth > el.clientWidth,
+        lines: Math.round(
+          el.getBoundingClientRect().height / parseFloat(style.lineHeight),
+        ),
+      };
+    });
 
-  expect(cut).toEqual({
-    textOverflow: "ellipsis",
-    whiteSpace: "nowrap",
-    overflows: true,
-    lines: 1,
-  });
+    expect(cut).toEqual({
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+      overflows: true,
+      lines: 1,
+    });
+  }
 });

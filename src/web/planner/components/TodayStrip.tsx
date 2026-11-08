@@ -111,9 +111,11 @@ export function TodayStrip({
           </div>
         </div>
         {rows.length === 0 ? (
-          <Text size="sm" tone="muted">
-            {t("today.empty")}
-          </Text>
+          <div className={styles.empty}>
+            <Text size="sm" tone="muted">
+              {t("today.empty")}
+            </Text>
+          </div>
         ) : (
           <div className={styles.rows}>
             {rows.map((row) => (

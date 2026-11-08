@@ -209,6 +209,7 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | No language switch | Language switch on the right of the top bar | y - AD-012 |
 | Red current-time line with a red dot | Accent-colored line and dot | y - AD-013 |
 | Red dot and line at the left of the "Days you showed up" row | Nothing there | y - AD-014 |
+| Phone top bar on one row (mark, Routinely, status, +) | Same first row; the language switch on a second, right-aligned row under 640 px | y - AD-019 |
 
 ## Sources
 

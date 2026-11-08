@@ -3,6 +3,11 @@
   gap: 14px;
 }
 
+/* The prototype keeps the empty-day text in a short column. */
+.empty {
+  max-width: 230px;
+}
+
 .top {
   display: flex;
   flex-wrap: wrap;

@@ -85,7 +85,7 @@ export function GridBlock({ block }: GridBlockProps) {
         </div>
         {!block.tiny && (
           <div className={styles.time}>
-            <Text as="div" mono>
+            <Text as="div" mono truncate>
               {block.timeLabel}
             </Text>
           </div>
