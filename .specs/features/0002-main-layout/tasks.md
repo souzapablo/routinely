@@ -521,8 +521,9 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `week.test.ts`: Sunday 2026-11-08 → Monday 2026-11-02 and key `2026-11-02`; Monday maps to 0 and Sunday to 6; `weekDays` gives 7 dates from Monday with only today flagged; a week crossing a month and a year boundary
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] `week.test.ts`: Sunday 2026-11-08 → Monday 2026-11-02 and key `2026-11-02`; Monday maps to 0 and Sunday to 6; `weekDays` gives 7 dates from Monday with only today flagged; a week crossing a month and a year boundary
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web` (also `npm run check`)
+- Notes: every rule works in local time. Days are added by calendar date, not 24 h steps, so midnight survives a DST change. `weekDays` returns local-midnight dates and flags today by calendar day. The tests build dates from local parts and pass under `TZ` America/Sao_Paulo, America/Los_Angeles and Pacific/Kiritimati.
 
 **Tests**: unit
 **Gate**: quick
