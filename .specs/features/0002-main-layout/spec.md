@@ -154,10 +154,10 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | DS-03 | P1: Design system - structural elements allowed | Design | Pending |
 | DS-04 | P1: Design system - tokens | Design | Pending |
 | DS-05 | P1: Design system - dark tokens | Design | Pending |
-| DS-06 | P1: Design system - stories | Execute | In progress (T4, T5, T6, T7, T8, T9) |
+| DS-06 | P1: Design system - stories | Execute | In progress (T4, T5, T6, T7, T8, T9, T10) |
 | DS-07 | P1: Design system - self-hosted fonts | Design | Pending |
 | DS-08 | P1: Design system - Icon wraps lucide | Execute | Implemented (T4) |
-| DS-09 | P1: Design system - disabled controls | Execute | In progress (T9) |
+| DS-09 | P1: Design system - disabled controls | Execute | In progress (T9, T10) |
 | MAIN-01 | P1: Main view - desktop capture | Design | Pending |
 | MAIN-02 | P1: Main view - phone capture | Design | Pending |
 | MAIN-03 | P1: Main view - week header | Design | Pending |
@@ -169,7 +169,7 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | MAIN-09 | P1: Main view - tiny blocks | Design | Pending |
 | MAIN-10 | P1: Main view - done anchor | Design | Pending |
 | MAIN-11 | P1: Main view - done placement | Design | Pending |
-| MAIN-12 | P1: Main view - Today list | Design | Pending |
+| MAIN-12 | P1: Main view - Today list | Execute | In progress (T10) |
 | MAIN-13 | P1: Main view - Now pill | Design | Pending |
 | MAIN-14 | P1: Main view - free day | Design | Pending |
 | MAIN-15 | P1: Main view - today count | Design | Pending |

@@ -298,8 +298,9 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `CheckboxRow.test.tsx`: checkbox's accessible name is the title; `checked` reflects; inert checkbox is disabled and skipped by Tab; trailing slot renders
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
+- [x] `CheckboxRow.test.tsx`: checkbox's accessible name is the title; `checked` reflects; inert checkbox is disabled and skipped by Tab; trailing slot renders
+- [x] Gate passes: `npm run typecheck && npx vitest run` (also `npm run check`)
+- Notes: styles follow the prototype's `.trow`. The checkbox takes the title as `aria-label`, because the wrapping label also holds the meta line and trailing slot. Checked rows get the sunk background and a struck, muted title through `Text`. `disabled` fades the row like Button; `inert` disables it without fading. The checkbox is `readOnly` when no `onChange` is given. The trailing-badge story draws a placeholder pill until `Badge` (T12) exists.
 
 **Tests**: component
 **Gate**: integration
