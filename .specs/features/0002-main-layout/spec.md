@@ -179,7 +179,7 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | MAIN-19 | P1: Main view - tray items | Execute | In progress (T24) |
 | MAIN-20 | P1: Main view - fully placed items | Execute | In progress (T24) |
 | MAIN-21 | P1: Main view - new flexible button | Design | Pending |
-| MAIN-22 | P1: Main view - top bar | Execute | In progress (T16) |
+| MAIN-22 | P1: Main view - top bar | Execute | In progress (T29) |
 | MAIN-23 | P1: Main view - disabled controls | Execute | In progress (T9) |
 | MAIN-24 | P1: Main view - no undone shaming | Design | Pending |
 | MAIN-25 | P1: Main view - i18n texts | Design | Pending |

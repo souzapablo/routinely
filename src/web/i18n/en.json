@@ -11,5 +11,10 @@
       "unreachable": "Database: can't connect"
     },
     "checkedAt": "Checked at {{time}}"
+  },
+  "topBar": {
+    "brand": "Routinely",
+    "exampleWeek": "Example week",
+    "addActivity": "Add activity"
   }
 }

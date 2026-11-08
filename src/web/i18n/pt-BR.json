@@ -11,5 +11,10 @@
       "unreachable": "Banco de dados: sem conexão"
     },
     "checkedAt": "Verificado às {{time}}"
+  },
+  "topBar": {
+    "brand": "Routinely",
+    "exampleWeek": "Semana de exemplo",
+    "addActivity": "Adicionar atividade"
   }
 }

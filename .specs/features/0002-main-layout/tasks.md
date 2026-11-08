@@ -676,8 +676,8 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `TopBar.test.tsx` "shows the mark, Example week, Add activity and the language switch"
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] `TopBar.test.tsx` "shows the mark, Example week, Add activity and the language switch"
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: component
 **Gate**: quick
