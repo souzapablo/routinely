@@ -619,8 +619,8 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `format.test.ts` "formats the week range" (`en` "Nov 2 – Nov 8, 2026"; across a year), "formats time ranges by language" (`en` "7:00 – 8:00 AM", "9:00 AM – 6:00 PM"; `pt-BR` "07:00 – 08:00"), "formats hour labels by language" (`en` "6 AM", `pt-BR` "06:00"), "formats today's date" (`en` "Sunday, Nov 8"), "splits durations" (45 → 45 min; 60 → 1 h; 90 → 1 h 30 min)
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] `format.test.ts` "formats the week range" (`en` "Nov 2 – Nov 8, 2026"; across a year), "formats time ranges by language" (`en` "7:00 – 8:00 AM", "9:00 AM – 6:00 PM"; `pt-BR` "07:00 – 08:00"), "formats hour labels by language" (`en` "6 AM", `pt-BR` "06:00"), "formats today's date" (`en` "Sunday, Nov 8"), "splits durations" (45 → 45 min; 60 → 1 h; 90 → 1 h 30 min)
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: unit
 **Gate**: quick

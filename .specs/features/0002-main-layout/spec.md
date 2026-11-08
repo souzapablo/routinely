@@ -160,8 +160,8 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | DS-09 | P1: Design system - disabled controls | Execute | In progress (T9, T10, T11) |
 | MAIN-01 | P1: Main view - desktop capture | Design | Pending |
 | MAIN-02 | P1: Main view - phone capture | Design | Pending |
-| MAIN-03 | P1: Main view - week header | Execute | In progress (T21) |
-| MAIN-04 | P1: Main view - grid days and hours | Execute | In progress (T21) |
+| MAIN-03 | P1: Main view - week header | Execute | In progress (T26) |
+| MAIN-04 | P1: Main view - grid days and hours | Execute | In progress (T26) |
 | MAIN-05 | P1: Main view - today column | Execute | In progress (T21) |
 | MAIN-06 | P1: Main view - now-line | Execute | In progress (T25) |
 | MAIN-07 | P1: Main view - anchor blocks | Design | Pending |
@@ -169,7 +169,7 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | MAIN-09 | P1: Main view - tiny blocks | Execute | In progress (T25) |
 | MAIN-10 | P1: Main view - done anchor | Execute | In progress (T11) |
 | MAIN-11 | P1: Main view - done placement | Execute | In progress (T11) |
-| MAIN-12 | P1: Main view - Today list | Execute | In progress (T22) |
+| MAIN-12 | P1: Main view - Today list | Execute | In progress (T26) |
 | MAIN-13 | P1: Main view - Now pill | Execute | In progress (T25) |
 | MAIN-14 | P1: Main view - free day | Design | Pending |
 | MAIN-15 | P1: Main view - today count | Execute | In progress (T23) |
@@ -183,7 +183,7 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | MAIN-23 | P1: Main view - disabled controls | Execute | In progress (T9) |
 | MAIN-24 | P1: Main view - no undone shaming | Design | Pending |
 | MAIN-25 | P1: Main view - i18n texts | Design | Pending |
-| MAIN-26 | P1: Main view - pt-BR | Design | Pending |
+| MAIN-26 | P1: Main view - pt-BR | Execute | In progress (T26) |
 | MAIN-27 | P1: Main view - no horizontal scroll | Design | Pending |
 | MAIN-28 | Edge: no now-line outside hours | Execute | In progress (T25) |
 | MAIN-29 | Edge: anchor clipped to hours | Execute | In progress (T25) |
