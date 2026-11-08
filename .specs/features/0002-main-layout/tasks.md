@@ -541,9 +541,9 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `schedule.test.ts` "lists a day's items in start-time order": mixed anchors/placements come out by start
-- [ ] Tests: done flags for anchor occurrence and placement; other weeks excluded; missing activity skipped; empty day
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] `schedule.test.ts` "lists a day's items in start-time order": mixed anchors/placements come out by start
+- [x] Tests: done flags for anchor occurrence and placement; other weeks excluded; missing activity skipped; empty day
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: unit
 **Gate**: quick

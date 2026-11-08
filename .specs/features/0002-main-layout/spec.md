@@ -169,7 +169,7 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | MAIN-09 | P1: Main view - tiny blocks | Design | Pending |
 | MAIN-10 | P1: Main view - done anchor | Execute | In progress (T11) |
 | MAIN-11 | P1: Main view - done placement | Execute | In progress (T11) |
-| MAIN-12 | P1: Main view - Today list | Execute | In progress (T10) |
+| MAIN-12 | P1: Main view - Today list | Execute | In progress (T22) |
 | MAIN-13 | P1: Main view - Now pill | Execute | In progress (T12) |
 | MAIN-14 | P1: Main view - free day | Design | Pending |
 | MAIN-15 | P1: Main view - today count | Design | Pending |
