@@ -1,0 +1,115 @@
+/* Rounded like the card around it, so the scrolled grid stays clipped to its corners. */
+.scroll {
+  overflow-x: auto;
+  border-radius: 13px;
+}
+
+.grid {
+  min-width: 740px;
+}
+
+.head,
+.body {
+  display: grid;
+  grid-template-columns: 56px repeat(7, minmax(92px, 1fr));
+}
+
+.head {
+  border-bottom: 1px solid var(--line);
+}
+
+.corner,
+.hours {
+  border-right: 1px solid var(--line-soft);
+}
+
+.day {
+  display: grid;
+  padding: 10px 4px 9px;
+  text-align: center;
+  border-right: 1px solid var(--line-soft);
+}
+
+.day:last-child,
+.column:last-child {
+  border-right: 0;
+}
+
+.weekday {
+  font-size: 11.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.dayNumber {
+  font-family: var(--f-display);
+  font-size: 19px;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.today .dayNumber {
+  width: 32px;
+  margin: 2px auto 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.hour {
+  position: relative;
+  height: var(--px);
+}
+
+.hourLabel {
+  position: absolute;
+  top: -8px;
+  right: 8px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--faint);
+  white-space: nowrap;
+}
+
+.hour:first-child .hourLabel {
+  top: 2px;
+}
+
+/* Seventeen hour rows: 06:00 to 23:00. */
+.column {
+  position: relative;
+  height: calc(var(--px) * 17);
+  border-right: 1px solid var(--line-soft);
+  background-image: linear-gradient(
+    to bottom,
+    var(--line-soft) 1px,
+    transparent 1px
+  );
+  background-size: 100% var(--px);
+}
+
+.column.today {
+  background-color: color-mix(in srgb, var(--accent) 4%, transparent);
+}
+
+.now {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  height: 2px;
+  background: var(--accent);
+  pointer-events: none;
+}
+
+.now::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: -3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}

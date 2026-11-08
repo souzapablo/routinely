@@ -161,9 +161,9 @@ The app still opens on the skeleton's status page; the planner exists only as a 
 | MAIN-01 | P1: Main view - desktop capture | Design | Pending |
 | MAIN-02 | P1: Main view - phone capture | Design | Pending |
 | MAIN-03 | P1: Main view - week header | Execute | In progress (T30) |
-| MAIN-04 | P1: Main view - grid days and hours | Execute | In progress (T26) |
-| MAIN-05 | P1: Main view - today column | Execute | In progress (T21) |
-| MAIN-06 | P1: Main view - now-line | Execute | In progress (T28) |
+| MAIN-04 | P1: Main view - grid days and hours | Execute | In progress (T33) |
+| MAIN-05 | P1: Main view - today column | Execute | In progress (T33) |
+| MAIN-06 | P1: Main view - now-line | Execute | In progress (T33) |
 | MAIN-07 | P1: Main view - anchor blocks | Execute | In progress (T32) |
 | MAIN-08 | P1: Main view - placement blocks | Execute | In progress (T32) |
 | MAIN-09 | P1: Main view - tiny blocks | Execute | In progress (T32) |

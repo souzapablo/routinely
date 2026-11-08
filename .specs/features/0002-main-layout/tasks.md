@@ -752,8 +752,8 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `WeekGrid.test.tsx` "marks today's column", "draws the now-line when given an offset and none otherwise", "draws seven day heads and the hour labels"
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] `WeekGrid.test.tsx` "marks today's column", "draws the now-line when given an offset and none otherwise", "draws seven day heads and the hour labels"
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: component
 **Gate**: quick
