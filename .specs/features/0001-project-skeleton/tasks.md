@@ -567,6 +567,18 @@ Proof: `npx vitest run src/web/StatusPage.test.tsx -t "shows both can't connect 
 **C35** - A database that can't be opened at startup makes the server log the path and exit `1` (SKEL-34, AC 6)
 Proof: `npx vitest run src/server/index.test.ts -t "exits 1 and names the path when the database can't open"`
 
+**C36** - With no saved language, the page itself starts in pt-BR for a Portuguese browser (SKEL-10, AC 1; V1)
+Proof: `npx vitest run src/web/i18n/index.test.ts -t "starts in pt-BR on a first visit from a Portuguese browser"`
+
+**C37** - A `503` shows "Database: can't connect" even when its body says ok (SKEL-06, AC 6; V2)
+Proof: `npx vitest run src/web/health/healthView.test.ts -t "shows database unreachable on 503 even when the body says ok"`
+
+**C38** - `/api` and `/api?x=1` belong to the API and `/apiary` to the web app, in the built server and the dev proxy alike (SKEL-28, AC 5; V5)
+Proof: `npx vitest run src/server/app.test.ts test/devProxy.test.ts`
+
+**C39** - An empty `PORT` listens on the default `3000` (SKEL-25, AC 2; V6)
+Proof: `npx vitest run src/server/port.test.ts`
+
 ---
 
 ## Handoff
