@@ -257,8 +257,9 @@ T36 → T37
 
 **Done when**:
 
-- [ ] `Card.test.tsx`: `as` and `padding` map to element and class; passes `aria-labelledby` through
-- [ ] Gate passes: `npm run typecheck && npx vitest run`
+- [x] `Card.test.tsx`: `as` and `padding` map to element and class; passes `aria-labelledby` through
+- [x] Gate passes: `npm run typecheck && npx vitest run` (also `npm run check`)
+- Notes: paddings come from the prototype's cards: `md` is 16 px (tray), `lg` is 18 px by 20 px and 16 px under 640 px (today strip); no `padding` gives none (week grid card). `as` defaults to `div`. Props extend the native `div` props without `className`/`style`, like `Stack`. The prototype's grid card also clips with `overflow: hidden`; that stays with the week grid, not `Card`.
 
 **Tests**: component
 **Gate**: integration
