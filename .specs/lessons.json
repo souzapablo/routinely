@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "promote_threshold": 2,
+  "window_days": 45,
+  "quarantine_threshold": 2,
+  "next_id": 7,
+  "lessons": [
+    {
+      "id": "L-001",
+      "key": "surviving_mutant::test the wiring that feeds a pure rule its real inputs not only the rule itself",
+      "text": "Test the wiring that feeds a pure rule its real inputs, not only the rule itself",
+      "signal": "surviving_mutant",
+      "scope": "web-i18n",
+      "status": "candidate",
+      "features": [
+        "0001-project-skeleton"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "src/web/i18n/index.ts:37 (V1) (web-i18n)"
+      ],
+      "created": "2026-11-08T08:58:25Z",
+      "last_seen": "2026-11-08T08:58:25Z"
+    },
+    {
+      "id": "L-002",
+      "key": "surviving_mutant::when two signals decide one outcome test a case where they disagree",
+      "text": "When two signals decide one outcome, test a case where they disagree",
+      "signal": "surviving_mutant",
+      "scope": "web-health",
+      "status": "candidate",
+      "features": [
+        "0001-project-skeleton"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "src/web/health/healthView.ts:17 (V2) (web-health)"
+      ],
+      "created": "2026-11-08T08:58:25Z",
+      "last_seen": "2026-11-08T08:58:25Z"
+    },
+    {
+      "id": "L-003",
+      "key": "ac_gap::say in the spec what startup does when a configured resource can t be opened and prove it with a child process test",
+      "text": "Say in the spec what startup does when a configured resource can't be opened, and prove it with a child-process test",
+      "signal": "ac_gap",
+      "scope": "server-startup",
+      "status": "candidate",
+      "features": [
+        "0001-project-skeleton"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "src/server/index.ts:10 (V3) (server-startup)"
+      ],
+      "created": "2026-11-08T08:58:26Z",
+      "last_seen": "2026-11-08T08:58:26Z"
+    },
+    {
+      "id": "L-004",
+      "key": "ac_gap::map every response status the client can receive not only the ones the server sends",
+      "text": "Map every response status the client can receive, not only the ones the server sends",
+      "signal": "ac_gap",
+      "scope": "web-health",
+      "status": "candidate",
+      "features": [
+        "0001-project-skeleton"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "src/web/health/healthView.ts:15 (V4) (web-health)"
+      ],
+      "created": "2026-11-08T08:58:26Z",
+      "last_seen": "2026-11-08T08:58:26Z"
+    },
+    {
+      "id": "L-005",
+      "key": "ac_gap::define a route prefix in one shared rule used by both the server and the dev proxy and test its exact boundary",
+      "text": "Define a route prefix in one shared rule used by both the server and the dev proxy, and test its exact boundary",
+      "signal": "ac_gap",
+      "scope": "routing",
+      "status": "candidate",
+      "features": [
+        "0001-project-skeleton"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "src/server/app.ts:20 (V5) (routing)"
+      ],
+      "created": "2026-11-08T08:58:26Z",
+      "last_seen": "2026-11-08T08:58:26Z"
+    },
+    {
+      "id": "L-006",
+      "key": "ac_gap::treat an empty environment variable as unset before applying its default",
+      "text": "Treat an empty environment variable as unset before applying its default",
+      "signal": "ac_gap",
+      "scope": "server-config",
+      "status": "candidate",
+      "features": [
+        "0001-project-skeleton"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "src/server/index.ts:6 (V6) (server-config)"
+      ],
+      "created": "2026-11-08T08:58:26Z",
+      "last_seen": "2026-11-08T08:58:26Z"
+    }
+  ]
+}
