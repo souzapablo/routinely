@@ -571,8 +571,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests (`fetch` stubbed): `/` loads and shows a stored anchor and "Saved"; pressing + opens "Add anchor"; saving shows the toast; `/status` still renders
-- [ ] Gate passes: `npm run check` (end of phase)
+- [x] Tests (`fetch` stubbed): `/` loads and shows a stored anchor and "Saved"; pressing + opens "Add anchor"; saving shows the toast; `/status` still renders
+- [x] Gate passes: `npm run check` (end of phase)
 
 **Tests**: component
 **Gate**: build

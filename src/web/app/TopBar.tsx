@@ -1,3 +1,4 @@
+import type { Ref } from "react";
 import { useTranslation } from "react-i18next";
 import { useAnchors } from "../anchors/AnchorsProvider.tsx";
 import { statusView } from "../anchors/model/saveStatus.ts";
@@ -7,7 +8,11 @@ import { Button } from "../ui/Button/Button.tsx";
 import { StatusIndicator } from "../ui/StatusIndicator/StatusIndicator.tsx";
 import styles from "./TopBar.module.css";
 
-export function TopBar() {
+export interface TopBarProps {
+  addButtonRef?: Ref<HTMLButtonElement>;
+}
+
+export function TopBar({ addButtonRef }: TopBarProps) {
   const { t } = useTranslation();
   const { status, openAdd } = useAnchors();
   const view = statusView(status);
@@ -21,7 +26,13 @@ export function TopBar() {
       <div className={styles.status}>
         <StatusIndicator tone={view.tone}>{t(view.key)}</StatusIndicator>
       </div>
-      <Button variant="primary" icon="plus" collapseLabel onClick={openAdd}>
+      <Button
+        ref={addButtonRef}
+        variant="primary"
+        icon="plus"
+        collapseLabel
+        onClick={openAdd}
+      >
         {t("topBar.addActivity")}
       </Button>
       <div className={styles.language}>
