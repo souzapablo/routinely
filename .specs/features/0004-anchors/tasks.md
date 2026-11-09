@@ -324,8 +324,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests: opening calls `showModal` and shows the title as the dialog's name; `cancel` event, close button and a click on the dialog element itself call `onClose`; a click inside the panel does not; closing focuses the element focused before opening, or the fallback when that element was removed
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: opening calls `showModal` and shows the title as the dialog's name; `cancel` event, close button and a click on the dialog element itself call `onClose`; a click inside the panel does not; closing focuses the element focused before opening, or the fallback when that element was removed
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: component
 **Gate**: quick
