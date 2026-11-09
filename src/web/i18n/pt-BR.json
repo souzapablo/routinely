@@ -91,6 +91,19 @@
       "saved": "Salvo: {{name}}.",
       "deleted": "Excluído: {{name}}.",
       "alreadyDeleted": "Essa âncora já tinha sido excluída."
+    },
+    "drawer": {
+      "addTitle": "Adicionar âncora",
+      "editTitle": "Editar âncora",
+      "close": "Fechar",
+      "name": "Nome",
+      "repeatsOn": "Repete em",
+      "start": "Início",
+      "end": "Fim",
+      "cancel": "Cancelar",
+      "save": "Salvar âncora",
+      "delete": "Excluir",
+      "confirmDelete": "Clique de novo para excluir"
     }
   }
 }
