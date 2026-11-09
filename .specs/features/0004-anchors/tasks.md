@@ -190,8 +190,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Test "keeps anchors after a restart" passes
-- [ ] Gate passes: `npm run check` (end of phase)
+- [x] Test "keeps anchors after a restart" passes
+- [x] Gate passes: `npm run check` (end of phase)
 
 **Tests**: integration
 **Gate**: build
