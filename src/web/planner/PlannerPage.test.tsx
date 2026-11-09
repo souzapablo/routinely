@@ -1,15 +1,52 @@
-import { render, screen, within } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { fireEvent, render, screen, within } from "@testing-library/react";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import type { Anchor } from "../../shared/planner.ts";
+import {
+  type AnchorsContextValue,
+  useAnchors,
+} from "../anchors/AnchorsProvider.tsx";
 import en from "../i18n/en.json";
 import i18n from "../i18n/index.ts";
 import ptBR from "../i18n/pt-BR.json";
 import todayStyles from "./components/TodayStrip.module.css";
+import gridBlockStyles from "./components/GridBlock.module.css";
 import gridStyles from "./components/WeekGrid.module.css";
 import { PlannerPage } from "./PlannerPage.tsx";
 
+vi.mock("../anchors/AnchorsProvider.tsx", () => ({ useAnchors: vi.fn() }));
+
 const SUNDAY_MORNING = new Date(2026, 10, 8, 7, 48);
-// Thursday has a gym class at 07:00, work and a reading slot, so today's list is full.
+// Thursday has a gym class at 07:00 and work, so today's list has two rows.
 const THURSDAY_GYM = new Date(2026, 10, 5, 7, 30);
+
+const work: Anchor = {
+  id: "work",
+  name: "Work",
+  days: [1, 2, 3, 4, 5],
+  start: 540,
+  end: 1080,
+};
+const gym: Anchor = {
+  id: "gym",
+  name: "Gym class",
+  days: [2, 4],
+  start: 420,
+  end: 480,
+};
+
+const openEdit = vi.fn();
+
+function stubAnchors(anchors: Anchor[]) {
+  vi.mocked(useAnchors).mockReturnValue({
+    anchors,
+    openEdit,
+  } as unknown as AnchorsContextValue);
+}
+
+beforeEach(() => {
+  openEdit.mockReset();
+  stubAnchors([work, gym]);
+});
 
 function renderAt(now: Date) {
   vi.useFakeTimers({ toFake: ["Date"] });
@@ -88,12 +125,12 @@ describe("PlannerPage", () => {
       "F",
       "S",
     ]);
-    // Nov 1 is a Sunday with nothing planned; Monday to Wednesday are done.
+    // Nothing stores done marks yet, so no day is shown as showed up.
     expect(dots.map((d) => d.classList.contains(todayStyles.on))).toEqual([
       false,
-      true,
-      true,
-      true,
+      false,
+      false,
+      false,
       false,
       false,
       false,
@@ -111,11 +148,10 @@ describe("PlannerPage", () => {
       screen
         .getAllByRole("checkbox")
         .map((box) => box.getAttribute("aria-label")),
-    ).toEqual(["Gym class", "Work", "Read"]);
+    ).toEqual(["Gym class", "Work"]);
     expect(rowOf("Gym class")).toHaveTextContent("7:00 – 8:00 AM");
     expect(rowOf("Work")).toHaveTextContent("9:00 AM – 6:00 PM");
-    expect(rowOf("Read")).toHaveTextContent("9:30 – 10:00 PM");
-    expect(screen.getByText("0 of 3 done")).toBeInTheDocument();
+    expect(screen.getByText("0 of 2 done")).toBeInTheDocument();
   });
 
   it("shows Now on the current item", () => {
@@ -123,13 +159,17 @@ describe("PlannerPage", () => {
 
     expect(within(rowOf("Gym class")).getByText("Now")).toBeInTheDocument();
     expect(within(rowOf("Work")).queryByText("Now")).toBeNull();
-    expect(within(rowOf("Read")).queryByText("Now")).toBeNull();
   });
 
-  it("draws every planner control disabled", () => {
+  it("draws every planner control disabled except the anchors' edit buttons", () => {
     renderAt(THURSDAY_GYM);
 
-    const buttons = screen.getAllByRole("button");
+    const edits = screen.getAllByRole("button", { name: /^Edit / });
+    for (const edit of edits) expect(edit).toBeEnabled();
+
+    const buttons = screen
+      .getAllByRole("button")
+      .filter((button) => !edits.includes(button));
     const checkboxes = screen.getAllByRole("checkbox");
     for (const control of [...buttons, ...checkboxes]) {
       expect(control).toBeDisabled();
@@ -141,15 +181,76 @@ describe("PlannerPage", () => {
       "Today",
       "+ New flexible activity",
       "Mark Work done",
-      "Mark Read done",
-      "Move Read back to the list",
+      "Mark Gym class done",
     ]) {
       expect(screen.getAllByRole("button", { name }).length).toBeGreaterThan(0);
     }
-    expect(screen.getAllByRole("button", { name: "Find a time" })).toHaveLength(
-      4,
+    expect(checkboxes).toHaveLength(2);
+  });
+
+  it("draws Work on Monday to Friday and nothing else on those days", () => {
+    stubAnchors([work]);
+    const { container } = renderAt(SUNDAY_MORNING);
+
+    const columns = Array.from(
+      container.querySelectorAll(`.${gridStyles.column}`),
     );
-    expect(checkboxes).toHaveLength(3);
+    expect(
+      columns.map((column) =>
+        Array.from(
+          column.querySelectorAll(
+            `.${gridBlockStyles.anchor} .${gridBlockStyles.name}`,
+          ),
+          (name) => name.textContent,
+        ),
+      ),
+    ).toEqual([[], ["Work"], ["Work"], ["Work"], ["Work"], ["Work"], []]);
+    expect(
+      container.querySelectorAll(`.${gridBlockStyles.placement}`),
+    ).toHaveLength(0);
+    expect(screen.getAllByRole("button", { name: "Edit Work" })).toHaveLength(
+      5,
+    );
+  });
+
+  it("shows no flexible activities, only the tray's empty text", () => {
+    renderAt(THURSDAY_GYM);
+
+    expect(
+      screen.getByText(
+        "Nothing here yet. Add something you'd like to fit into your week.",
+      ),
+    ).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Find a time" })).toBeNull();
+  });
+
+  it("shows the empty texts without error styling when no anchors are stored", () => {
+    stubAnchors([]);
+    const { container } = renderAt(THURSDAY_GYM);
+
+    expect(
+      screen.getByText(
+        "Nothing planned today. Drag something from your list onto today, or take the day off.",
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "Nothing here yet. Add something you'd like to fit into your week.",
+      ),
+    ).toBeInTheDocument();
+    expect(container.querySelectorAll(`.${gridBlockStyles.slot}`)).toHaveLength(
+      0,
+    );
+    expect(container.querySelector('[class*="error"]')).toBeNull();
+  });
+
+  it("opens the clicked anchor block for editing", () => {
+    renderAt(THURSDAY_GYM);
+
+    fireEvent.click(
+      screen.getAllByRole("button", { name: "Edit Gym class" })[0],
+    );
+    expect(openEdit).toHaveBeenCalledWith("gym");
   });
 
   it("renders no English text in pt-BR", async () => {

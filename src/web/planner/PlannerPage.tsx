@@ -1,11 +1,12 @@
-import { useRef, useState } from "react";
+import { useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import type { PlannerData } from "../../shared/planner.ts";
+import { useAnchors } from "../anchors/AnchorsProvider.tsx";
 import type { GridDay } from "./components/WeekGrid.tsx";
 import { TodayStrip } from "./components/TodayStrip.tsx";
 import { Tray } from "./components/Tray.tsx";
 import { WeekGrid } from "./components/WeekGrid.tsx";
 import { WeekHeader } from "./components/WeekHeader.tsx";
-import { exampleWeek } from "./model/exampleWeek.ts";
 import {
   durationParts,
   formatDayNumber,
@@ -46,9 +47,19 @@ export function PlannerPage() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
   const now = useNow();
-  // The example is dated to the week the page opened in; the clock still
-  // moves the now-line and the Now pill every minute.
-  const [data] = useState(() => exampleWeek(now));
+  const { anchors, openEdit } = useAnchors();
+  // Only anchors are stored so far; flexible activities, placements and
+  // done marks come with later features.
+  const data = useMemo<PlannerData>(
+    () => ({
+      anchors,
+      activities: [],
+      placements: [],
+      doneAnchors: [],
+      donePlacementIds: [],
+    }),
+    [anchors],
+  );
   // On wide screens the page fills the window and the hours stretch or shrink
   // to the height left under the day names; narrow screens scroll the page.
   const fitsWindow = useMediaQuery(FITS_WINDOW);
@@ -77,6 +88,7 @@ export function PlannerPage() {
           timeLabel: time(item.start, item.end),
           category: item.category,
           done: item.done,
+          anchorId: item.anchorId,
           ...geometry,
           tiny: isTinyBlock(geometry.height),
         },
@@ -127,6 +139,7 @@ export function PlannerPage() {
             nowOffset={nowOffset(minutes, pxPerHour)}
             pxPerHour={pxPerHour}
             bodyRef={gridBody}
+            onOpenAnchor={openEdit}
           />
         </div>
         <div className={styles.tray}>

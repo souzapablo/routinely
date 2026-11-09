@@ -14,6 +14,8 @@ export interface DayItem {
   end: Minutes;
   category: Category | "anchor";
   done: boolean;
+  /** Set on anchor items: the stored anchor they come from. */
+  anchorId?: string;
 }
 
 export function itemsForDay(
@@ -26,6 +28,7 @@ export function itemsForDay(
     .map((anchor) => ({
       key: `anchor:${anchor.id}`,
       kind: "anchor",
+      anchorId: anchor.id,
       name: anchor.name,
       start: anchor.start,
       end: anchor.end,

@@ -533,8 +533,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests (provider stubbed): Work Mon–Fri draws five blocks on Monday to Friday; today's anchors are in the Today strip; no placements and an empty tray message; no anchors → the Today empty text and the tray empty text, no error class; clicking a block calls `openEdit` with its id
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests (provider stubbed): Work Mon–Fri draws five blocks on Monday to Friday; today's anchors are in the Today strip; no placements and an empty tray message; no anchors → the Today empty text and the tray empty text, no error class; clicking a block calls `openEdit` with its id
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: component
 **Gate**: quick

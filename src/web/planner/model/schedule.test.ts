@@ -65,6 +65,7 @@ describe("itemsForDay", () => {
       {
         key: "anchor:work",
         kind: "anchor",
+        anchorId: "work",
         name: "Work",
         start: 540,
         end: 1080,
@@ -83,6 +84,7 @@ describe("itemsForDay", () => {
       {
         key: "anchor:sleep",
         kind: "anchor",
+        anchorId: "sleep",
         name: "Sleep",
         start: 1380,
         end: 1440,
