@@ -476,8 +476,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests (api module stubbed): status `loading` then `saved` with the anchors; `loadFailed` and an empty list on failure; `save` sets `saving`, then on `ok` closes the drawer, puts the anchor in the list, sets `saved` and toasts "Saved Work."; `rule` keeps the drawer open, returns the problem and restores the previous status; `failed` returns the failure and sets `notSaved`; `notFound` closes, reloads and toasts "That anchor was already deleted."; `remove` on `ok` drops the anchor and toasts "Deleted Work."; `remove` `failed` sets `notSaved`
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests (api module stubbed): status `loading` then `saved` with the anchors; `loadFailed` and an empty list on failure; `save` sets `saving`, then on `ok` closes the drawer, puts the anchor in the list, sets `saved` and toasts "Saved Work."; `rule` keeps the drawer open, returns the problem and restores the previous status; `failed` returns the failure and sets `notSaved`; `notFound` closes, reloads and toasts "That anchor was already deleted."; `remove` on `ok` drops the anchor and toasts "Deleted Work."; `remove` `failed` sets `notSaved`
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: component
 **Gate**: quick

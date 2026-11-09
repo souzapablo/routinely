@@ -219,7 +219,7 @@ The planner draws a hard-coded example week and saves nothing. Anchors are the f
 | ANC-39 | P2: Delete - second click deletes | T18, T21, T25, T28 | Pending |
 | ANC-40 | P2: Delete - disarmed on open | T25 | Pending |
 | ANC-41 | P2: Delete - failure | T9, T11, T12, T21, T25 | Pending |
-| ANC-42 | Edge - deleted elsewhere | T12, T18, T21 | Pending |
+| ANC-42 | Edge - deleted elsewhere | T12, T18, T21 | Implemented (T21) |
 | ANC-43 | Edge - server overlap 409 | T12, T21, T25 | Pending |
 | ANC-44 | Edge - clipped to grid hours | T24, T27 | Pending |
 | ANC-45 | Edge - 23:45 end | T1 | Implemented (T1) |

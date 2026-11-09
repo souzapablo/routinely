@@ -86,6 +86,11 @@
       "saved": "Saved",
       "notSaved": "Not saved",
       "loadFailed": "Couldn't load your week"
+    },
+    "toast": {
+      "saved": "Saved {{name}}.",
+      "deleted": "Deleted {{name}}.",
+      "alreadyDeleted": "That anchor was already deleted."
     }
   }
 }
