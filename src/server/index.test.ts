@@ -109,6 +109,38 @@ describe("server entry", () => {
     ]);
   }, 15_000);
 
+  it("keeps anchors after a restart", async () => {
+    const port = await freePort();
+    const env = {
+      PORT: String(port),
+      DATABASE_PATH: join(tmp, "routinely.db"),
+    };
+    const anchorsUrl = `http://127.0.0.1:${port}/api/anchors`;
+    started = startServer(env);
+    await waitForOutput(started, "listening");
+    const created = await fetch(anchorsUrl, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        name: "Work",
+        days: [1, 2, 3, 4, 5],
+        start: 540,
+        end: 1080,
+      }),
+    });
+    expect(created.status).toBe(201);
+    const stored: unknown = await created.json();
+    started.child.kill();
+    await started.exited;
+
+    started = startServer(env);
+    await waitForOutput(started, "listening");
+    const res = await fetch(anchorsUrl);
+
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual([stored]);
+  }, 20_000);
+
   it("exits 1 and names the path when the database can't open", async () => {
     // A folder is not a file SQLite can open.
     started = startServer({

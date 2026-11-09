@@ -185,7 +185,7 @@ The planner draws a hard-coded example week and saves nothing. Anchors are the f
 | ANC-05 | P1: Stored - unknown id 404 | T5 | Implemented (T5) |
 | ANC-06 | P1: Stored - broken rule 400 | T4, T5 | Implemented (T5) |
 | ANC-07 | P1: Stored - overlap 409 | T4, T5 | Implemented (T5) |
-| ANC-08 | P1: Stored - survives restart | T2, T6 | Pending |
+| ANC-08 | P1: Stored - survives restart | T2, T6 | Implemented (T6) |
 | ANC-09 | P1: Stored - day format | T1, T3, T4 | Implemented (T4) |
 | ANC-10 | P1: Planner - draws anchors | T21, T24, T27, T28 | Pending |
 | ANC-11 | P1: Planner - anchors only | T24 | Pending |
