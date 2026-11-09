@@ -194,4 +194,12 @@
 - **Date**: 2026-11-09
 - **Status**: active (AD-024)
 
+### AD-025
+- **Decision**: Each spec ships as a stack of GitHub pull requests, one per phase in its `tasks.md`. Every phase has its own branch (`feat/NNNN-slug/pN-short-name`) built on the previous phase's branch. Phase 1's PR targets `main` and each later PR targets the branch below it. The stack merges bottom up with squash, rebasing the rest onto `main` after each merge. `CLAUDE.md` ("Branches and pull requests") has the procedure.
+- **Reason**: User: "each spec is a stack on github. each phase being one PR" and "each phase should create a branch". A PR per phase keeps each review to one phase's diff.
+- **Trade-off**: A fix in a lower phase means rebasing and force-pushing every branch above it, and squash merges mean the next branch is rebased with `--onto` after each merge.
+- **Scope**: Git and GitHub workflow, every spec from 0004 on
+- **Date**: 2026-11-09
+- **Status**: active (AD-025)
+
 ## Handoff
