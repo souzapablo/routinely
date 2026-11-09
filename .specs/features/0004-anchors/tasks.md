@@ -69,13 +69,13 @@ T13 → T14 → T15 → T16 → T17 → T18 → T19 → T20
 ### Phase 4: App wiring
 
 ```
-T21 → T22 → T23 → T24 → T25 → T26
+T21 → T22 → T23 → T24 → T25 → T26 → T27
 ```
 
 ### Phase 5: Browser checks
 
 ```
-T27 → T28 → T29
+T28 → T29
 ```
 
 ---
@@ -584,14 +584,14 @@ T27 → T28 → T29
 
 **What**: `workers: 1` in `playwright.config.ts`; `e2e/anchors.ts` helper (`resetAnchors(request, anchors)`) used in `beforeEach`; `e2e/main.spec.ts` seeds the old example anchors (Work, Gym class, Therapy session), drops the tray-overflow assertion, and expects "Salvo" where it expected "Semana de exemplo".
 **Where**: `e2e/main.spec.ts` (modify)
-**Depends on**: None in this phase (Phase 4 completes first)
+**Depends on**: T26
 **Reuses**: existing e2e tests
 **Requirement**: ANC-10, ANC-44
 
 **Done when**:
 
-- [ ] Every existing e2e test passes against seeded anchors
-- [ ] Gate passes: `npm run check && npm run e2e`
+- [x] Every existing e2e test passes against seeded anchors
+- [x] Gate passes: `npm run check && npm run e2e`
 
 **Tests**: e2e
 **Gate**: full
@@ -603,7 +603,7 @@ T27 → T28 → T29
 
 **What**: `e2e/anchors.spec.ts` with each story's Independent Test: API store + reload; add Work → five blocks and "Saved Work."; edit end to 17:00; Gym overlap message then 18:00–19:00 saves; Delete twice → gone after reload.
 **Where**: `e2e/anchors.spec.ts`
-**Depends on**: T27
+**Depends on**: None in this phase (Phase 4 completes first)
 **Reuses**: `resetAnchors` (T27)
 **Requirement**: ANC-10, ANC-13, ANC-16, ANC-17, ANC-19, ANC-21, ANC-32, ANC-33, ANC-38, ANC-39
 
@@ -645,8 +645,8 @@ Phase 1 → Phase 2 → Phase 3 → Phase 4 → Phase 5
 Phase 1:  T1 → T2 → T3 → T4 → T5 → T6
 Phase 2:  T7 → T8 → T9 → T10 → T11 → T12
 Phase 3:  T13 → T14 → T15 → T16 → T17 → T18 → T19 → T20
-Phase 4:  T21 → T22 → T23 → T24 → T25 → T26
-Phase 5:  T27 → T28 → T29
+Phase 4:  T21 → T22 → T23 → T24 → T25 → T26 → T27
+Phase 5:  T28 → T29
 ```
 
 29 tasks pack into four batches of whole phases: P1 (6), P2 (6), P3 (8), P4+P5 (9).
@@ -664,9 +664,9 @@ Phase 5:  T27 → T28 → T29
 | T13 | Phase 2 | start of P3 | ✅ |
 | T14–T20 | previous task | chain in P3 | ✅ |
 | T21 | Phase 3 | start of P4 | ✅ |
-| T22–T26 | previous task | chain in P4 | ✅ |
-| T27 | Phase 4 | start of P5 | ✅ |
-| T28–T29 | previous task | chain in P5 | ✅ |
+| T22–T27 | previous task | chain in P4 | ✅ |
+| T28 | Phase 4 | start of P5 | ✅ |
+| T29 | previous task | chain in P5 | ✅ |
 
 ## Test Co-location Validation
 
