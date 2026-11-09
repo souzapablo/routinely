@@ -3,9 +3,12 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { buildApp } from "./app.ts";
+import type { AnchorRepository } from "./anchors/repository.ts";
 import type { Database } from "./db.ts";
 
-const workingDb: Database = { ping() {}, close() {} };
+// These tests never reach the anchors routes.
+const unusedAnchors = {} as AnchorRepository;
+const workingDb: Database = { ping() {}, close() {}, anchors: unusedAnchors };
 
 describe("buildApp", () => {
   it("answers 404 JSON for an unknown api path", async () => {

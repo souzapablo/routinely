@@ -133,8 +133,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests: `create` returns the anchor with a new id and `list` returns it; `list` orders by start, then name ignoring case; `replace` changes every field and returns `undefined` for an unknown id; `remove` returns `true` then `false`; days round-trip as numbers
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project server`
+- [x] Tests: `create` returns the anchor with a new id and `list` returns it; `list` orders by start, then name ignoring case; `replace` changes every field and returns `undefined` for an unknown id; `remove` returns `true` then `false`; days round-trip as numbers
+- [x] Gate passes: `npm run typecheck && npx vitest run --project server`
 
 **Tests**: integration
 **Gate**: server
