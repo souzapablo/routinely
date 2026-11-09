@@ -343,8 +343,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests: the label names the input; `maxLength` is set; typing calls `onChange`; the ref focuses the input
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: the label names the input; `maxLength` is set; typing calls `onChange`; the ref focuses the input
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: component
 **Gate**: quick
