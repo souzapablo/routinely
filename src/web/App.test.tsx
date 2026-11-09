@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { App } from "./App.tsx";
@@ -9,9 +9,11 @@ beforeEach(() => {
   vi.setSystemTime(new Date(2026, 10, 8, 7, 48));
   vi.stubGlobal(
     "fetch",
-    vi.fn(() =>
+    vi.fn((url: string) =>
       Promise.resolve(
-        Response.json({ status: "ok", db: "ok" }, { status: 200 }),
+        url === "/api/anchors"
+          ? Response.json([], { status: 200 })
+          : Response.json({ status: "ok", db: "ok" }, { status: 200 }),
       ),
     ),
   );
@@ -47,7 +49,7 @@ describe("App", () => {
     const { container } = renderAt("/status");
 
     const banner = screen.getByRole("banner");
-    expect(banner).toHaveTextContent("Example week");
+    expect(await within(banner).findByText("Saved")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Português" })).toBeVisible();
     const heading = screen.getByRole("heading", {
       level: 1,

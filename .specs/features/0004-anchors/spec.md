@@ -189,9 +189,9 @@ The planner draws a hard-coded example week and saves nothing. Anchors are the f
 | ANC-09 | P1: Stored - day format | T1, T3, T4 | Implemented (T4) |
 | ANC-10 | P1: Planner - draws anchors | T21, T24, T27, T28 | Pending |
 | ANC-11 | P1: Planner - anchors only | T24 | Pending |
-| ANC-12 | P1: Planner - loading status | T11, T21, T22 | Pending |
+| ANC-12 | P1: Planner - loading status | T11, T21, T22 | Implemented (T22) |
 | ANC-13 | P1: Planner - loaded status | T11, T21, T22, T28 | Pending |
-| ANC-14 | P1: Planner - load failure | T11, T21, T22 | Pending |
+| ANC-14 | P1: Planner - load failure | T11, T21, T22 | Implemented (T22) |
 | ANC-15 | P1: Planner - empty week | T24 | Pending |
 | ANC-16 | P1: Drawer - open to add | T8, T14, T16, T22, T25, T26, T28 | Pending |
 | ANC-17 | P1: Drawer - open to edit | T8, T19, T23, T25, T28 | Pending |
