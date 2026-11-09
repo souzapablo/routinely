@@ -628,8 +628,8 @@ T28 → T29
 
 **Done when**:
 
-- [ ] Tests pass: "keeps focus in the drawer", "returns focus when it closes", "fits a phone", "follows a language change", "shows rule messages without error red"
-- [ ] Gate passes: `npm run check && npm run e2e`
+- [x] Tests pass: "keeps focus in the drawer", "returns focus when it closes", "fits a phone", "follows a language change", "shows rule messages without error red"
+- [x] Gate passes: `npm run check && npm run e2e`
 
 **Tests**: e2e
 **Gate**: full
