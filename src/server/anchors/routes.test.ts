@@ -157,4 +157,152 @@ describe("anchors API", () => {
       expect(await list()).toEqual([]);
     });
   });
+
+  function put(id: string, payload: unknown) {
+    return app.inject({ method: "PUT", url: `/api/anchors/${id}`, payload } as {
+      method: "PUT";
+      url: string;
+      payload: object;
+    });
+  }
+
+  describe("PUT /api/anchors/:id", () => {
+    it("replaces name, days, start and end and answers 200 with the stored anchor", async () => {
+      const stored = (await post(work)).json<Anchor>();
+      const changed = { name: "Office", days: [0, 2], start: 600, end: 1020 };
+
+      const res = await put(stored.id, changed);
+
+      expect(res.statusCode).toBe(200);
+      expect(res.json()).toEqual({ id: stored.id, ...changed });
+      expect(await list()).toEqual([{ id: stored.id, ...changed }]);
+    });
+
+    it("stores the replaced name trimmed and the days unique and ascending", async () => {
+      const stored = (await post(work)).json<Anchor>();
+
+      const res = await put(stored.id, {
+        ...work,
+        name: " Job ",
+        days: [4, 2, 4],
+      });
+
+      expect(res.statusCode).toBe(200);
+      expect(await list()).toEqual([{ ...stored, name: "Job", days: [2, 4] }]);
+    });
+
+    it("does not count the anchor's own stored version as an overlap", async () => {
+      const stored = (await post(work)).json<Anchor>();
+
+      const res = await put(stored.id, { ...work, end: 1020 });
+
+      expect(res.statusCode).toBe(200);
+      expect(await list()).toEqual([{ ...stored, end: 1020 }]);
+    });
+
+    it("answers 409 when it would overlap another anchor, and changes nothing", async () => {
+      const workStored = (await post(work)).json<Anchor>();
+      const gym = (
+        await post({ name: "Gym", days: [3], start: 1080, end: 1140 })
+      ).json<Anchor>();
+
+      const res = await put(gym.id, {
+        name: "Gym",
+        days: [3],
+        start: 1020,
+        end: 1140,
+      });
+
+      expect(res.statusCode).toBe(409);
+      expect(res.json()).toEqual({ code: "overlap", other: "Work", day: 3 });
+      expect(await list()).toEqual([workStored, gym]);
+    });
+
+    it.each([
+      ["nameEmpty", { ...work, name: "" }],
+      ["nameTooLong", { ...work, name: "a".repeat(61) }],
+      ["noDays", { ...work, days: [] }],
+      ["timesMissing", { ...work, end: null }],
+      ["timeStep", { ...work, start: 550 }],
+      ["endBeforeStart", { ...work, end: 480 }],
+    ])("answers 400 %s and changes nothing", async (code, body) => {
+      const stored = (await post(work)).json<Anchor>();
+
+      const res = await put(stored.id, body);
+
+      expect(res.statusCode).toBe(400);
+      expect(res.json()).toEqual({ code });
+      expect(await list()).toEqual([stored]);
+    });
+
+    it("answers 400 invalid to a wrongly shaped body and changes nothing", async () => {
+      const stored = (await post(work)).json<Anchor>();
+
+      const res = await put(stored.id, { ...work, days: "Mon" });
+
+      expect(res.statusCode).toBe(400);
+      expect(res.json()).toEqual({ code: "invalid" });
+      expect(await list()).toEqual([stored]);
+    });
+
+    it("answers 404 for an unknown id and changes nothing", async () => {
+      const stored = (await post(work)).json<Anchor>();
+
+      const res = await put("nope", { ...work, name: "Other", days: [6] });
+
+      expect(res.statusCode).toBe(404);
+      expect(res.json()).toEqual({ code: "notFound" });
+      expect(await list()).toEqual([stored]);
+    });
+
+    it("answers 404, not a rule, for an unknown id with a broken body", async () => {
+      const res = await put("nope", { ...work, name: "" });
+
+      expect(res.statusCode).toBe(404);
+      expect(res.json()).toEqual({ code: "notFound" });
+    });
+
+    it("answers 404, not invalid, for an unknown id with a body that is not JSON", async () => {
+      const res = await app.inject({
+        method: "PUT",
+        url: "/api/anchors/nope",
+        headers: { "content-type": "application/json" },
+        payload: "{not json",
+      });
+
+      expect(res.statusCode).toBe(404);
+      expect(res.json()).toEqual({ code: "notFound" });
+    });
+  });
+
+  describe("DELETE /api/anchors/:id", () => {
+    it("removes the anchor and answers 204", async () => {
+      const stored = (await post(work)).json<Anchor>();
+      const kept = (
+        await post({ ...work, name: "Gym", days: [6] })
+      ).json<Anchor>();
+
+      const res = await app.inject({
+        method: "DELETE",
+        url: `/api/anchors/${stored.id}`,
+      });
+
+      expect(res.statusCode).toBe(204);
+      expect(res.body).toBe("");
+      expect(await list()).toEqual([kept]);
+    });
+
+    it("answers 404 for an unknown id and changes nothing", async () => {
+      const stored = (await post(work)).json<Anchor>();
+
+      const res = await app.inject({
+        method: "DELETE",
+        url: "/api/anchors/nope",
+      });
+
+      expect(res.statusCode).toBe(404);
+      expect(res.json()).toEqual({ code: "notFound" });
+      expect(await list()).toEqual([stored]);
+    });
+  });
 });
