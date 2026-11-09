@@ -3,6 +3,7 @@ import {
   ChevronLeft,
   ChevronRight,
   GripVertical,
+  Info,
   Lock,
   Plus,
   X,
@@ -17,6 +18,7 @@ const icons = {
   grip: GripVertical,
   x: X,
   check: Check,
+  info: Info,
 } satisfies Record<string, LucideIcon>;
 
 export type IconName = keyof typeof icons;

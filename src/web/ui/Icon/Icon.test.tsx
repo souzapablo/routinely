@@ -11,6 +11,7 @@ const lucideIconOf: Record<IconName, string> = {
   grip: "lucide-grip-vertical",
   x: "lucide-x",
   check: "lucide-check",
+  info: "lucide-info",
 };
 
 function renderIcon(name: IconName, size?: 12 | 16): SVGSVGElement {

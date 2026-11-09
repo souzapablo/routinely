@@ -18,6 +18,7 @@ export const ChevronRight: Story = { args: { name: "chevronRight" } };
 export const Grip: Story = { args: { name: "grip" } };
 export const X: Story = { args: { name: "x" } };
 export const Check: Story = { args: { name: "check" } };
+export const Info: Story = { args: { name: "info" } };
 
 const allNames: IconName[] = [
   "plus",
@@ -27,6 +28,7 @@ const allNames: IconName[] = [
   "grip",
   "x",
   "check",
+  "info",
 ];
 
 export const AllAt16: Story = {
