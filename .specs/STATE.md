@@ -203,3 +203,9 @@
 - **Status**: active (AD-025)
 
 ## Handoff
+
+- **Feature**: 0004-anchors, all five phases done (T1–T29); Verifier PASS (`.specs/features/0004-anchors/validation.md`).
+- **Branch**: `feat/0004-anchors/p5-browser-checks`, stacked on `p4-app-wiring`. Gate at its tip: `npm run check` and `npm run e2e` (23 tests) pass.
+- **Next**: push the phase 5 branch and open its PR (base `feat/0004-anchors/p4-app-wiring`); then merge the stack bottom up.
+- **Open question for the owner**: the language switch can't be reached while the drawer is open (the modal makes the top bar inert), so the spec's "language change in drawer" edge case only happens from script.
+- **Minor**: after a save the client sorts anchors by name case-sensitively, while the server sorts with `COLLATE NOCASE`; names differing only in case can swap order until reload.
