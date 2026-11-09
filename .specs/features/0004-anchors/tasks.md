@@ -267,8 +267,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests: all 7 days → "every day"; exactly 1–5 → "Mon–Fri" (pt-BR from its short names); exactly 0 and 6 → "weekends"; `[1,3]` → "Mon, Wed"; `[0,1,2,3,4,5]` is a list, not "Mon–Fri"; empty name → "Untitled"; invalid or empty times → no time range; valid draft ends with "every week"
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: all 7 days → "every day"; exactly 1–5 → "Mon–Fri" (pt-BR from its short names); exactly 0 and 6 → "weekends"; `[1,3]` → "Mon, Wed"; `[0,1,2,3,4,5]` is a list, not "Mon–Fri"; empty name → "Untitled"; invalid or empty times → no time range; valid draft ends with "every week"
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: unit
 **Gate**: quick
