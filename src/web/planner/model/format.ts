@@ -1,4 +1,4 @@
-import type { Minutes } from "../../../shared/planner.ts";
+import type { DayIndex, Minutes } from "../../../shared/planner.ts";
 
 // Times of day are minutes since midnight; Intl needs a Date, and any fixed
 // day without a DST change gives the same clock reading.
@@ -73,6 +73,24 @@ export function formatWeekday(
   width: "short" | "narrow",
 ): string {
   return new Intl.DateTimeFormat(lang, { weekday: width }).format(date);
+}
+
+// 2 January 2000 was a Sunday, so day N of this week is weekday N.
+export function formatWeekdayIndex(
+  day: DayIndex,
+  lang: string,
+  width: "short" | "narrow",
+): string {
+  return formatWeekday(new Date(2000, 0, 2 + day), lang, width);
+}
+
+export function formatTime(minutes: Minutes, lang: string): string {
+  // A single pt-BR time with a numeric hour reads "9:15", while its ranges
+  // read "09:15"; 24-hour languages pad the hour so both agree.
+  return new Intl.DateTimeFormat(lang, {
+    hour: uses24Hours(lang) ? "2-digit" : "numeric",
+    minute: "2-digit",
+  }).format(atMinutes(minutes));
 }
 
 export type DurationParts =

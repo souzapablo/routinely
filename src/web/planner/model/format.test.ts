@@ -3,9 +3,11 @@ import {
   durationParts,
   formatDayNumber,
   formatHourLabel,
+  formatTime,
   formatTimeRange,
   formatTodayDate,
   formatWeekday,
+  formatWeekdayIndex,
   formatWeekRange,
 } from "./format.ts";
 
@@ -75,6 +77,25 @@ describe("formatDayNumber and formatWeekday", () => {
     expect(formatWeekday(sunday, "en", "short")).toBe("Sun");
     expect(formatWeekday(sunday, "en", "narrow")).toBe("S");
     expect(formatWeekday(sunday, "pt-BR", "short")).toBe("dom.");
+  });
+});
+
+describe("formatWeekdayIndex", () => {
+  it("names a calendar weekday by language, Sunday first", () => {
+    expect(formatWeekdayIndex(0, "en", "short")).toBe("Sun");
+    expect(formatWeekdayIndex(1, "en", "short")).toBe("Mon");
+    expect(formatWeekdayIndex(6, "en", "short")).toBe("Sat");
+    expect(formatWeekdayIndex(0, "pt-BR", "short")).toBe("dom.");
+    expect(formatWeekdayIndex(1, "pt-BR", "short")).toBe("seg.");
+  });
+});
+
+describe("formatTime", () => {
+  it("formats a time of day by language", () => {
+    expect(plain(formatTime(555, "en"))).toBe("9:15 AM");
+    expect(formatTime(555, "pt-BR")).toBe("09:15");
+    expect(plain(formatTime(540, "en"))).toBe("9:00 AM");
+    expect(formatTime(540, "pt-BR")).toBe("09:00");
   });
 });
 
