@@ -609,8 +609,8 @@ T28 → T29
 
 **Done when**:
 
-- [ ] Tests pass: "draws stored anchors", "adds an anchor", "edits an anchor", "refuses an overlap and accepts touching", "deletes with two clicks"
-- [ ] Gate passes: `npm run check && npm run e2e`
+- [x] Tests pass: "draws stored anchors", "adds an anchor", "edits an anchor", "refuses an overlap and accepts touching", "deletes with two clicks"
+- [x] Gate passes: `npm run check && npm run e2e`
 
 **Tests**: e2e
 **Gate**: full
