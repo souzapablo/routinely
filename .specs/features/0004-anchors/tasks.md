@@ -209,8 +209,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests: day 0 is "Sun" / "dom." and day 1 "Mon" / "seg." (short); `formatTime(555)` is "9:15 AM" in en and "09:15" in pt-BR
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: day 0 is "Sun" / "dom." and day 1 "Mon" / "seg." (short); `formatTime(555)` is "9:15 AM" in en and "09:15" in pt-BR
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: unit
 **Gate**: quick
