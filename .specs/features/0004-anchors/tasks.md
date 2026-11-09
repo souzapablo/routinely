@@ -381,8 +381,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests: renders a group named by the legend containing its children
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: renders a group named by the legend containing its children
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: component
 **Gate**: quick
