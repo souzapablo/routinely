@@ -86,6 +86,11 @@
       "saved": "Salvo",
       "notSaved": "Não salvo",
       "loadFailed": "Não foi possível carregar sua semana"
+    },
+    "toast": {
+      "saved": "Salvo: {{name}}.",
+      "deleted": "Excluído: {{name}}.",
+      "alreadyDeleted": "Essa âncora já tinha sido excluída."
     }
   }
 }
