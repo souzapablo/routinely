@@ -222,7 +222,7 @@ The planner draws a hard-coded example week and saves nothing. Anchors are the f
 | ANC-42 | Edge - deleted elsewhere | T12, T18, T21 | Pending |
 | ANC-43 | Edge - server overlap 409 | T12, T21, T25 | Pending |
 | ANC-44 | Edge - clipped to grid hours | T24, T27 | Pending |
-| ANC-45 | Edge - 23:45 end | T1 | Pending |
+| ANC-45 | Edge - 23:45 end | T1 | Implemented (T1) |
 | ANC-46 | Edge - language change in drawer | T10, T25, T29 | Pending |
 | ANC-47 | Edge - phone width drawer | T13, T29 | Pending |
 

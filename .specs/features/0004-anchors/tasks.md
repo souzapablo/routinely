@@ -9,7 +9,7 @@ Implement these tasks with the `tlc-spec-driven` skill: **activate it by name an
 ---
 
 **Design**: `.specs/features/0004-anchors/design.md`
-**Status**: Draft
+**Status**: Approved
 
 ---
 
@@ -92,10 +92,10 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests: each rule returns its code; a draft breaking several rules returns the first in spec order; 60-char trimmed name passes, 61 fails; whitespace-only name is `nameEmpty`; null start or end is `timesMissing`; 540/555 pass, 545 is `timeStep`; end 1425 passes, end 1440 fails; end equal to start is `endBeforeStart`; overlap returns the other's name and the first shared day in week order (Sunday first); touching (end 540 / start 540) passes; overlap on a non-shared day passes
-- [ ] Tests: `normalizeAnchor` trims and returns days unique and ascending
-- [ ] Tests: `AnchorInput` rejects a weekday 7, a non-integer time, a missing name
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project server`
+- [x] Tests: each rule returns its code; a draft breaking several rules returns the first in spec order; 60-char trimmed name passes, 61 fails; whitespace-only name is `nameEmpty`; null start or end is `timesMissing`; 540/555 pass, 545 is `timeStep`; end 1425 passes, end 1440 fails; end equal to start is `endBeforeStart`; overlap returns the other's name and the first shared day in week order (Sunday first); touching (end 540 / start 540) passes; overlap on a non-shared day passes
+- [x] Tests: `normalizeAnchor` trims and returns days unique and ascending
+- [x] Tests: `AnchorInput` rejects a weekday 7, a non-integer time, a missing name
+- [x] Gate passes: `npm run typecheck && npx vitest run --project server`
 
 **Tests**: unit
 **Gate**: server
