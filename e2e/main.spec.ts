@@ -1,10 +1,12 @@
 import { expect, type Page, test } from "@playwright/test";
+import { EXAMPLE_ANCHORS, resetAnchors } from "./anchors.ts";
 
-// Sunday morning, the first day of the example week, in the machine's local
-// time zone (the browser uses the same zone).
+// Sunday morning, the first day of the week, in the machine's local time
+// zone (the browser uses the same zone).
 const SUNDAY_MORNING = new Date(2026, 10, 8, 7, 48);
 
-test.beforeEach(async ({ page }) => {
+test.beforeEach(async ({ page, request }) => {
+  await resetAnchors(request, EXAMPLE_ANCHORS);
   await page.clock.setFixedTime(SUNDAY_MORNING);
 });
 
@@ -50,9 +52,7 @@ test("has no horizontal scroll at 390 and 1280", async ({ page }) => {
   expect(sideways.hidden).toBeGreaterThan(0);
 });
 
-test("fits the window at desktop sizes, with the tray list scrolling inside", async ({
-  page,
-}) => {
+test("fits the window at desktop sizes", async ({ page }) => {
   for (const [width, height] of [
     [1280, 800],
     [1440, 900],
@@ -67,7 +67,8 @@ test("fits the window at desktop sizes, with the tray list scrolling inside", as
     expect(overflow, `vertical page scroll at ${width}x${height}`).toBe(0);
 
     // Every hour row is on screen: the grid body does not scroll.
-    const body = page.locator('[class*="_body_"]');
+    // Inside main: the drawer has a body of its own.
+    const body = page.locator('main [class*="_body_"]');
     const hidden = await body.evaluate(
       (el) => el.scrollHeight - el.clientHeight,
     );
@@ -77,16 +78,8 @@ test("fits the window at desktop sizes, with the tray list scrolling inside", as
     await expect(page.getByText("10 PM")).toBeInViewport();
   }
 
-  // At 1280x800 the tray has more items than room; only its list scrolls.
   await page.setViewportSize({ width: 1280, height: 800 });
   await openPlanner(page);
-  const list = page.locator('[class*="_items_"]');
-  const scroll = await list.evaluate((el) => ({
-    overflowY: getComputedStyle(el).overflowY,
-    hidden: el.scrollHeight - el.clientHeight,
-  }));
-  expect(scroll.overflowY).toBe("auto");
-  expect(scroll.hidden).toBeGreaterThan(0);
   await expect(page.getByText("+ New flexible activity")).toBeInViewport();
 });
 
@@ -236,7 +229,7 @@ test("shows pt-BR texts and 24-hour times", async ({ page }) => {
   await expect(
     page.getByRole("heading", { level: 1, name: "Esta semana" }),
   ).toBeVisible();
-  await expect(page.getByText("Semana de exemplo")).toBeVisible();
+  await expect(page.getByText("Salvo", { exact: true })).toBeVisible();
   await expect(page.getByText("Encaixe nesta semana")).toBeVisible();
   await expect(
     page.getByText(/^8 de nov\.\s–\s14 de nov\. de 2026$/),

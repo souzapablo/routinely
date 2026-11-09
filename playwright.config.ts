@@ -8,6 +8,8 @@ const baseURL = `http://127.0.0.1:${port}`;
 export default defineConfig({
   testDir: "e2e",
   forbidOnly: !!process.env.CI,
+  // One database file is shared by every test, so they run one at a time.
+  workers: 1,
   reporter: process.env.CI ? "github" : "list",
   use: {
     baseURL,
