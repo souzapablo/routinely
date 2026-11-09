@@ -171,8 +171,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests: `PUT` replaces name, days, start and end and answers 200 with the stored anchor; `PUT` of an anchor onto its own old time is not an overlap; `PUT` overlapping another answers 409 and changes nothing; `PUT` breaking a rule answers 400 and changes nothing; `PUT` and `DELETE` on an unknown id answer 404 and `GET` is unchanged; `PUT` on an unknown id with a broken body answers 404; `DELETE` answers 204 and the anchor is gone
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project server`
+- [x] Tests: `PUT` replaces name, days, start and end and answers 200 with the stored anchor; `PUT` of an anchor onto its own old time is not an overlap; `PUT` overlapping another answers 409 and changes nothing; `PUT` breaking a rule answers 400 and changes nothing; `PUT` and `DELETE` on an unknown id answer 404 and `GET` is unchanged; `PUT` on an unknown id with a broken body answers 404; `DELETE` answers 204 and the anchor is gone
+- [x] Gate passes: `npm run typecheck && npx vitest run --project server`
 
 **Tests**: integration
 **Gate**: server

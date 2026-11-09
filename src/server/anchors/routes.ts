@@ -8,6 +8,9 @@ import {
 import type { AnchorRepository } from "./repository.ts";
 
 const invalid = { code: "invalid" } as const;
+const notFound = { code: "notFound" } as const;
+
+type ById = { Params: { id: string } };
 
 function sendProblem(reply: FastifyReply, problem: AnchorProblem) {
   return reply.code(problem.code === "overlap" ? 409 : 400).send(problem);
@@ -40,6 +43,38 @@ export function registerAnchorRoutes(
       if (problem) return sendProblem(reply, problem);
 
       return reply.code(201).send(anchors.create(normalizeAnchor(parsed.data)));
+    });
+
+    // An unknown id answers 404 before the body is even parsed, so it never
+    // reports a rule or a malformed body.
+    scope.put<ById>(
+      "/api/anchors/:id",
+      {
+        onRequest: (request, reply, next) => {
+          if (anchors.get(request.params.id)) return next();
+          void reply.code(404).send(notFound);
+        },
+      },
+      (request, reply) => {
+        const { id } = request.params;
+        const parsed = AnchorInput.safeParse(request.body);
+        if (!parsed.success) return reply.code(400).send(invalid);
+
+        const others = anchors.list().filter((anchor) => anchor.id !== id);
+        const problem = anchorProblem(parsed.data, others);
+        if (problem) return sendProblem(reply, problem);
+
+        const replaced = anchors.replace(id, normalizeAnchor(parsed.data));
+        if (!replaced) return reply.code(404).send(notFound);
+        return reply.code(200).send(replaced);
+      },
+    );
+
+    scope.delete<ById>("/api/anchors/:id", (request, reply) => {
+      if (!anchors.remove(request.params.id)) {
+        return reply.code(404).send(notFound);
+      }
+      return reply.code(204).send();
     });
 
     done();
