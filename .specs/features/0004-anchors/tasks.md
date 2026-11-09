@@ -247,9 +247,9 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests: each code maps to its key; overlap values are `{ other: "Work", weekday: "Mon" }` in en and `"seg."` in pt-BR; the step example values are "9:00 AM"/"9:15 AM" in en and "09:00"/"09:15" in pt-BR; rendered en strings equal the spec's wording exactly
-- [ ] No pt-BR string uses missed/failed/overdue/late/skipped wording
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: each code maps to its key; overlap values are `{ other: "Work", weekday: "Mon" }` in en and `"seg."` in pt-BR; the step example values are "9:00 AM"/"9:15 AM" in en and "09:00"/"09:15" in pt-BR; rendered en strings equal the spec's wording exactly
+- [x] No pt-BR string uses missed/failed/overdue/late/skipped wording
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: unit
 **Gate**: quick
