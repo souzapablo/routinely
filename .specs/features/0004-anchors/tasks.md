@@ -419,8 +419,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests (fake timers): shows the message; calls `onDone` at 3400 ms, not before; a new `id` with the same text restarts the timer
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests (fake timers): shows the message; calls `onDone` at 3400 ms, not before; a new `id` with the same text restarts the timer
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: component
 **Gate**: quick
