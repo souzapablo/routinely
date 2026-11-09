@@ -228,8 +228,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests: `newDraft` is empty name, days 1–5, "09:00"–"18:00"; `draftFromAnchor` round-trips through `draftToInput`; empty time string becomes `null`; "09:10" becomes 550 and is refused as `timeStep`; editing Work without changing it is not an overlap with itself; a new draft overlapping Work is
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: `newDraft` is empty name, days 1–5, "09:00"–"18:00"; `draftFromAnchor` round-trips through `draftToInput`; empty time string becomes `null`; "09:10" becomes 550 and is refused as `timeStep`; editing Work without changing it is not an overlap with itself; a new draft overlapping Work is
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: unit
 **Gate**: quick
