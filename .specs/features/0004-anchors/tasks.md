@@ -438,8 +438,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests: a button named by `label`; click, Enter and Space call `onClick`; it is in the Tab order
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: a button named by `label`; click, Enter and Space call `onClick`; it is in the Tab order
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: component
 **Gate**: quick
