@@ -148,3 +148,152 @@ test("deletes with two clicks", async ({ page, request }) => {
   await expect(page.getByText("Saved", { exact: true })).toBeVisible();
   await expect(blocks(page, "Work")).toHaveCount(0);
 });
+
+/** What a token computes to in the page, as `rgb(...)`. */
+async function tokenColor(page: Page, token: string): Promise<string> {
+  return page.evaluate((name) => {
+    const probe = document.createElement("div");
+    probe.style.color = `var(${name})`;
+    document.body.append(probe);
+    const color = getComputedStyle(probe).color;
+    probe.remove();
+    return color;
+  }, token);
+}
+
+test("keeps focus in the drawer", async ({ page, request }) => {
+  await resetAnchors(request, [WORK]);
+  await openPlanner(page);
+
+  await page.getByRole("button", { name: "Add activity" }).click();
+  await expect(page.getByLabel("Name")).toBeFocused();
+
+  // More presses than the drawer has controls, both ways round. Past its
+  // last control a modal dialog hands focus to the browser's own UI (the
+  // page reads that as the body) and then wraps back to its first control;
+  // no element of the page behind it ever gets focus.
+  for (const key of ["Tab", "Shift+Tab"]) {
+    let wrapped = false;
+    let leftForBrowser = false;
+    for (let i = 0; i < 40; i++) {
+      await page.keyboard.press(key);
+      const where = await page.evaluate(() => {
+        const focused = document.activeElement;
+        if (focused === null || focused === document.body) return "browser";
+        return document.querySelector("dialog[open]")?.contains(focused)
+          ? "drawer"
+          : "page";
+      });
+      expect(where, `focus after ${key} ×${i + 1}`).not.toBe("page");
+      if (where === "browser") leftForBrowser = true;
+      else if (leftForBrowser) wrapped = true;
+    }
+    expect(wrapped, `focus comes back into the drawer on ${key}`).toBe(true);
+  }
+});
+
+test("returns focus when it closes", async ({ page, request }) => {
+  await resetAnchors(request, [WORK]);
+  await openPlanner(page);
+
+  const add = page.getByRole("button", { name: "Add activity" });
+  await add.click();
+  await page.getByLabel("Name").fill("Not kept");
+  await page.keyboard.press("Escape");
+  await expect(drawer(page)).toBeHidden();
+  await expect(add).toBeFocused();
+  // Closing does not save.
+  expect(await (await request.get("/api/anchors")).json()).toHaveLength(1);
+
+  const tuesday = blocks(page, "Work").nth(1);
+  await tuesday.focus();
+  await page.keyboard.press("Enter");
+  await expect(drawer(page)).toHaveAccessibleName("Edit anchor");
+  await drawer(page).getByRole("button", { name: "Cancel" }).click();
+  await expect(drawer(page)).toBeHidden();
+  await expect(tuesday).toBeFocused();
+});
+
+test("fits a phone", async ({ page, request }) => {
+  await resetAnchors(request, [WORK]);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await openPlanner(page);
+
+  await blocks(page, "Work").first().click();
+  await expect(drawer(page)).toBeVisible();
+
+  const box = await drawer(page).boundingBox();
+  expect(box?.x).toBe(0);
+  expect(box?.width).toBe(390);
+  for (const name of ["Delete", "Cancel", "Save anchor"]) {
+    await expect(drawer(page).getByRole("button", { name })).toBeInViewport({
+      ratio: 1,
+    });
+  }
+  const sideways = await page.evaluate(() => {
+    const dialog = document.querySelector("dialog[open]");
+    const html = document.documentElement;
+    return {
+      page: html.scrollWidth - html.clientWidth,
+      drawer: dialog ? dialog.scrollWidth - dialog.clientWidth : -1,
+    };
+  });
+  expect(sideways).toEqual({ page: 0, drawer: 0 });
+});
+
+test("follows a language change", async ({ page, request }) => {
+  await resetAnchors(request, [WORK]);
+  await openPlanner(page);
+
+  await page.getByRole("button", { name: "Add activity" }).click();
+  await drawer(page).getByRole("button", { name: "Save anchor" }).click();
+  await expect(drawer(page).getByRole("status")).toHaveText(
+    "Give it a name so you can recognize it on the calendar.",
+  );
+
+  // The open modal makes the top bar inert, so the switch is pressed from
+  // script rather than with the mouse.
+  await page.getByRole("button", { name: "Português" }).dispatchEvent("click");
+
+  await expect(drawer(page)).toHaveAccessibleName("Adicionar âncora");
+  await expect(drawer(page).getByLabel("Nome")).toBeVisible();
+  await expect(drawer(page).getByLabel("Início")).toBeVisible();
+  await expect(
+    drawer(page).getByRole("button", { name: "Salvar âncora" }),
+  ).toBeVisible();
+  const monday = new Intl.DateTimeFormat("pt-BR", { weekday: "short" }).format(
+    new Date(2026, 10, 9),
+  );
+  await expect(
+    drawer(page).getByRole("button", { name: monday, exact: true }),
+  ).toBeVisible();
+  await expect(
+    drawer(page).getByText(/^Sem nome · .+ · toda semana$/),
+  ).toHaveText(/09:00\s–\s18:00/);
+  await expect(drawer(page).getByRole("status")).toHaveText(
+    "Dê um nome para reconhecer no calendário.",
+  );
+});
+
+test("shows rule messages without error red", async ({ page, request }) => {
+  await resetAnchors(request, [WORK]);
+  await openPlanner(page);
+  const bad = await tokenColor(page, "--bad");
+
+  await page.getByRole("button", { name: "Add activity" }).click();
+  await page.getByLabel("Name").fill("Gym");
+  await drawer(page).getByRole("button", { name: "Save anchor" }).click();
+  const line = drawer(page).getByRole("status");
+  await expect(line).toHaveText(
+    "This overlaps Work on Mon. Anchors can't share time.",
+  );
+
+  const colors = await line.evaluate((el) =>
+    [el, ...el.querySelectorAll("*")].flatMap((node) => {
+      const style = getComputedStyle(node);
+      return [style.color, style.fill, style.stroke, style.backgroundColor];
+    }),
+  );
+  expect(colors).not.toContain(bad);
+  await expect(line).toHaveCSS("color", await tokenColor(page, "--muted"));
+});
