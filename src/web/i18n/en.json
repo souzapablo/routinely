@@ -36,7 +36,8 @@
   },
   "grid": {
     "markDone": "Mark {{name}} done",
-    "unplace": "Move {{name}} back to the list"
+    "unplace": "Move {{name}} back to the list",
+    "editAnchor": "Edit {{name}}"
   },
   "tray": {
     "title": "Fit in this week",

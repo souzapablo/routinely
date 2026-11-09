@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import { useTranslation } from "react-i18next";
 import type { Category } from "../../../shared/planner.ts";
 import { Button } from "../../ui/Button/Button.tsx";
+import { CoverButton } from "../../ui/CoverButton/CoverButton.tsx";
 import { CheckToggle } from "../../ui/CheckToggle/CheckToggle.tsx";
 import { Icon } from "../../ui/Icon/Icon.tsx";
 import { categoryTones } from "../../ui/Swatch/Swatch.tsx";
@@ -15,6 +16,8 @@ export interface GridBlockModel {
   timeLabel: string;
   category: Category | "anchor";
   done: boolean;
+  /** The stored anchor an anchor block draws. */
+  anchorId?: string;
   /** Pixels from the top of the column. */
   top: number;
   height: number;
@@ -24,6 +27,8 @@ export interface GridBlockModel {
 
 export interface GridBlockProps {
   block: GridBlockModel;
+  /** Opens an anchor block's anchor for editing. */
+  onOpen?: (anchorId: string) => void;
 }
 
 function toneStyle(category: Category | "anchor"): CSSProperties {
@@ -36,9 +41,10 @@ function toneStyle(category: Category | "anchor"): CSSProperties {
   } as CSSProperties;
 }
 
-export function GridBlock({ block }: GridBlockProps) {
+export function GridBlock({ block, onOpen }: GridBlockProps) {
   const { t } = useTranslation();
   const isAnchor = block.kind === "anchor";
+  const { anchorId } = block;
   const className = [
     styles.block,
     isAnchor ? styles.anchor : styles.placement,
@@ -55,6 +61,14 @@ export function GridBlock({ block }: GridBlockProps) {
         .join(" ")}
       style={{ top: block.top, height: block.height }}
     >
+      {anchorId !== undefined && onOpen && (
+        <div className={styles.cover}>
+          <CoverButton
+            label={t("grid.editAnchor", { name: block.name })}
+            onClick={() => onOpen(anchorId)}
+          />
+        </div>
+      )}
       <div className={className} style={toneStyle(block.category)}>
         <div className={styles.row}>
           {isAnchor && (
@@ -79,11 +93,13 @@ export function GridBlock({ block }: GridBlockProps) {
               </Button>
             </div>
           )}
-          <CheckToggle
-            pressed={block.done}
-            label={t("grid.markDone", { name: block.name })}
-            inert
-          />
+          <div className={styles.check}>
+            <CheckToggle
+              pressed={block.done}
+              label={t("grid.markDone", { name: block.name })}
+              inert
+            />
+          </div>
         </div>
         {!block.tiny && (
           <div className={styles.time}>

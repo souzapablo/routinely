@@ -23,6 +23,8 @@ export interface WeekGridProps {
   pxPerHour: number;
   /** The area under the day names, where the hour rows go. */
   bodyRef?: Ref<HTMLDivElement>;
+  /** Opens an anchor block's anchor for editing. */
+  onOpenAnchor?: (anchorId: string) => void;
 }
 
 export function WeekGrid({
@@ -31,6 +33,7 @@ export function WeekGrid({
   nowOffset,
   pxPerHour,
   bodyRef,
+  onOpenAnchor,
 }: WeekGridProps) {
   return (
     <Card>
@@ -69,7 +72,11 @@ export function WeekGrid({
                   .join(" ")}
               >
                 {day.blocks.map((block) => (
-                  <GridBlock key={block.key} block={block} />
+                  <GridBlock
+                    key={block.key}
+                    block={block}
+                    onOpen={onOpenAnchor}
+                  />
                 ))}
                 {day.isToday && nowOffset !== null && (
                   <div className={styles.now} style={{ top: nowOffset }} />
