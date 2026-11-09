@@ -55,5 +55,20 @@
     "minutes": "{{minutes}} min",
     "hours": "{{hours}} h",
     "hoursMinutes": "{{hours}} h {{minutes}} min"
+  },
+  "anchors": {
+    "rules": {
+      "nameEmpty": "Give it a name so you can recognize it on the calendar.",
+      "nameTooLong": "Keep the name to {{max}} characters or fewer.",
+      "noDays": "Pick at least one day it repeats on.",
+      "timesMissing": "Set a start and end time.",
+      "timeStep": "Times go in 15-minute steps, like {{first}} or {{second}}.",
+      "endBeforeStart": "The end time needs to be after the start time.",
+      "overlap": "This overlaps {{other}} on {{weekday}}. Anchors can't share time."
+    },
+    "failure": {
+      "save": "Not saved. Your changes are still here, so you can try again.",
+      "delete": "Not deleted. Try again in a moment."
+    }
   }
 }
