@@ -113,9 +113,9 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests: a fresh file ends at `user_version` 1 with an `anchors` table; opening an already-migrated file again changes nothing and keeps its rows; a failing step (test passes its own list) leaves `user_version` and the schema as they were
-- [ ] Existing `db.test.ts` and `index.test.ts` still pass
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project server`
+- [x] Tests: a fresh file ends at `user_version` 1 with an `anchors` table; opening an already-migrated file again changes nothing and keeps its rows; a failing step (test passes its own list) leaves `user_version` and the schema as they were
+- [x] Existing `db.test.ts` and `index.test.ts` still pass
+- [x] Gate passes: `npm run typecheck && npx vitest run --project server`
 
 **Tests**: integration
 **Gate**: server
