@@ -400,8 +400,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests: the region exists with `role="status"` even when empty; the message appears inside it; `calm` has no error class; `error` has it
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: the region exists with `role="status"` even when empty; the message appears inside it; `calm` has no error class; `error` has it
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: component
 **Gate**: quick
