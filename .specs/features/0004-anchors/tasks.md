@@ -286,8 +286,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests: `loading` → busy "Loading your week…"; `saving` → busy "Saving…"; `saved` → ok "Saved"; `notSaved` → error "Not saved"; `loadFailed` → error "Couldn't load your week"
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: `loading` → busy "Loading your week…"; `saving` → busy "Saving…"; `saved` → ok "Saved"; `notSaved` → error "Not saved"; `loadFailed` → error "Couldn't load your week"
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: unit
 **Gate**: quick
