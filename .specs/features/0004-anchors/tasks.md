@@ -362,8 +362,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests: the label names the input; type is `time` and step `900`; changing it calls `onChange` with `"HH:MM"`; an empty value passes through as `""`
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: the label names the input; type is `time` and step `900`; changing it calls `onChange` with `"HH:MM"`; an empty value passes through as `""`
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: component
 **Gate**: quick
