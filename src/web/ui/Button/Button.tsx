@@ -6,7 +6,8 @@ export interface ButtonProps extends Omit<
   ComponentProps<"button">,
   "className" | "style" | "children" | "aria-pressed" | "inert"
 > {
-  variant?: "default" | "primary" | "ghost" | "dashed" | "accent";
+  /** `danger` is a red fill, kept for a destructive action such as delete. */
+  variant?: "default" | "primary" | "ghost" | "dashed" | "accent" | "danger";
   size?: "md" | "sm";
   icon?: IconName;
   /** Square button with only the icon; the label becomes its accessible name. */

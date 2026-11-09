@@ -14,7 +14,7 @@ describe("Button", () => {
     expect(button.className).toBe(styles.button);
   });
 
-  it.each(["primary", "ghost", "dashed", "accent"] as const)(
+  it.each(["primary", "ghost", "dashed", "accent", "danger"] as const)(
     "variant %s adds its own class",
     (variant) => {
       render(<Button variant={variant}>Label</Button>);
@@ -22,6 +22,15 @@ describe("Button", () => {
       expect(screen.getByRole("button").className).toBe(
         `${styles.button} ${styles[variant]}`,
       );
+    },
+  );
+
+  it.each(["default", "primary", "ghost", "dashed", "accent"] as const)(
+    "variant %s does not add the danger class",
+    (variant) => {
+      render(<Button variant={variant}>Delete</Button>);
+      expect(styles.danger).toBeTruthy();
+      expect(screen.getByRole("button")).not.toHaveClass(styles.danger);
     },
   );
 

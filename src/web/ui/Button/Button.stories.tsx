@@ -23,6 +23,9 @@ export const Dashed: Story = {
 export const Accent: Story = {
   args: { variant: "accent", size: "sm", children: "Find a time" },
 };
+export const Danger: Story = {
+  args: { variant: "danger", children: "Click again to delete" },
+};
 export const Small: Story = { args: { size: "sm", children: "Find a time" } };
 
 export const IconOnly: Story = {

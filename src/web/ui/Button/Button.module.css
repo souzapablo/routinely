@@ -75,6 +75,17 @@
   border-color: var(--accent);
 }
 
+.danger {
+  background: var(--bad);
+  color: var(--surface);
+  border-color: var(--bad);
+}
+
+.danger:not(:disabled):hover {
+  border-color: var(--bad);
+  opacity: 0.9;
+}
+
 .button[aria-pressed="true"],
 .button[aria-pressed="true"]:not(:disabled):hover {
   background: var(--accent);
