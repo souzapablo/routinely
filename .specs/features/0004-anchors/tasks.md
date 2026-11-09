@@ -152,8 +152,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests (real temp-file DB): `GET` on an empty store is `[]`; `POST` Work Mon–Fri answers 201 with an id and `GET` returns it; three posted anchors come back ordered by start then name; days `[5,1,1,3]` are stored `[1,3,5]`; each rule answers 400 with its code and `GET` is unchanged; a non-JSON or wrongly shaped body answers 400 `invalid`; an overlapping `POST` answers 409 `{ code: "overlap", other: "Work", day: 1 }` and stores nothing; a touching `POST` answers 201
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project server`
+- [x] Tests (real temp-file DB): `GET` on an empty store is `[]`; `POST` Work Mon–Fri answers 201 with an id and `GET` returns it; three posted anchors come back ordered by start then name; days `[5,1,1,3]` are stored `[1,3,5]`; each rule answers 400 with its code and `GET` is unchanged; a non-JSON or wrongly shaped body answers 400 `invalid`; an overlapping `POST` answers 409 `{ code: "overlap", other: "Work", day: 1 }` and stores nothing; a touching `POST` answers 201
+- [x] Gate passes: `npm run typecheck && npx vitest run --project server`
 
 **Tests**: integration
 **Gate**: server
