@@ -79,6 +79,13 @@
       "list": "{{days}}",
       "time": "{{range}}",
       "everyWeek": "every week"
+    },
+    "status": {
+      "loading": "Loading your week…",
+      "saving": "Saving…",
+      "saved": "Saved",
+      "notSaved": "Not saved",
+      "loadFailed": "Couldn't load your week"
     }
   }
 }
