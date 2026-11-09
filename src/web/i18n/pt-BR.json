@@ -69,6 +69,16 @@
     "failure": {
       "save": "Não salvo. Suas alterações continuam aqui, então você pode tentar de novo.",
       "delete": "Não excluído. Tente de novo em instantes."
+    },
+    "preview": {
+      "name": "{{name}}",
+      "untitled": "Sem nome",
+      "everyDay": "todo dia",
+      "weekdays": "{{from}}–{{to}}",
+      "weekends": "fins de semana",
+      "list": "{{days}}",
+      "time": "{{range}}",
+      "everyWeek": "toda semana"
     }
   }
 }
