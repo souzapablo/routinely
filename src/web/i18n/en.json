@@ -91,6 +91,19 @@
       "saved": "Saved {{name}}.",
       "deleted": "Deleted {{name}}.",
       "alreadyDeleted": "That anchor was already deleted."
+    },
+    "drawer": {
+      "addTitle": "Add anchor",
+      "editTitle": "Edit anchor",
+      "close": "Close",
+      "name": "Name",
+      "repeatsOn": "Repeats on",
+      "start": "Start",
+      "end": "End",
+      "cancel": "Cancel",
+      "save": "Save anchor",
+      "delete": "Delete",
+      "confirmDelete": "Click again to delete"
     }
   }
 }

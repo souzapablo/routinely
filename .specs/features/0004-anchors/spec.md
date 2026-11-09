@@ -195,32 +195,32 @@ The planner draws a hard-coded example week and saves nothing. Anchors are the f
 | ANC-15 | P1: Planner - empty week | T24 | Implemented (T24) |
 | ANC-16 | P1: Drawer - open to add | T8, T14, T16, T22, T25, T26, T28 | Pending |
 | ANC-17 | P1: Drawer - open to edit | T8, T19, T23, T25, T28 | Pending |
-| ANC-18 | P1: Drawer - preview | T7, T10, T25 | Pending |
+| ANC-18 | P1: Drawer - preview | T7, T10, T25 | Implemented (T25) |
 | ANC-19 | P1: Drawer - save | T12, T18, T21, T25, T26, T28 | Pending |
-| ANC-20 | P1: Drawer - saving state | T11, T21, T22, T25 | Pending |
+| ANC-20 | P1: Drawer - saving state | T11, T21, T22, T25 | Implemented (T25) |
 | ANC-21 | P1: Drawer - saved status | T11, T21, T22, T28 | Pending |
-| ANC-22 | P1: Drawer - save failure | T9, T11, T12, T21, T22, T25 | Pending |
+| ANC-22 | P1: Drawer - save failure | T9, T11, T12, T21, T22, T25 | Implemented (T25) |
 | ANC-23 | P1: Drawer - close without saving | T13, T25, T29 | Pending |
 | ANC-24 | P1: Drawer - focus return | T13, T26, T29 | Pending |
 | ANC-25 | P1: Drawer - focus trap | T13, T29 | Pending |
-| ANC-26 | P1: Rules - empty name | T1, T8, T9, T25 | Pending |
-| ANC-27 | P1: Rules - name length | T1, T14, T25 | Pending |
-| ANC-28 | P1: Rules - no day | T1, T8, T9, T25 | Pending |
-| ANC-29 | P1: Rules - times set | T1, T8, T9, T25 | Pending |
-| ANC-30 | P1: Rules - 15-minute steps | T1, T7, T8, T9, T15, T25 | Pending |
-| ANC-31 | P1: Rules - end after start | T1, T8, T9, T25 | Pending |
+| ANC-26 | P1: Rules - empty name | T1, T8, T9, T25 | Implemented (T25) |
+| ANC-27 | P1: Rules - name length | T1, T14, T25 | Implemented (T25) |
+| ANC-28 | P1: Rules - no day | T1, T8, T9, T25 | Implemented (T25) |
+| ANC-29 | P1: Rules - times set | T1, T8, T9, T25 | Implemented (T25) |
+| ANC-30 | P1: Rules - 15-minute steps | T1, T7, T8, T9, T15, T25 | Implemented (T25) |
+| ANC-31 | P1: Rules - end after start | T1, T8, T9, T25 | Implemented (T25) |
 | ANC-32 | P1: Rules - overlap message | T1, T7, T8, T9, T25, T28 | Pending |
 | ANC-33 | P1: Rules - touching allowed | T1, T4, T8, T25, T28 | Pending |
-| ANC-34 | P1: Rules - nothing sent | T21, T25 | Pending |
-| ANC-35 | P1: Rules - own version ignored | T1, T5, T8 | Pending |
+| ANC-34 | P1: Rules - nothing sent | T21, T25 | Implemented (T25) |
+| ANC-35 | P1: Rules - own version ignored | T1, T5, T8 | Implemented (T8) |
 | ANC-36 | P1: Rules - message announced | T17, T25, T29 | Pending |
-| ANC-37 | P2: Delete - button shown when editing | T25 | Pending |
+| ANC-37 | P2: Delete - button shown when editing | T25 | Implemented (T25) |
 | ANC-38 | P2: Delete - first click arms | T20, T25, T28 | Pending |
 | ANC-39 | P2: Delete - second click deletes | T18, T21, T25, T28 | Pending |
-| ANC-40 | P2: Delete - disarmed on open | T25 | Pending |
-| ANC-41 | P2: Delete - failure | T9, T11, T12, T21, T25 | Pending |
+| ANC-40 | P2: Delete - disarmed on open | T25 | Implemented (T25) |
+| ANC-41 | P2: Delete - failure | T9, T11, T12, T21, T25 | Implemented (T25) |
 | ANC-42 | Edge - deleted elsewhere | T12, T18, T21 | Implemented (T21) |
-| ANC-43 | Edge - server overlap 409 | T12, T21, T25 | Pending |
+| ANC-43 | Edge - server overlap 409 | T12, T21, T25 | Implemented (T25) |
 | ANC-44 | Edge - clipped to grid hours | T24, T27 | Pending |
 | ANC-45 | Edge - 23:45 end | T1 | Implemented (T1) |
 | ANC-46 | Edge - language change in drawer | T10, T25, T29 | Pending |

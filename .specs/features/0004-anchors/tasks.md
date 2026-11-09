@@ -552,8 +552,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests (provider stubbed): add mode is titled "Add anchor" with empty name, Mon–Fri pressed, 09:00–18:00, focus on name, no Delete; edit mode is "Edit anchor" filled from the anchor, with Delete; each rule shows its message, sends nothing, and an empty name refocuses the field; a valid save calls `save` with the draft; Save is disabled while `saving`; a `failed` outcome keeps every value and shows the "Not saved…" line in error tone; a server overlap outcome shows the overlap message; first Delete reads "Click again to delete" and deletes nothing, second calls `remove`; reopening disarms it; a delete failure shows "Not deleted…"; switching to pt-BR re-renders labels, weekday names, preview and message
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests (provider stubbed): add mode is titled "Add anchor" with empty name, Mon–Fri pressed, 09:00–18:00, focus on name, no Delete; edit mode is "Edit anchor" filled from the anchor, with Delete; each rule shows its message, sends nothing, and an empty name refocuses the field; a valid save calls `save` with the draft; Save is disabled while `saving`; a `failed` outcome keeps every value and shows the "Not saved…" line in error tone; a server overlap outcome shows the overlap message; first Delete reads "Click again to delete" and deletes nothing, second calls `remove`; reopening disarms it; a delete failure shows "Not deleted…"; switching to pt-BR re-renders labels, weekday names, preview and message
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: component
 **Gate**: quick
