@@ -178,15 +178,15 @@ The planner draws a hard-coded example week and saves nothing. Anchors are the f
 
 | Requirement ID | Story | Tasks | Status |
 | --- | --- | --- | --- |
-| ANC-01 | P1: Stored - list | T3, T4 | Pending |
-| ANC-02 | P1: Stored - create | T3, T4 | Pending |
+| ANC-01 | P1: Stored - list | T3, T4 | Implemented (T4) |
+| ANC-02 | P1: Stored - create | T3, T4 | Implemented (T4) |
 | ANC-03 | P1: Stored - replace | T3, T5 | Pending |
 | ANC-04 | P1: Stored - delete | T3, T5 | Pending |
 | ANC-05 | P1: Stored - unknown id 404 | T5 | Pending |
 | ANC-06 | P1: Stored - broken rule 400 | T4, T5 | Pending |
 | ANC-07 | P1: Stored - overlap 409 | T4, T5 | Pending |
 | ANC-08 | P1: Stored - survives restart | T2, T6 | Pending |
-| ANC-09 | P1: Stored - day format | T1, T3, T4 | Pending |
+| ANC-09 | P1: Stored - day format | T1, T3, T4 | Implemented (T4) |
 | ANC-10 | P1: Planner - draws anchors | T21, T24, T27, T28 | Pending |
 | ANC-11 | P1: Planner - anchors only | T24 | Pending |
 | ANC-12 | P1: Planner - loading status | T11, T21, T22 | Pending |
