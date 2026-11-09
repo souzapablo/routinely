@@ -24,7 +24,7 @@
 - **Trade-off**: Drizzle has no `node:sqlite` driver, so adopting Drizzle later means switching to better-sqlite3 behind the `Database` module.
 - **Scope**: `src/server/db.ts` and every feature that adds tables
 - **Date**: 2026-11-06
-- **Status**: active
+- **Status**: superseded by AD-021
 
 ### AD-004
 - **Decision**: The server's TypeScript runs directly on Node 26 type stripping; only the web app is built. Server code uses erasable syntax only and `.ts` import extensions.
@@ -128,7 +128,7 @@
 - **Trade-off**: None; the save states come with persistence.
 - **Scope**: Top bar, until persistence
 - **Date**: 2026-11-08
-- **Status**: active (AD-016)
+- **Status**: superseded by AD-023
 
 ### AD-017
 - **Decision**: Planner rules (what appears, counts, order, positions, formatted dates) live in pure functions in `src/web/planner/model/` over the types in `src/shared/planner.ts`; planner components only render the results.
@@ -161,5 +161,37 @@
 - **Scope**: `src/web/planner/model/week.ts`, `src/shared/planner.ts`, every feature that stores days or weeks
 - **Date**: 2026-11-08
 - **Status**: active (AD-020)
+
+### AD-021
+- **Decision**: No ORM. The server keeps `node:sqlite` with hand-written SQL in one repository module per table. The schema comes from an ordered list of SQL migration steps in `src/server/migrations.ts`, applied by `openDatabase` and tracked with `PRAGMA user_version`. Each step runs in one transaction.
+- **Reason**: With anchors as the first real table, user chose "Plain SQL, node:sqlite (Recommended)" over Drizzle + better-sqlite3 and Kysely. No new dependency and no native module.
+- **Trade-off**: Every table's SQL and row mapping is written by hand; no generated types from the schema.
+- **Scope**: `src/server`, every feature that adds tables
+- **Date**: 2026-11-09
+- **Status**: active (AD-021)
+
+### AD-022
+- **Decision**: Modal surfaces (the drawer, later dialogs) are design-system components built on the native `<dialog>` with `showModal()`. The browser provides the focus trap, Escape, the inert background and the backdrop. Component tests stub `showModal`/`close` in `test-setup.ts`, and focus behaviour is asserted in Playwright.
+- **Reason**: User chose "Native <dialog> (Recommended)" over a hand-built modal.
+- **Trade-off**: jsdom has no `showModal`, so focus trapping is proven only in e2e.
+- **Scope**: `src/web/ui`
+- **Date**: 2026-11-09
+- **Status**: active (AD-022)
+
+### AD-023
+- **Decision**: The top bar's status slot shows the anchors' save state: "Loading your week…", "Saving…" (accent), "Saved" (green), "Not saved" and "Couldn't load your week" (red). "Example week" is gone.
+- **Reason**: The example week leaves the planner with the anchors feature (spec 0004, "Real anchors only"); AD-016 was meant to last only until persistence.
+- **Trade-off**: None.
+- **Scope**: Top bar
+- **Date**: 2026-11-09
+- **Status**: active (AD-023)
+
+### AD-024
+- **Decision**: Playwright runs with one worker, and every e2e test that depends on stored data resets it through the API in `beforeEach` (delete all, then seed).
+- **Reason**: The e2e server uses one database file shared across test files and runs; parallel workers would race on the same tables.
+- **Trade-off**: The e2e suite runs serially.
+- **Scope**: `e2e/`, `playwright.config.ts`
+- **Date**: 2026-11-09
+- **Status**: active (AD-024)
 
 ## Handoff
