@@ -514,8 +514,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests: an anchor block has a button "Edit Work" that calls `onOpen("id")` on click, Enter and Space; a placement block has none; the check toggle is still present and not inside the cover button
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: an anchor block has a button "Edit Work" that calls `onOpen("id")` on click, Enter and Space; a placement block has none; the check toggle is still present and not inside the cover button
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: component
 **Gate**: quick

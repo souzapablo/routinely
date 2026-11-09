@@ -36,7 +36,8 @@
   },
   "grid": {
     "markDone": "Marcar {{name}} como feito",
-    "unplace": "Mover {{name}} de volta para a lista"
+    "unplace": "Mover {{name}} de volta para a lista",
+    "editAnchor": "Editar {{name}}"
   },
   "tray": {
     "title": "Encaixe nesta semana",

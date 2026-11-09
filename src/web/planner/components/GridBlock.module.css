@@ -119,3 +119,22 @@
     display: grid;
   }
 }
+
+/* The anchor's edit button lies over the whole block, outside its clipped
+   box so the focus ring shows; only the check toggle sits above it. */
+.cover {
+  position: absolute;
+  inset: 0 0 3px;
+  border-radius: 7px;
+}
+
+.tinySlot .cover {
+  bottom: 1px;
+}
+
+.check {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  flex: none;
+}
