@@ -305,8 +305,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests (stubbed `fetch`): 200 list → anchors; 500, network error, non-JSON and wrong-shaped list → `"failed"`; save `POST` when id is null and `PUT /api/anchors/:id` otherwise; 201/200 → `ok`; 400 with a rule code and 409 overlap → `rule`; 400 `invalid` → `failed`; 404 → `notFound`; 500/network → `failed`; delete 204 → `ok`, 404 → `notFound`, 500 → `failed`
-- [ ] Gate passes: `npm run check` (end of phase)
+- [x] Tests (stubbed `fetch`): 200 list → anchors; 500, network error, non-JSON and wrong-shaped list → `"failed"`; save `POST` when id is null and `PUT /api/anchors/:id` otherwise; 201/200 → `ok`; 400 with a rule code and 409 overlap → `rule`; 400 `invalid` → `failed`; 404 → `notFound`; 500/network → `failed`; delete 204 → `ok`, 404 → `notFound`, 500 → `failed`
+- [x] Gate passes: `npm run check` (end of phase)
 
 **Tests**: unit
 **Gate**: build
