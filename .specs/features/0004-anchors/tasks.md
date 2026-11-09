@@ -457,8 +457,8 @@ T27 → T28 → T29
 
 **Done when**:
 
-- [ ] Tests: `danger` adds its class; other variants do not
-- [ ] Gate passes: `npm run check` (end of phase)
+- [x] Tests: `danger` adds its class; other variants do not
+- [x] Gate passes: `npm run check` (end of phase)
 
 **Tests**: component
 **Gate**: build
