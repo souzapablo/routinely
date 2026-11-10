@@ -196,8 +196,8 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Tests: `PUT` of a valid body answers 200 and `GET` shows the change; `PUT` to an unknown id with a broken body answers 404, not 400; `PUT` with a broken rule answers 400 and leaves the row as it was; `DELETE` answers 204 and the row is gone; `DELETE` of an unknown id answers 404 and leaves the others
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project server`
+- [x] Tests: `PUT` of a valid body answers 200 and `GET` shows the change; `PUT` to an unknown id with a broken body answers 404, not 400; `PUT` with a broken rule answers 400 and leaves the row as it was; `DELETE` answers 204 and the row is gone; `DELETE` of an unknown id answers 404 and leaves the others
+- [x] Gate passes: `npm run typecheck && npx vitest run --project server`
 
 **Tests**: integration
 **Gate**: server

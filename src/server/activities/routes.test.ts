@@ -125,4 +125,99 @@ describe("activities API", () => {
       expect(await list()).toEqual([]);
     });
   });
+
+  function put(id: string, payload: unknown) {
+    return app.inject({
+      method: "PUT",
+      url: `/api/activities/${id}`,
+      payload,
+    } as { method: "PUT"; url: string; payload: object });
+  }
+
+  function remove(id: string) {
+    return app.inject({ method: "DELETE", url: `/api/activities/${id}` });
+  }
+
+  describe("PUT /api/activities/:id", () => {
+    it("replaces every field and answers 200 with the stored activity", async () => {
+      const stored = (await post(run)).json<FlexibleActivity>();
+      const changed = {
+        name: "Read",
+        category: "rest",
+        timesPerWeek: 3,
+        duration: 60,
+      };
+
+      const res = await put(stored.id, { ...changed, name: " Read " });
+
+      expect(res.statusCode).toBe(200);
+      expect(res.json()).toEqual({ id: stored.id, ...changed });
+      expect(await list()).toEqual([{ id: stored.id, ...changed }]);
+    });
+
+    it.each(brokenRules)(
+      "answers 400 %s and leaves the activity as it was",
+      async (code, body) => {
+        const stored = (await post(run)).json<FlexibleActivity>();
+
+        const res = await put(stored.id, body);
+
+        expect(res.statusCode).toBe(400);
+        expect(res.json()).toEqual({ code });
+        expect(await list()).toEqual([stored]);
+      },
+    );
+
+    it("answers 400 invalid to a wrongly shaped body and changes nothing", async () => {
+      const stored = (await post(run)).json<FlexibleActivity>();
+
+      const res = await put(stored.id, { ...run, duration: "45" });
+
+      expect(res.statusCode).toBe(400);
+      expect(res.json()).toEqual({ code: "invalid" });
+      expect(await list()).toEqual([stored]);
+    });
+
+    it("answers 404 for an unknown id and changes nothing", async () => {
+      const stored = (await post(run)).json<FlexibleActivity>();
+
+      const res = await put("nope", { ...run, name: "Swim" });
+
+      expect(res.statusCode).toBe(404);
+      expect(res.json()).toEqual({ code: "notFound" });
+      expect(await list()).toEqual([stored]);
+    });
+
+    it("answers 404, not a rule, for an unknown id with a broken body", async () => {
+      const res = await put("nope", { ...run, timesPerWeek: 0 });
+
+      expect(res.statusCode).toBe(404);
+      expect(res.json()).toEqual({ code: "notFound" });
+    });
+  });
+
+  describe("DELETE /api/activities/:id", () => {
+    it("removes the activity and answers 204", async () => {
+      const stored = (await post(run)).json<FlexibleActivity>();
+      const kept = (
+        await post({ ...run, name: "Read" })
+      ).json<FlexibleActivity>();
+
+      const res = await remove(stored.id);
+
+      expect(res.statusCode).toBe(204);
+      expect(res.body).toBe("");
+      expect(await list()).toEqual([kept]);
+    });
+
+    it("answers 404 for an unknown id and leaves the others", async () => {
+      const stored = (await post(run)).json<FlexibleActivity>();
+
+      const res = await remove("nope");
+
+      expect(res.statusCode).toBe(404);
+      expect(res.json()).toEqual({ code: "notFound" });
+      expect(await list()).toEqual([stored]);
+    });
+  });
 });
