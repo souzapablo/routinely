@@ -158,8 +158,8 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Tests: create returns the row with a new id and `get` finds it; `replace` changes every field and returns `undefined` for an unknown id; `remove` returns `false` for an unknown id; `list()` over "read", "Run", "apple", "Ana", "ana", "Écrire", "zebra" equals the same rows sorted with `compareActivities`
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project server`
+- [x] Tests: create returns the row with a new id and `get` finds it; `replace` changes every field and returns `undefined` for an unknown id; `remove` returns `false` for an unknown id; `list()` over "read", "Run", "apple", "Ana", "ana", "Écrire", "zebra" equals the same rows sorted with `compareActivities`
+- [x] Gate passes: `npm run typecheck && npx vitest run --project server`
 
 **Tests**: integration
 **Gate**: server
