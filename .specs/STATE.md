@@ -202,10 +202,25 @@
 - **Date**: 2026-11-09
 - **Status**: active (AD-025)
 
+### AD-026
+- **Decision**: One `WeekProvider` owns the top bar status, the drawer state and the toast. Each stored kind is a list hook inside it (`useAnchorList`, `useActivityList`); later kinds (placements, done marks) add a hook, not a provider.
+- **Reason**: User chose "One week provider (Recommended)" in the 0005 design; the status, drawer and toast are shared by every kind of item.
+- **Trade-off**: The provider grows with each kind; the list hooks keep each kind's load, save and delete apart.
+- **Scope**: `src/web/week/`
+- **Date**: 2026-11-10
+- **Status**: active (AD-026)
+
+### AD-027
+- **Decision**: Names sort by ASCII case fold, then UTF-16 code units, then id, on the server (`COLLATE NOCASE, id`) and in `src/shared/order.ts`.
+- **Reason**: The browser re-sorts after a save; it must match the order `GET` returns, which `COLLATE NOCASE` decides. The id makes ties stable.
+- **Trade-off**: Names with characters above U+FFFF can order differently in the browser and the server until a reload.
+- **Scope**: Every list sorted by name
+- **Date**: 2026-11-10
+- **Status**: active (AD-027)
+
 ## Handoff
 
-- **Feature**: 0004-anchors, all five phases done (T1–T29); Verifier PASS (`.specs/features/0004-anchors/validation.md`).
-- **Branch**: `feat/0004-anchors/p5-browser-checks`, stacked on `p4-app-wiring`. Gate at its tip: `npm run check` and `npm run e2e` (23 tests) pass.
-- **Next**: push the phase 5 branch and open its PR (base `feat/0004-anchors/p4-app-wiring`); then merge the stack bottom up.
-- **Open question for the owner**: the language switch can't be reached while the drawer is open (the modal makes the top bar inert), so the spec's "language change in drawer" edge case only happens from script.
-- **Minor**: after a save the client sorts anchors by name case-sensitively, while the server sorts with `COLLATE NOCASE`; names differing only in case can swap order until reload.
+- **Feature**: 0005-flexible-activities, Tasks done (T1–T32, six phases); executing Phase 1 (T1–T8).
+- **Branch**: `feat/0005-flexible-activities/p1-rules-and-server` from `main`.
+- **Carried into 0005**: the case-insensitive name sort after a save (FLX-50, FLX-51) and the withdrawal of ANC-46 (the language switch can't be reached while the drawer is open).
+- **Tooling**: `gh` is not installed on this machine; PRs need it (`sudo apt install gh && gh auth login`).
