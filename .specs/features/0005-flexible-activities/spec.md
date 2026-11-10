@@ -203,7 +203,7 @@ The planner stores anchors but no flexible activities, so the "Fit in this week"
 | FLX-04 | P1: Stored - delete | - | Pending |
 | FLX-05 | P1: Stored - unknown id 404 | - | Pending |
 | FLX-06 | P1: Stored - broken rule 400 | - | Pending |
-| FLX-07 | P1: Stored - survives restart | - | Pending |
+| FLX-07 | P1: Stored - survives restart | T3, T8 | In progress |
 | FLX-08 | P1: Stored - field format | T2, T3, T5 | In progress |
 | FLX-09 | P1: Tray - lists activities | - | Pending |
 | FLX-10 | P1: Tray - item content | - | Pending |

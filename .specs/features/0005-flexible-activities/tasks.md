@@ -139,8 +139,8 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Tests: a fresh file ends at `user_version` 2 with both tables; a version-1 file holding anchors migrates to 2 and keeps them; inserting a row with category "sport", 15 times or duration 20 throws
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project server`
+- [x] Tests: a fresh file ends at `user_version` 2 with both tables; a version-1 file holding anchors migrates to 2 and keeps them; inserting a row with category "sport", 15 times or duration 20 throws
+- [x] Gate passes: `npm run typecheck && npx vitest run --project server`
 
 **Tests**: integration
 **Gate**: server

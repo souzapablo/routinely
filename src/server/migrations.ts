@@ -12,6 +12,15 @@ export const migrations: string[] = [
     start INTEGER NOT NULL,
     "end" INTEGER NOT NULL
   ) STRICT;`,
+  `CREATE TABLE activities (
+    id             TEXT PRIMARY KEY,
+    name           TEXT NOT NULL,
+    category       TEXT NOT NULL
+      CHECK (category IN ('movement', 'home', 'errands', 'rest', 'people')),
+    times_per_week INTEGER NOT NULL CHECK (times_per_week BETWEEN 1 AND 14),
+    duration       INTEGER NOT NULL
+      CHECK (duration IN (15, 30, 45, 60, 90, 120, 180))
+  ) STRICT;`,
 ];
 
 function userVersion(sqlite: DatabaseSync): number {
