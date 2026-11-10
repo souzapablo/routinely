@@ -197,14 +197,14 @@ The planner stores anchors but no flexible activities, so the "Fit in this week"
 
 | Requirement ID | Story | Tasks | Status |
 | --- | --- | --- | --- |
-| FLX-01 | P1: Stored - list | T4, T5 | In progress |
-| FLX-02 | P1: Stored - create | T4, T5 | In progress |
+| FLX-01 | P1: Stored - list | T4, T5 | Implemented (T5) |
+| FLX-02 | P1: Stored - create | T4, T5 | Implemented (T5) |
 | FLX-03 | P1: Stored - replace | T4, T6 | In progress |
 | FLX-04 | P1: Stored - delete | T4, T6 | In progress |
 | FLX-05 | P1: Stored - unknown id 404 | T4, T6 | In progress |
-| FLX-06 | P1: Stored - broken rule 400 | - | Pending |
+| FLX-06 | P1: Stored - broken rule 400 | T5, T6 | In progress |
 | FLX-07 | P1: Stored - survives restart | T3, T8 | In progress |
-| FLX-08 | P1: Stored - field format | T2, T3, T5 | In progress |
+| FLX-08 | P1: Stored - field format | T2, T3, T5 | Implemented (T5) |
 | FLX-09 | P1: Tray - lists activities | - | Pending |
 | FLX-10 | P1: Tray - item content | - | Pending |
 | FLX-11 | P1: Tray - category color | - | Pending |

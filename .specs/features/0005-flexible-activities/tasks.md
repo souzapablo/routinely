@@ -177,8 +177,8 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Tests: `GET` on an empty table answers 200 `[]`; `POST` of a valid body answers 201 with the stored activity (name trimmed) and a later `GET` lists it; `POST` with each rule broken answers 400 with that code and stores nothing; a body of the wrong shape answers 400 `{ code: "invalid" }`
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project server`
+- [x] Tests: `GET` on an empty table answers 200 `[]`; `POST` of a valid body answers 201 with the stored activity (name trimmed) and a later `GET` lists it; `POST` with each rule broken answers 400 with that code and stores nothing; a body of the wrong shape answers 400 `{ code: "invalid" }`
+- [x] Gate passes: `npm run typecheck && npx vitest run --project server`
 
 **Tests**: integration
 **Gate**: server

@@ -1,6 +1,7 @@
 import fastifyStatic from "@fastify/static";
 import Fastify, { type FastifyInstance } from "fastify";
 import { isApiPath } from "../shared/apiPath.ts";
+import { registerActivityRoutes } from "./activities/routes.ts";
 import { registerAnchorRoutes } from "./anchors/routes.ts";
 import type { Database } from "./db.ts";
 import { registerHealthRoute } from "./routes/health.ts";
@@ -13,6 +14,7 @@ export function buildApp(deps: {
 
   registerHealthRoute(app, deps.db);
   registerAnchorRoutes(app, deps.db.anchors);
+  registerActivityRoutes(app, deps.db.activities);
 
   if (deps.webRoot !== undefined) {
     app.register(fastifyStatic, { root: deps.webRoot });
