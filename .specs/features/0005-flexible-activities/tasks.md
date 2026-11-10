@@ -99,8 +99,8 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Tests: "read" sorts before "Run" and "Run" after "apple"; "ana" and "Ana" compare equal by name, and ties go by id; "É" is not folded to "é" (it sorts as its code unit); `compareAnchors` puts the earlier start first whatever the name
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project server`
+- [x] Tests: "read" sorts before "Run" and "Run" after "apple"; "ana" and "Ana" compare equal by name, and ties go by id; "É" is not folded to "é" (it sorts as its code unit); `compareAnchors` puts the earlier start first whatever the name
+- [x] Gate passes: `npm run typecheck && npx vitest run --project server`
 
 **Tests**: unit
 **Gate**: server

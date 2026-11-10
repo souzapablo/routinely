@@ -246,8 +246,8 @@ The planner stores anchors but no flexible activities, so the "Fit in this week"
 | FLX-47 | P2: Delete - second click deletes | - | Pending |
 | FLX-48 | P2: Delete - disarmed on open | - | Pending |
 | FLX-49 | P2: Delete - failure | - | Pending |
-| FLX-50 | P2: Order - anchors after save | - | Pending |
-| FLX-51 | P2: Order - activities after save | - | Pending |
+| FLX-50 | P2: Order - anchors after save | T1, T7, T11, T31 | In progress |
+| FLX-51 | P2: Order - activities after save | T1, T19, T31 | In progress |
 | FLX-52 | Edge - deleted elsewhere | - | Pending |
 | FLX-53 | Edge - phone width drawer | - | Pending |
 | FLX-54 | Edge - long name truncates | - | Pending |
