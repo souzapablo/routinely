@@ -2,6 +2,7 @@ import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { compareAnchors } from "../../shared/order.ts";
 import { type Database, openDatabase } from "../db.ts";
 import type { NewAnchor } from "./repository.ts";
 
@@ -73,6 +74,14 @@ describe("anchor repository", () => {
       "beta",
       "lunch",
     ]);
+  });
+
+  it("lists anchors at the same start in the same order as the shared comparator", () => {
+    // Four names that tie ignoring case: only the id can order them.
+    const names = ["read", "Run", "Ana", "ana", "ANA", "aNa"];
+    const created = names.map((name) => db.anchors.create({ ...work, name }));
+
+    expect(db.anchors.list()).toEqual([...created].sort(compareAnchors));
   });
 
   it("replaces every field of a stored anchor", () => {

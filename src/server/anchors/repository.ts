@@ -5,7 +5,7 @@ import type { Anchor, DayIndex } from "../../shared/planner.ts";
 export type NewAnchor = Omit<Anchor, "id">;
 
 export interface AnchorRepository {
-  /** Every anchor, by start time, then by name ignoring case. */
+  /** Every anchor, by start time, then by name ignoring case, then by id. */
   list(): Anchor[];
   get(id: string): Anchor | undefined;
   create(anchor: NewAnchor): Anchor;
@@ -36,7 +36,7 @@ function fromRow(row: Row): Anchor {
 export function createAnchorRepository(sqlite: DatabaseSync): AnchorRepository {
   const columns = `id, name, days, start, "end"`;
   const listAll = sqlite.prepare(
-    `SELECT ${columns} FROM anchors ORDER BY start, name COLLATE NOCASE`,
+    `SELECT ${columns} FROM anchors ORDER BY start, name COLLATE NOCASE, id`,
   );
   const getOne = sqlite.prepare(`SELECT ${columns} FROM anchors WHERE id = ?`);
   const insert = sqlite.prepare(

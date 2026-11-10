@@ -215,8 +215,8 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Tests: `list()` over anchors at the same start named "read", "Run", "Ana", "ana" equals the same rows sorted with `compareAnchors`
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project server`
+- [x] Tests: `list()` over anchors at the same start named "read", "Run", "Ana", "ana" equals the same rows sorted with `compareAnchors`
+- [x] Gate passes: `npm run typecheck && npx vitest run --project server`
 
 **Tests**: integration
 **Gate**: server
