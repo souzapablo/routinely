@@ -234,8 +234,8 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Tests: `POST` Run 5 km (movement, 2, 45), stop the server, start it on the same file, `GET /api/activities` returns it
-- [ ] Gate passes: `npm run check`
+- [x] Tests: `POST` Run 5 km (movement, 2, 45), stop the server, start it on the same file, `GET /api/activities` returns it
+- [x] Gate passes: `npm run check`
 
 **Tests**: integration
 **Gate**: build

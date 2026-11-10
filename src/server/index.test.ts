@@ -141,6 +141,44 @@ describe("server entry", () => {
     expect(await res.json()).toEqual([stored]);
   }, 20_000);
 
+  it("keeps activities after a restart", async () => {
+    const port = await freePort();
+    const env = {
+      PORT: String(port),
+      DATABASE_PATH: join(tmp, "routinely.db"),
+    };
+    const activitiesUrl = `http://127.0.0.1:${port}/api/activities`;
+    started = startServer(env);
+    await waitForOutput(started, "listening");
+    const created = await fetch(activitiesUrl, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        name: "Run 5 km",
+        category: "movement",
+        timesPerWeek: 2,
+        duration: 45,
+      }),
+    });
+    expect(created.status).toBe(201);
+    const stored: unknown = await created.json();
+    started.child.kill();
+    await started.exited;
+
+    started = startServer(env);
+    await waitForOutput(started, "listening");
+    const res = await fetch(activitiesUrl);
+
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual([stored]);
+    expect(stored).toMatchObject({
+      name: "Run 5 km",
+      category: "movement",
+      timesPerWeek: 2,
+      duration: 45,
+    });
+  }, 20_000);
+
   it("exits 1 and names the path when the database can't open", async () => {
     // A folder is not a file SQLite can open.
     started = startServer({
