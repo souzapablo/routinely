@@ -204,7 +204,7 @@ The planner stores anchors but no flexible activities, so the "Fit in this week"
 | FLX-05 | P1: Stored - unknown id 404 | - | Pending |
 | FLX-06 | P1: Stored - broken rule 400 | - | Pending |
 | FLX-07 | P1: Stored - survives restart | - | Pending |
-| FLX-08 | P1: Stored - field format | - | Pending |
+| FLX-08 | P1: Stored - field format | T2, T3, T5 | In progress |
 | FLX-09 | P1: Tray - lists activities | - | Pending |
 | FLX-10 | P1: Tray - item content | - | Pending |
 | FLX-11 | P1: Tray - category color | - | Pending |
@@ -234,13 +234,13 @@ The planner stores anchors but no flexible activities, so the "Fit in this week"
 | FLX-35 | P1: Drawer - save failure | - | Pending |
 | FLX-36 | P1: Drawer - focus return | - | Pending |
 | FLX-37 | P1: Drawer - Save label | - | Pending |
-| FLX-38 | P1: Rules - empty name | - | Pending |
-| FLX-39 | P1: Rules - name length | - | Pending |
-| FLX-40 | P1: Rules - times per week | - | Pending |
-| FLX-41 | P1: Rules - duration | - | Pending |
-| FLX-42 | P1: Rules - category | - | Pending |
+| FLX-38 | P1: Rules - empty name | T2, T15, T18, T26, T30 | In progress |
+| FLX-39 | P1: Rules - name length | T2, T18 | In progress |
+| FLX-40 | P1: Rules - times per week | T2, T18 | In progress |
+| FLX-41 | P1: Rules - duration | T2, T18 | In progress |
+| FLX-42 | P1: Rules - category | T2, T18 | In progress |
 | FLX-43 | P1: Rules - nothing sent | - | Pending |
-| FLX-44 | P1: Rules - check order | - | Pending |
+| FLX-44 | P1: Rules - check order | T2, T15, T26 | In progress |
 | FLX-45 | P2: Delete - button shown when editing | - | Pending |
 | FLX-46 | P2: Delete - first click arms | - | Pending |
 | FLX-47 | P2: Delete - second click deletes | - | Pending |

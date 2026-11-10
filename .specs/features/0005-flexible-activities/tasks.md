@@ -118,10 +118,10 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Tests: each rule returns its code; an input breaking several rules returns the first in the order name, times, duration, category; a 60-char trimmed name passes and 61 fails; a whitespace-only name is `nameEmpty`; times 1 and 14 pass, 0, 15 and 1.5 are `timesOutOfRange`; each of the seven durations passes, 20 and 0 are `durationNotAllowed`; each of the five categories passes, "sport" is `categoryUnknown`
-- [ ] Tests: `normalizeActivity` trims the name
-- [ ] Tests: `ActivityInput` rejects a missing name, a string `timesPerWeek`, a numeric category
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project server`
+- [x] Tests: each rule returns its code; an input breaking several rules returns the first in the order name, times, duration, category; a 60-char trimmed name passes and 61 fails; a whitespace-only name is `nameEmpty`; times 1 and 14 pass, 0, 15 and 1.5 are `timesOutOfRange`; each of the seven durations passes, 20 and 0 are `durationNotAllowed`; each of the five categories passes, "sport" is `categoryUnknown`
+- [x] Tests: `normalizeActivity` trims the name
+- [x] Tests: `ActivityInput` rejects a missing name, a string `timesPerWeek`, a numeric category
+- [x] Gate passes: `npm run typecheck && npx vitest run --project server`
 
 **Tests**: unit
 **Gate**: server
