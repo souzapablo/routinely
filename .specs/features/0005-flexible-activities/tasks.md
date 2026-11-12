@@ -294,8 +294,8 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Tests: load ok fills the list and reports `ok`; load failed leaves it empty and reports `failed`; unmount aborts the load; a saved anchor lands in `compareAnchors` order ("Run" after a stored "read" at the same start); delete removes it; each API result comes back to the caller
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: load ok fills the list and reports `ok`; load failed leaves it empty and reports `failed`; unmount aborts the load; a saved anchor lands in `compareAnchors` order ("Run" after a stored "read" at the same start); delete removes it; each API result comes back to the caller
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: unit
 **Gate**: quick
