@@ -431,8 +431,8 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Tests: `nameEmpty` renders "Give it a name so you can recognize it on the calendar."; `nameTooLong` names 60; each of the other three codes renders its en and pt-BR text
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: `nameEmpty` renders "Give it a name so you can recognize it on the calendar."; `nameTooLong` names 60; each of the other three codes renders its en and pt-BR text
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: unit
 **Gate**: quick

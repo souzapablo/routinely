@@ -96,6 +96,11 @@
       "untitled": "Sem nome",
       "times": "{{times}}× por semana",
       "each": "{{duration}} cada"
+    },
+    "rules": {
+      "timesOutOfRange": "Escolha de {{min}} a {{max}} vezes por semana.",
+      "durationNotAllowed": "Escolha quanto tempo cada vez leva.",
+      "categoryUnknown": "Escolha um tipo."
     }
   },
   "week": {

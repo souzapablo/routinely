@@ -96,6 +96,11 @@
       "untitled": "Untitled",
       "times": "{{times}}× a week",
       "each": "{{duration}} each"
+    },
+    "rules": {
+      "timesOutOfRange": "Pick from {{min}} to {{max}} times a week.",
+      "durationNotAllowed": "Pick how long each time takes.",
+      "categoryUnknown": "Pick a kind."
     }
   },
   "week": {
