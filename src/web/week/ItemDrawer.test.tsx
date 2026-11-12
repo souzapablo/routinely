@@ -5,16 +5,16 @@ import type { Anchor } from "../../shared/planner.ts";
 import i18n from "../i18n/index.ts";
 import buttonStyles from "../ui/Button/Button.module.css";
 import messageStyles from "../ui/MessageLine/MessageLine.module.css";
-import { AnchorDrawer } from "./AnchorDrawer.tsx";
-import type { DrawerState } from "../week/model/drawer.ts";
+import { ItemDrawer } from "./ItemDrawer.tsx";
+import type { DrawerState } from "./model/drawer.ts";
 import {
   type DrawerOutcome,
   type WeekContextValue,
   useWeek,
-} from "../week/WeekProvider.tsx";
-import type { SaveStatus } from "../week/model/saveStatus.ts";
+} from "./WeekProvider.tsx";
+import type { SaveStatus } from "./model/saveStatus.ts";
 
-vi.mock("../week/WeekProvider.tsx", () => ({ useWeek: vi.fn() }));
+vi.mock("./WeekProvider.tsx", () => ({ useWeek: vi.fn() }));
 
 const work: Anchor = {
   id: "w",
@@ -45,7 +45,7 @@ function stub() {
 function renderDrawer(state: DrawerState) {
   drawer = state;
   stub();
-  const view = render(<AnchorDrawer />);
+  const view = render(<ItemDrawer />);
   return {
     ...view,
     /** Re-renders with a new drawer state or status, as the provider would. */
@@ -53,7 +53,7 @@ function renderDrawer(state: DrawerState) {
       if (next.drawer) drawer = next.drawer;
       if (next.status) status = next.status;
       stub();
-      view.rerender(<AnchorDrawer />);
+      view.rerender(<ItemDrawer />);
     },
   };
 }
@@ -62,7 +62,7 @@ const dialog = () => screen.getByRole("dialog");
 const nameField = () => screen.getByRole("textbox", { name: "Name" });
 const startField = () => screen.getByLabelText("Start");
 const endField = () => screen.getByLabelText("End");
-const saveButton = () => screen.getByRole("button", { name: "Save anchor" });
+const saveButton = () => screen.getByRole("button", { name: "Save activity" });
 const messageLine = () =>
   within(dialog())
     .getAllByRole("status")
@@ -88,13 +88,13 @@ afterEach(async () => {
   await i18n.changeLanguage("en");
 });
 
-describe("AnchorDrawer opening", () => {
+describe("ItemDrawer opening", () => {
   it("adds with an empty name, Mon–Fri, 09:00–18:00, focus on the name and no Delete", () => {
     renderDrawer({ mode: "add", type: "anchor" });
 
     expect(dialog()).toHaveAttribute("open");
     expect(
-      within(dialog()).getByRole("heading", { name: "Add anchor" }),
+      within(dialog()).getByRole("heading", { name: "Add activity" }),
     ).toBeInTheDocument();
     expect(nameField()).toHaveValue("");
     expect(nameField()).toHaveFocus();
@@ -132,6 +132,23 @@ describe("AnchorDrawer opening", () => {
     expect(screen.getByRole("button", { name: "Delete" })).toBeInTheDocument();
   });
 
+  it("titles an anchor edit Edit anchor", () => {
+    renderDrawer({ mode: "editAnchor", anchor: work });
+
+    expect(dialog()).toHaveAccessibleName("Edit anchor");
+    expect(dialog()).not.toHaveAccessibleName("Add activity");
+  });
+
+  it("reads Save activity when adding and editing", () => {
+    const view = renderDrawer({ mode: "add", type: "anchor" });
+    expect(dialog()).toHaveAccessibleName("Add activity");
+    expect(saveButton()).toHaveTextContent(/^Save activity$/);
+
+    view.update({ drawer: { mode: "editAnchor", anchor: work } });
+    expect(dialog()).toHaveAccessibleName("Edit anchor");
+    expect(saveButton()).toHaveTextContent(/^Save activity$/);
+  });
+
   it("shows the preview line and follows the draft", async () => {
     const user = userEvent.setup();
     renderDrawer({ mode: "add", type: "anchor" });
@@ -155,7 +172,7 @@ describe("AnchorDrawer opening", () => {
   });
 });
 
-describe("AnchorDrawer rules", () => {
+describe("ItemDrawer rules", () => {
   it("asks for a name, sends nothing and focuses the name field", async () => {
     const user = userEvent.setup();
     renderDrawer({ mode: "add", type: "anchor" });
@@ -257,7 +274,7 @@ describe("AnchorDrawer rules", () => {
   });
 });
 
-describe("AnchorDrawer saving", () => {
+describe("ItemDrawer saving", () => {
   it("sends a valid draft to save", async () => {
     const user = userEvent.setup();
     renderDrawer({ mode: "add", type: "anchor" });
@@ -328,7 +345,7 @@ describe("AnchorDrawer saving", () => {
   });
 });
 
-describe("AnchorDrawer delete", () => {
+describe("ItemDrawer delete", () => {
   it("arms on the first click and deletes on the second", async () => {
     const user = userEvent.setup();
     renderDrawer({ mode: "editAnchor", anchor: work });
@@ -371,7 +388,7 @@ describe("AnchorDrawer delete", () => {
   });
 });
 
-describe("AnchorDrawer reopening", () => {
+describe("ItemDrawer reopening", () => {
   it("starts from the defaults with no message after it reopens", async () => {
     const user = userEvent.setup();
     const view = renderDrawer({ mode: "add", type: "anchor" });
@@ -391,7 +408,7 @@ describe("AnchorDrawer reopening", () => {
   });
 });
 
-describe("AnchorDrawer language", () => {
+describe("ItemDrawer language", () => {
   it("re-renders its labels, weekdays, preview and message in pt-BR", async () => {
     const user = userEvent.setup();
     renderDrawer({ mode: "editAnchor", anchor: work });
@@ -413,7 +430,7 @@ describe("AnchorDrawer language", () => {
       "Dê um nome para reconhecer no calendário.",
     );
     expect(
-      screen.getByRole("button", { name: "Salvar âncora" }),
+      screen.getByRole("button", { name: "Salvar atividade" }),
     ).toBeInTheDocument();
   });
 });

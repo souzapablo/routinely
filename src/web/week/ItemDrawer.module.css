@@ -2,9 +2,3 @@
 .delete {
   margin-right: auto;
 }
-
-.times {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-5);
-}

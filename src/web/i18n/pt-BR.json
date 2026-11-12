@@ -58,17 +58,11 @@
   },
   "anchors": {
     "rules": {
-      "nameEmpty": "Dê um nome para reconhecer no calendário.",
-      "nameTooLong": "Use no máximo {{max}} caracteres no nome.",
       "noDays": "Escolha pelo menos um dia em que se repete.",
       "timesMissing": "Defina um horário de início e de fim.",
       "timeStep": "Os horários andam de 15 em 15 minutos, como {{first}} ou {{second}}.",
       "endBeforeStart": "O horário de fim precisa ser depois do início.",
       "overlap": "Isto coincide com {{other}} ({{weekday}}). Âncoras não podem dividir horário."
-    },
-    "failure": {
-      "save": "Não salvo. Suas alterações continuam aqui, então você pode tentar de novo.",
-      "delete": "Não excluído. Tente de novo em instantes."
     },
     "preview": {
       "name": "{{name}}",
@@ -81,22 +75,12 @@
       "everyWeek": "toda semana"
     },
     "toast": {
-      "saved": "Salvo: {{name}}.",
-      "deleted": "Excluído: {{name}}.",
       "alreadyDeleted": "Essa âncora já tinha sido excluída."
     },
     "drawer": {
-      "addTitle": "Adicionar âncora",
-      "editTitle": "Editar âncora",
-      "close": "Fechar",
-      "name": "Nome",
       "repeatsOn": "Repete em",
       "start": "Início",
-      "end": "Fim",
-      "cancel": "Cancelar",
-      "save": "Salvar âncora",
-      "delete": "Excluir",
-      "confirmDelete": "Clique de novo para excluir"
+      "end": "Fim"
     }
   },
   "week": {
@@ -111,6 +95,24 @@
   "drawer": {
     "addTitle": "Adicionar atividade",
     "editAnchorTitle": "Editar âncora",
-    "editActivityTitle": "Editar atividade"
+    "editActivityTitle": "Editar atividade",
+    "close": "Fechar",
+    "name": "Nome",
+    "cancel": "Cancelar",
+    "save": "Salvar atividade",
+    "delete": "Excluir",
+    "confirmDelete": "Clique de novo para excluir",
+    "rules": {
+      "nameEmpty": "Dê um nome para reconhecer no calendário.",
+      "nameTooLong": "Use no máximo {{max}} caracteres no nome."
+    },
+    "failure": {
+      "save": "Não salvo. Suas alterações continuam aqui, então você pode tentar de novo.",
+      "delete": "Não excluído. Tente de novo em instantes."
+    },
+    "toast": {
+      "saved": "Salvo: {{name}}.",
+      "deleted": "Excluído: {{name}}."
+    }
   }
 }

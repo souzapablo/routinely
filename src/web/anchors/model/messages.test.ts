@@ -21,14 +21,22 @@ function render(
 }
 
 describe("problemMessage", () => {
-  it.each<[ProblemCode, string]>([
-    ["nameEmpty", "Give it a name so you can recognize it on the calendar."],
-    ["noDays", "Pick at least one day it repeats on."],
-    ["timesMissing", "Set a start and end time."],
-    ["endBeforeStart", "The end time needs to be after the start time."],
-  ])("words %s as the spec does", (code, text) => {
+  it.each<[ProblemCode, string, string]>([
+    [
+      "nameEmpty",
+      "drawer.rules.nameEmpty",
+      "Give it a name so you can recognize it on the calendar.",
+    ],
+    ["noDays", "anchors.rules.noDays", "Pick at least one day it repeats on."],
+    ["timesMissing", "anchors.rules.timesMissing", "Set a start and end time."],
+    [
+      "endBeforeStart",
+      "anchors.rules.endBeforeStart",
+      "The end time needs to be after the start time.",
+    ],
+  ])("words %s as the spec does", (code, key, text) => {
     const message = problemMessage({ code }, "en");
-    expect(message.key).toBe(`anchors.rules.${code}`);
+    expect(message.key).toBe(key);
     expect(render(message, "en")).toBe(text);
   });
 
@@ -64,7 +72,7 @@ describe("problemMessage", () => {
 
   it("states the name limit", () => {
     const message = problemMessage({ code: "nameTooLong" }, "en");
-    expect(message.key).toBe("anchors.rules.nameTooLong");
+    expect(message.key).toBe("drawer.rules.nameTooLong");
     expect(render(message, "en")).toBe(
       "Keep the name to 60 characters or fewer.",
     );
@@ -86,9 +94,11 @@ describe("anchor message wording", () => {
   it("never calls anything missed, failed, overdue, late or skipped", () => {
     const strings = [
       ...Object.values(en.anchors.rules),
-      ...Object.values(en.anchors.failure),
+      ...Object.values(en.drawer.rules),
+      ...Object.values(en.drawer.failure),
       ...Object.values(ptBR.anchors.rules),
-      ...Object.values(ptBR.anchors.failure),
+      ...Object.values(ptBR.drawer.rules),
+      ...Object.values(ptBR.drawer.failure),
     ].join("\n");
     expect(strings.toLowerCase()).not.toMatch(
       /\b(missed|failed|overdue|late|skipped|perdid[oa]s?|falh(ou|a)|atrasad[oa]s?|pulad[oa]s?|vencid[oa]s?)\b/,

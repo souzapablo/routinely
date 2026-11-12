@@ -80,7 +80,7 @@ export function WeekProvider({ children }: { children: ReactNode }) {
         case "ok":
           setDrawer({ mode: "closed" });
           setActionStatus("saved");
-          showToast(t("anchors.toast.saved", { name: result.anchor.name }));
+          showToast(t("drawer.toast.saved", { name: result.anchor.name }));
           return closed;
         case "rule":
           setActionStatus(before);
@@ -106,7 +106,7 @@ export function WeekProvider({ children }: { children: ReactNode }) {
       case "ok":
         setDrawer({ mode: "closed" });
         setActionStatus("saved");
-        showToast(t("anchors.toast.deleted", { name: anchor.name }));
+        showToast(t("drawer.toast.deleted", { name: anchor.name }));
         return closed;
       case "notFound":
         anchorAlreadyDeleted();

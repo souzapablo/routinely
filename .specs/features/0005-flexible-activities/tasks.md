@@ -334,10 +334,10 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Every assertion from `AnchorDrawer.test.tsx` passes against `ItemDrawer`, with the new title and Save texts
-- [ ] Tests: adding shows "Add activity", editing an anchor shows "Edit anchor", Save reads "Save activity" in both
-- [ ] `e2e/anchors.spec.ts` and `e2e/main.spec.ts` use the new texts
-- [ ] Gate passes: `npm run check && npm run e2e`
+- [x] Every assertion from `AnchorDrawer.test.tsx` passes against `ItemDrawer`, with the new title and Save texts
+- [x] Tests: adding shows "Add activity", editing an anchor shows "Edit anchor", Save reads "Save activity" in both
+- [x] `e2e/anchors.spec.ts` and `e2e/main.spec.ts` use the new texts
+- [x] Gate passes: `npm run check && npm run e2e`
 
 **Tests**: component
 **Gate**: full

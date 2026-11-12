@@ -55,10 +55,10 @@ test("adds an anchor", async ({ page, request }) => {
   await openPlanner(page);
 
   await page.getByRole("button", { name: "Add activity" }).click();
-  await expect(drawer(page)).toHaveAccessibleName("Add anchor");
+  await expect(drawer(page)).toHaveAccessibleName("Add activity");
   await expect(page.getByLabel("Name")).toBeFocused();
   await page.getByLabel("Name").fill("Work");
-  await drawer(page).getByRole("button", { name: "Save anchor" }).click();
+  await drawer(page).getByRole("button", { name: "Save activity" }).click();
 
   await expect(drawer(page)).toBeHidden();
   await expect(page.getByText("Saved Work.")).toBeVisible();
@@ -78,7 +78,7 @@ test("edits an anchor", async ({ page, request }) => {
   await expect(page.getByLabel("Name")).toHaveValue("Work");
   await expect(page.getByLabel("Start")).toHaveValue("09:00");
   await page.getByLabel("End").fill("17:00");
-  await drawer(page).getByRole("button", { name: "Save anchor" }).click();
+  await drawer(page).getByRole("button", { name: "Save activity" }).click();
 
   await expect(drawer(page)).toBeHidden();
   await expect(page.getByText("Saved Work.")).toBeVisible();
@@ -104,7 +104,7 @@ test("refuses an overlap and accepts touching", async ({ page, request }) => {
   }
   await page.getByLabel("Start").fill("17:00");
   await page.getByLabel("End").fill("18:30");
-  await drawer(page).getByRole("button", { name: "Save anchor" }).click();
+  await drawer(page).getByRole("button", { name: "Save activity" }).click();
 
   await expect(drawer(page).getByRole("status")).toHaveText(
     "This overlaps Work on Mon. Anchors can't share time.",
@@ -115,7 +115,7 @@ test("refuses an overlap and accepts touching", async ({ page, request }) => {
 
   await page.getByLabel("Start").fill("18:00");
   await page.getByLabel("End").fill("19:00");
-  await drawer(page).getByRole("button", { name: "Save anchor" }).click();
+  await drawer(page).getByRole("button", { name: "Save activity" }).click();
 
   await expect(drawer(page)).toBeHidden();
   await expect(page.getByText("Saved Gym.")).toBeVisible();
@@ -225,7 +225,7 @@ test("fits a phone", async ({ page, request }) => {
   const box = await drawer(page).boundingBox();
   expect(box?.x).toBe(0);
   expect(box?.width).toBe(390);
-  for (const name of ["Delete", "Cancel", "Save anchor"]) {
+  for (const name of ["Delete", "Cancel", "Save activity"]) {
     await expect(drawer(page).getByRole("button", { name })).toBeInViewport({
       ratio: 1,
     });
@@ -246,7 +246,7 @@ test("follows a language change", async ({ page, request }) => {
   await openPlanner(page);
 
   await page.getByRole("button", { name: "Add activity" }).click();
-  await drawer(page).getByRole("button", { name: "Save anchor" }).click();
+  await drawer(page).getByRole("button", { name: "Save activity" }).click();
   await expect(drawer(page).getByRole("status")).toHaveText(
     "Give it a name so you can recognize it on the calendar.",
   );
@@ -255,11 +255,11 @@ test("follows a language change", async ({ page, request }) => {
   // script rather than with the mouse.
   await page.getByRole("button", { name: "Português" }).dispatchEvent("click");
 
-  await expect(drawer(page)).toHaveAccessibleName("Adicionar âncora");
+  await expect(drawer(page)).toHaveAccessibleName("Adicionar atividade");
   await expect(drawer(page).getByLabel("Nome")).toBeVisible();
   await expect(drawer(page).getByLabel("Início")).toBeVisible();
   await expect(
-    drawer(page).getByRole("button", { name: "Salvar âncora" }),
+    drawer(page).getByRole("button", { name: "Salvar atividade" }),
   ).toBeVisible();
   const monday = new Intl.DateTimeFormat("pt-BR", { weekday: "short" }).format(
     new Date(2026, 10, 9),
@@ -282,7 +282,7 @@ test("shows rule messages without error red", async ({ page, request }) => {
 
   await page.getByRole("button", { name: "Add activity" }).click();
   await page.getByLabel("Name").fill("Gym");
-  await drawer(page).getByRole("button", { name: "Save anchor" }).click();
+  await drawer(page).getByRole("button", { name: "Save activity" }).click();
   const line = drawer(page).getByRole("status");
   await expect(line).toHaveText(
     "This overlaps Work on Mon. Anchors can't share time.",

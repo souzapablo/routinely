@@ -58,17 +58,11 @@
   },
   "anchors": {
     "rules": {
-      "nameEmpty": "Give it a name so you can recognize it on the calendar.",
-      "nameTooLong": "Keep the name to {{max}} characters or fewer.",
       "noDays": "Pick at least one day it repeats on.",
       "timesMissing": "Set a start and end time.",
       "timeStep": "Times go in 15-minute steps, like {{first}} or {{second}}.",
       "endBeforeStart": "The end time needs to be after the start time.",
       "overlap": "This overlaps {{other}} on {{weekday}}. Anchors can't share time."
-    },
-    "failure": {
-      "save": "Not saved. Your changes are still here, so you can try again.",
-      "delete": "Not deleted. Try again in a moment."
     },
     "preview": {
       "name": "{{name}}",
@@ -81,22 +75,12 @@
       "everyWeek": "every week"
     },
     "toast": {
-      "saved": "Saved {{name}}.",
-      "deleted": "Deleted {{name}}.",
       "alreadyDeleted": "That anchor was already deleted."
     },
     "drawer": {
-      "addTitle": "Add anchor",
-      "editTitle": "Edit anchor",
-      "close": "Close",
-      "name": "Name",
       "repeatsOn": "Repeats on",
       "start": "Start",
-      "end": "End",
-      "cancel": "Cancel",
-      "save": "Save anchor",
-      "delete": "Delete",
-      "confirmDelete": "Click again to delete"
+      "end": "End"
     }
   },
   "week": {
@@ -111,6 +95,24 @@
   "drawer": {
     "addTitle": "Add activity",
     "editAnchorTitle": "Edit anchor",
-    "editActivityTitle": "Edit activity"
+    "editActivityTitle": "Edit activity",
+    "close": "Close",
+    "name": "Name",
+    "cancel": "Cancel",
+    "save": "Save activity",
+    "delete": "Delete",
+    "confirmDelete": "Click again to delete",
+    "rules": {
+      "nameEmpty": "Give it a name so you can recognize it on the calendar.",
+      "nameTooLong": "Keep the name to {{max}} characters or fewer."
+    },
+    "failure": {
+      "save": "Not saved. Your changes are still here, so you can try again.",
+      "delete": "Not deleted. Try again in a moment."
+    },
+    "toast": {
+      "saved": "Saved {{name}}.",
+      "deleted": "Deleted {{name}}."
+    }
   }
 }

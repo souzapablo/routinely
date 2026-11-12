@@ -2,8 +2,8 @@ import { type AnchorProblem, MAX_NAME, STEP } from "../../../shared/anchors.ts";
 import { formatTime, formatWeekdayIndex } from "../../planner/model/format.ts";
 
 export type ProblemMessage =
-  | { key: "anchors.rules.nameEmpty"; values: Record<string, never> }
-  | { key: "anchors.rules.nameTooLong"; values: { max: number } }
+  | { key: "drawer.rules.nameEmpty"; values: Record<string, never> }
+  | { key: "drawer.rules.nameTooLong"; values: { max: number } }
   | { key: "anchors.rules.noDays"; values: Record<string, never> }
   | { key: "anchors.rules.timesMissing"; values: Record<string, never> }
   | { key: "anchors.rules.timeStep"; values: { first: string; second: string } }
@@ -14,7 +14,7 @@ export type ProblemMessage =
     };
 
 export type FailureMessage = {
-  key: "anchors.failure.save" | "anchors.failure.delete";
+  key: "drawer.failure.save" | "drawer.failure.delete";
   values: Record<string, never>;
 };
 
@@ -26,8 +26,10 @@ export function problemMessage(
   lang: string,
 ): ProblemMessage {
   switch (problem.code) {
+    case "nameEmpty":
+      return { key: "drawer.rules.nameEmpty", values: {} };
     case "nameTooLong":
-      return { key: "anchors.rules.nameTooLong", values: { max: MAX_NAME } };
+      return { key: "drawer.rules.nameTooLong", values: { max: MAX_NAME } };
     case "timeStep":
       return {
         key: "anchors.rules.timeStep",
@@ -50,5 +52,5 @@ export function problemMessage(
 }
 
 export function failureMessage(kind: "save" | "delete"): FailureMessage {
-  return { key: `anchors.failure.${kind}`, values: {} };
+  return { key: `drawer.failure.${kind}`, values: {} };
 }

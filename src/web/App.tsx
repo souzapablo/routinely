@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Navigate, Route, Routes } from "react-router";
-import { AnchorDrawer } from "./anchors/AnchorDrawer.tsx";
+import { ItemDrawer } from "./week/ItemDrawer.tsx";
 import { WeekProvider, useWeek } from "./week/WeekProvider.tsx";
 import { TopBar } from "./app/TopBar.tsx";
 import { PlannerPage } from "./planner/PlannerPage.tsx";
@@ -41,7 +41,7 @@ export function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
-      <AnchorDrawer returnFocusFallback={addButton} />
+      <ItemDrawer returnFocusFallback={addButton} />
       <WeekToast />
     </WeekProvider>
   );

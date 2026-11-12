@@ -218,7 +218,7 @@ The planner stores anchors but no flexible activities, so the "Fit in this week"
 | FLX-17 | P1: Tray - load failure | T9, T12 | In progress |
 | FLX-18 | P1: Tray - empty | - | Pending |
 | FLX-19 | P1: Drawer - open from tray | T10 | In progress |
-| FLX-20 | P1: Drawer - open from + | T10, T12 | In progress |
+| FLX-20 | P1: Drawer - open from + | T10, T12, T13 | In progress |
 | FLX-21 | P1: Drawer - Type row only when adding | T10 | In progress |
 | FLX-22 | P1: Drawer - Flexible fields | - | Pending |
 | FLX-23 | P1: Drawer - Anchor fields | - | Pending |
@@ -229,13 +229,13 @@ The planner stores anchors but no flexible activities, so the "Fit in this week"
 | FLX-28 | P1: Drawer - Kind options | - | Pending |
 | FLX-29 | P1: Drawer - preview | - | Pending |
 | FLX-30 | P1: Drawer - open to edit activity | T10 | In progress |
-| FLX-31 | P1: Drawer - open to edit anchor | T10 | In progress |
+| FLX-31 | P1: Drawer - open to edit anchor | T10, T13 | In progress |
 | FLX-32 | P1: Drawer - save | - | Pending |
 | FLX-33 | P1: Drawer - saving state | - | Pending |
 | FLX-34 | P1: Drawer - saved status | - | Pending |
 | FLX-35 | P1: Drawer - save failure | - | Pending |
 | FLX-36 | P1: Drawer - focus return | - | Pending |
-| FLX-37 | P1: Drawer - Save label | - | Pending |
+| FLX-37 | P1: Drawer - Save label | T13 | In progress |
 | FLX-38 | P1: Rules - empty name | T2, T15, T18, T26, T30 | In progress |
 | FLX-39 | P1: Rules - name length | T2, T18 | In progress |
 | FLX-40 | P1: Rules - times per week | T2, T18 | In progress |

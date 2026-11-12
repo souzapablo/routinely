@@ -77,7 +77,7 @@ describe("App", () => {
     ).toBeInTheDocument();
   });
 
-  it("opens Add anchor from the + button and toasts after a save", async () => {
+  it("opens Add activity from the + button and toasts after a save", async () => {
     const user = userEvent.setup();
     renderAt("/");
     await within(screen.getByRole("banner")).findByText("Saved");
@@ -85,7 +85,7 @@ describe("App", () => {
     await user.click(screen.getByRole("button", { name: "Add activity" }));
     const dialog = screen.getByRole("dialog");
     expect(
-      within(dialog).getByRole("heading", { name: "Add anchor" }),
+      within(dialog).getByRole("heading", { name: "Add activity" }),
     ).toBeInTheDocument();
 
     await user.type(
@@ -93,7 +93,7 @@ describe("App", () => {
       "Work",
     );
     await user.click(
-      within(dialog).getByRole("button", { name: "Save anchor" }),
+      within(dialog).getByRole("button", { name: "Save activity" }),
     );
 
     expect(await screen.findByText("Saved Work.")).toBeInTheDocument();
