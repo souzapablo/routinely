@@ -450,8 +450,8 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Tests: load ok fills the list and reports `ok`; load failed leaves it empty and reports `failed`; unmount aborts; a saved "Run" lands after a stored "read"; an edit replaces in place and re-sorts; delete removes it; each API result comes back to the caller
-- [ ] Gate passes: `npm run check`
+- [x] Tests: load ok fills the list and reports `ok`; load failed leaves it empty and reports `failed`; unmount aborts; a saved "Run" lands after a stored "read"; an edit replaces in place and re-sorts; delete removes it; each API result comes back to the caller
+- [x] Gate passes: `npm run check`
 
 **Tests**: unit
 **Gate**: build
