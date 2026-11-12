@@ -56,6 +56,13 @@
     "hours": "{{hours}} h",
     "hoursMinutes": "{{hours}} h {{minutes}} min"
   },
+  "categories": {
+    "movement": "Movement",
+    "home": "Home",
+    "errands": "Errands",
+    "rest": "Rest",
+    "people": "People"
+  },
   "anchors": {
     "rules": {
       "noDays": "Pick at least one day it repeats on.",

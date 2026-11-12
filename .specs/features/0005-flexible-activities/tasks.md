@@ -393,8 +393,8 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Tests: seven durations render as "15 min", "30 min", "45 min", "1 h", "1 h 30 min", "2 h", "3 h" in en and in pt-BR as the `duration.*` keys give them; five categories in the order Movement, Home, Errands, Rest, People, and in pt-BR Movimento, Casa, Tarefas, Descanso, Pessoas
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: seven durations render as "15 min", "30 min", "45 min", "1 h", "1 h 30 min", "2 h", "3 h" in en and in pt-BR as the `duration.*` keys give them; five categories in the order Movement, Home, Errands, Rest, People, and in pt-BR Movimento, Casa, Tarefas, Descanso, Pessoas
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: unit
 **Gate**: quick
