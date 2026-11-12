@@ -412,8 +412,8 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Tests: `{ "Run 5 km", 2, 45, movement }` renders "Run 5 km · 2× a week · 45 min each · Movement" in en and "Run 5 km · 2× por semana · 45 min cada · Movimento" in pt-BR; an empty name renders "Untitled" / "Sem nome"
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: `{ "Run 5 km", 2, 45, movement }` renders "Run 5 km · 2× a week · 45 min each · Movement" in en and "Run 5 km · 2× por semana · 45 min cada · Movimento" in pt-BR; an empty name renders "Untitled" / "Sem nome"
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: unit
 **Gate**: quick

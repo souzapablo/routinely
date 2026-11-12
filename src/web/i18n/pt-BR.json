@@ -90,6 +90,14 @@
       "end": "Fim"
     }
   },
+  "activities": {
+    "preview": {
+      "name": "{{name}}",
+      "untitled": "Sem nome",
+      "times": "{{times}}× por semana",
+      "each": "{{duration}} cada"
+    }
+  },
   "week": {
     "status": {
       "loading": "Carregando sua semana…",
