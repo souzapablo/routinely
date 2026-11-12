@@ -1,5 +1,7 @@
 # Flexible Activities Specification
 
+**Approved**: 2026-11-12 - user: "i have approved and you can do eveything needed"
+
 ## Problem Statement
 
 The planner stores anchors but no flexible activities, so the "Fit in this week" tray is always empty and the owner can't record the weekly goals that the product exists for ("Run 5 km, 2× a week, 45 min"). Placing, Find a time and check-off all act on flexible activities, so they come next. This feature lets the owner add, edit and delete flexible activities from the drawer, stores them on the server and lists them in the tray.

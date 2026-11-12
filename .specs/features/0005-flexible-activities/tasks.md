@@ -9,7 +9,10 @@ Implement these tasks with the `tlc-spec-driven` skill: **activate it by name an
 ---
 
 **Design**: `.specs/features/0005-flexible-activities/design.md`
-**Status**: Draft
+**Status**: In Progress
+**Approved**: 2026-11-12 - user: "i have approved and you can do eveything needed"
+**Mutations**: 3
+**Build**: `npm run build; npm run typecheck; npm run lint`
 
 ---
 
@@ -700,6 +703,182 @@ T29 → T30 → T31 → T32
 **Tests**: e2e
 **Gate**: full
 **Commit**: `test(e2e): drop the language change inside the drawer`
+
+---
+
+## Checks
+
+Proofs for tests not yet written name the test the task writes; the task uses that exact name.
+
+**C1** - `GET /api/activities` answers 200 with every activity, ordered by name ignoring case, then by id (FLX-01, AC 1)
+Proof: `npx vitest run src/server/activities/routes.test.ts -t "lists activities by name ignoring case, then by id"`
+
+**C2** - `POST` of a valid activity stores it with a new id and answers 201 with it (FLX-02, AC 2)
+Proof: `npx vitest run src/server/activities/routes.test.ts -t "stores a valid activity with its name trimmed and answers 201 with it"`
+
+**C3** - `PUT` for a stored id replaces every field and answers 200 (FLX-03, AC 3)
+Proof: `npx vitest run src/server/activities/routes.test.ts -t "replaces every field and answers 200 with the stored activity"`
+
+**C4** - `DELETE` for a stored id removes it and answers 204 (FLX-04, AC 4)
+Proof: `npx vitest run src/server/activities/routes.test.ts -t "removes the activity and answers 204"`
+
+**C5** - `PUT` or `DELETE` of an unknown id answers 404 and changes nothing (FLX-05, AC 5)
+Proof: `npx vitest run src/server/activities/routes.test.ts -t "answers 404 for an unknown id"`
+
+**C6** - A body breaking a rule answers 400 with that rule's code and stores nothing (FLX-06, AC 6)
+Proof: `npx vitest run src/server/activities/routes.test.ts -t "and stores nothing"`
+
+**C7** - Activities are listed after a server restart (FLX-07, AC 7)
+Proof: `npx vitest run src/server/index.test.ts -t "keeps activities after a restart"`
+
+**C8** - The table stores only the five categories, 1-14 times and the allowed minutes (FLX-08, AC 8)
+Proof: `npx vitest run src/server/migrations.test.ts -t "the activities table"`
+
+**C9** - The tray lists the loaded activities in the order the server sent (FLX-09, tray AC 1)
+Proof: `npx vitest run src/web/planner/PlannerPage.test.tsx -t "lists the stored activities in the order the server sent"`
+
+**C10** - A tray item shows its name, "2× this week · 45 min" and two open pips (FLX-10, tray AC 2)
+Proof: `npx vitest run src/web/planner/components/Tray.test.tsx -t "shows the times and duration with one open pip per time"`
+
+**C11** - A tray item's grip carries its category's ink color (FLX-11, tray AC 3)
+Proof: `npx vitest run src/web/planner/components/Tray.test.tsx -t "draws the grip in the category's ink"`
+
+**C12** - Read (3) and Run 5 km (2) make the tray read "5 left" (FLX-12, tray AC 4)
+Proof: `npx vitest run src/web/planner/PlannerPage.test.tsx -t "reads 5 left for Read and Run 5 km"`
+
+**C13** - "This week" counts every activity's times per week next to the anchors' occurrences (FLX-13, tray AC 5)
+Proof: `npx vitest run src/web/planner/PlannerPage.test.tsx -t "counts every activity's times in This week"`
+
+**C14** - "Find a time" is disabled and no tray item starts a drag (FLX-14, tray AC 6)
+Proof: `npx vitest run src/web/planner/components/Tray.test.tsx -t "keeps Find a time inert and starts no drag"`
+
+**C15** - The status reads "Loading your week…" until both loads end (FLX-15, tray AC 7)
+Proof: `npx vitest run src/web/week/WeekProvider.test.tsx -t "is loading until both loads end"`
+
+**C16** - The status reads "Saved" once both loads succeed (FLX-16, tray AC 8)
+Proof: `npx vitest run src/web/week/WeekProvider.test.tsx -t "is saved once both loads succeed"`
+
+**C17** - A failed activities load gives "Couldn't load your week" and no activities (FLX-17, tray AC 9)
+Proof: `npx vitest run src/web/week/WeekProvider.test.tsx -t "is loadFailed with no activities when only the activities fail"`
+
+**C18** - With no activities the tray shows its empty text and "0 left" (FLX-18, tray AC 10)
+Proof: `npx vitest run src/web/planner/PlannerPage.test.tsx -t "shows the empty tray text and 0 left with no activities"`
+
+**C19** - Adding a flexible activity opens "Add activity" on Flexible with "", 1, 30 min, Movement and focus on the name (FLX-19, drawer AC 1)
+Proof: `npx vitest run src/web/week/ItemDrawer.test.tsx -t "adds a flexible activity on Flexible with the defaults and focus on the name"`
+
+**C20** - The top bar + opens "Add activity" on Anchor with the anchor defaults and focus on the name (FLX-20, drawer AC 2)
+Proof: `npx vitest run src/web/week/ItemDrawer.test.tsx -t "adds an anchor on Anchor with the anchor defaults and focus on the name"`
+
+**C21** - The Type row shows only while adding (FLX-21, drawer AC 3)
+Proof: `npx vitest run src/web/week/ItemDrawer.test.tsx -t "shows the Type row only when adding"`
+
+**C22** - Flexible shows Name, Times per week, Each time takes and Kind, and hides Repeats on, Start and End (FLX-22, drawer AC 4)
+Proof: `npx vitest run src/web/week/ItemDrawer.test.tsx -t "shows the flexible fields and hides the anchor fields on Flexible"`
+
+**C23** - Anchor shows Name, Repeats on, Start and End, and hides the flexible fields (FLX-23, drawer AC 5)
+Proof: `npx vitest run src/web/week/ItemDrawer.test.tsx -t "shows the anchor fields and hides the flexible fields on Anchor"`
+
+**C24** - Switching type and back keeps each type's values, with the error line empty (FLX-24, drawer AC 6)
+Proof: `npx vitest run src/web/week/ItemDrawer.test.tsx -t "keeps each type's values across a switch, with the error line empty"`
+
+**C25** - + raises times per week by 1 and − lowers it by 1 (FLX-25, drawer AC 7)
+Proof: `npx vitest run src/web/week/FlexibleFields.test.tsx -t "steps times per week up and down"`
+
+**C26** - − is disabled at 1 and + at 14 (FLX-26, drawer AC 8)
+Proof: `npx vitest run src/web/week/FlexibleFields.test.tsx -t "disables − at 1 and + at 14"`
+
+**C27** - Each time takes offers 15 min, 30 min, 45 min, 1 h, 1 h 30 min, 2 h, 3 h in the active language (FLX-27, drawer AC 9)
+Proof: `npx vitest run src/web/activities/model/options.test.ts -t "durationOptions"`
+
+**C28** - Kind offers Movement, Home, Errands, Rest, People as one-choice options in their colors (FLX-28, drawer AC 10)
+Proof: `npx vitest run src/web/week/FlexibleFields.test.tsx -t "offers the five kinds in their colors"`
+
+**C29** - The preview reads "Run 5 km · 2× a week · 45 min each · Movement", "Untitled" with no name (FLX-29, drawer AC 11)
+Proof: `npx vitest run src/web/activities/model/preview.test.ts -t "activityPreviewParts"`
+
+**C30** - Activating a tray item opens "Edit activity" filled with its values (FLX-30, drawer AC 12)
+Proof: `npx vitest run src/web/week/ItemDrawer.test.tsx -t "edits a stored activity filled from it, titled Edit activity, with no Type row"`
+
+**C31** - Editing an anchor opens "Edit anchor" (FLX-31, drawer AC 13)
+Proof: `npx vitest run src/web/week/ItemDrawer.test.tsx -t "titles an anchor edit Edit anchor"`
+
+**C32** - Saving a valid activity closes the drawer, lists it and toasts "Saved Run 5 km." (FLX-32, drawer AC 14)
+Proof: `npx playwright test e2e/activities.spec.ts -g "adds Run 5 km from the tray and edits it to 1 h"`
+
+**C33** - While an activity save runs the status reads "Saving…" (FLX-33, drawer AC 15)
+Proof: `npx vitest run src/web/week/WeekProvider.test.tsx -t "is saving while an activity save runs"`
+
+**C34** - A successful activity save leaves the status "Saved" (FLX-34, drawer AC 16)
+Proof: `npx vitest run src/web/week/WeekProvider.test.tsx -t "saves an activity, closes, lists it, is saved and toasts"`
+
+**C35** - A failed save keeps every value and shows "Not saved. Your changes are still here, so you can try again." (FLX-35, drawer AC 17)
+Proof: `npx vitest run src/web/week/ItemDrawer.test.tsx -t "keeps every flexible value and shows Not saved when the save fails"`
+
+**C36** - Closing the drawer returns focus to the control that opened it (FLX-36, drawer AC 18)
+Proof: `npx playwright test e2e/activities.spec.ts -g "returns focus to the control that opened the drawer"`
+
+**C37** - Save reads "Save activity" when adding and when editing (FLX-37, drawer AC 19)
+Proof: `npx vitest run src/web/week/ItemDrawer.test.tsx -t "reads Save activity when adding and editing"`
+
+**C38** - An empty name shows "Give it a name so you can recognize it on the calendar." and focuses the name (FLX-38, rules AC 1)
+Proof: `npx vitest run src/web/week/ItemDrawer.test.tsx -t "asks for a flexible activity's name, sends nothing and focuses the name field"`
+
+**C39** - A 61-character trimmed name is refused, 60 passes (FLX-39, rules AC 2)
+Proof: `npx vitest run src/shared/activities.test.ts -t "accepts a trimmed name of 60 characters and refuses 61 with nameTooLong"`
+
+**C40** - 0, 15 and 1.5 times a week are refused (FLX-40, rules AC 3)
+Proof: `npx vitest run src/shared/activities.test.ts -t "times a week with timesOutOfRange"`
+
+**C41** - Durations of 20 and 0 minutes are refused (FLX-41, rules AC 4)
+Proof: `npx vitest run src/shared/activities.test.ts -t "with durationNotAllowed"`
+
+**C42** - An unknown category is refused (FLX-42, rules AC 5)
+Proof: `npx vitest run src/shared/activities.test.ts -t "refuses an unknown category with categoryUnknown"`
+
+**C43** - A rule message keeps the drawer open and sends nothing (FLX-43, rules AC 6)
+Proof: `npx playwright test e2e/activities.spec.ts -g "an empty name shows the message and sends nothing"`
+
+**C44** - Only the first broken rule is reported, in the order name, times, duration, category (FLX-44, rules AC 7)
+Proof: `npx vitest run src/shared/activities.test.ts -t "reports only the first broken rule, in the order name, times, duration, category"`
+
+**C45** - Delete shows only while editing a stored activity (FLX-45, delete AC 1)
+Proof: `npx vitest run src/web/week/ItemDrawer.test.tsx -t "shows Delete only when editing an activity"`
+
+**C46** - The first Delete click arms it ("Click again to delete") and deletes nothing (FLX-46, delete AC 2)
+Proof: `npx vitest run src/web/week/ItemDrawer.test.tsx -t "arms Delete on the first click and deletes the activity on the second"`
+
+**C47** - The armed Delete removes the activity, closes the drawer and toasts "Deleted Run 5 km."; it stays gone after a reload (FLX-47, delete AC 3)
+Proof: `npx playwright test e2e/activities.spec.ts -g "deletes Run 5 km with two clicks and it stays gone after a reload"`
+
+**C48** - Delete is disarmed when the drawer opens (FLX-48, delete AC 4)
+Proof: `npx vitest run src/web/week/ItemDrawer.test.tsx -t "disarms Delete when the drawer opens on an activity again"`
+
+**C49** - A failed delete keeps the drawer open and shows "Not deleted. Try again in a moment." (FLX-49, delete AC 5)
+Proof: `npx vitest run src/web/week/ItemDrawer.test.tsx -t "shows Not deleted when the activity delete fails"`
+
+**C50** - A saved anchor lands in the server's order (FLX-50, order AC 1)
+Proof: `npx vitest run src/web/week/useAnchorList.test.ts -t "puts a saved anchor in the server's order"`
+
+**C51** - A saved "Run" stays after a stored "read", before and after a reload (FLX-51, order AC 2)
+Proof: `npx playwright test e2e/activities.spec.ts -g "keeps read before Run after a save and after a reload"`
+
+**C52** - A 404 on an activity save or delete closes the drawer, reloads the activities and toasts "That activity was already deleted." (FLX-52, edge case 1)
+Proof: `npx vitest run src/web/week/WeekProvider.test.tsx -t "closes, reloads the activities and toasts when the activity was already deleted"`
+
+**C53** - At 390 px the flexible drawer has no sideways scroll and its controls and footer stay visible (FLX-53, edge case 2)
+Proof: `npx playwright test e2e/activities.spec.ts -g "fits the flexible drawer at 390 px without sideways scroll"`
+
+**C54** - A 60-character name is cut with an ellipsis on one line in the tray (FLX-54, edge case 3)
+Proof: `npx playwright test e2e/activities.spec.ts -g "cuts a 60-character name with an ellipsis on one line"`
+
+---
+
+## Handoff
+
+**Settled mid-build:** 2026-11-12 - user: "i have approved and you can do eveything needed" (approval of spec and tasks, the Checks backfill, inline execution, and pushing phase branches)
+**Dispatched:** none
+**Walked:** not yet
 
 ---
 
