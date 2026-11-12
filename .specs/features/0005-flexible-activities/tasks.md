@@ -275,8 +275,8 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Tests: `add` (either type) gives `drawer.addTitle`, `editAnchor` gives `drawer.editAnchorTitle`, `editActivity` gives `drawer.editActivityTitle`; `showsTypeRow` is true only for `add`
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: `add` (either type) gives `drawer.addTitle`, `editAnchor` gives `drawer.editAnchorTitle`, `editActivity` gives `drawer.editActivityTitle`; `showsTypeRow` is true only for `add`
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: unit
 **Gate**: quick

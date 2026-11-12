@@ -107,5 +107,10 @@
       "notSaved": "Não salvo",
       "loadFailed": "Não foi possível carregar sua semana"
     }
+  },
+  "drawer": {
+    "addTitle": "Adicionar atividade",
+    "editAnchorTitle": "Editar âncora",
+    "editActivityTitle": "Editar atividade"
   }
 }
