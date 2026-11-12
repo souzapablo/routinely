@@ -355,8 +355,8 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Tests: 200 with a valid list → list; 200 with a bad body, 500, network error → `failed`; save 201/200 → `ok`, 400 with each known code → `rule`, 400 with an unknown code → `failed`, 404 → `notFound`, 500 → `failed`; `POST` when the id is null and `PUT` with the encoded id otherwise; delete 204 → `ok`, 404 → `notFound`, 500 → `failed`
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: 200 with a valid list → list; 200 with a bad body, 500, network error → `failed`; save 201/200 → `ok`, 400 with each known code → `rule`, 400 with an unknown code → `failed`, 404 → `notFound`, 500 → `failed`; `POST` when the id is null and `PUT` with the encoded id otherwise; delete 204 → `ok`, 404 → `notFound`, 500 → `failed`
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: unit
 **Gate**: quick
