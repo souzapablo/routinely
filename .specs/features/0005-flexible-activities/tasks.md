@@ -374,8 +374,8 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Tests: the new draft is `{ "", 1, 30, "movement" }`; `draftFromActivity` copies every field; `stepTimes` goes 1→2 and 2→1 and stays at 1 and 14; `canStep` is `{ down: false }` at 1 and `{ up: false }` at 14; an empty name gives `nameEmpty`
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: the new draft is `{ "", 1, 30, "movement" }`; `draftFromActivity` copies every field; `stepTimes` goes 1→2 and 2→1 and stays at 1 and 14; `canStep` is `{ down: false }` at 1 and `{ up: false }` at 14; an empty name gives `nameEmpty`
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: unit
 **Gate**: quick
