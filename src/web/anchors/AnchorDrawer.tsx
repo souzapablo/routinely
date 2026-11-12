@@ -12,7 +12,8 @@ import { Stack } from "../ui/Stack/Stack.tsx";
 import { Text } from "../ui/Text/Text.tsx";
 import { TextField } from "../ui/TextField/TextField.tsx";
 import { TimeField } from "../ui/TimeField/TimeField.tsx";
-import { type DrawerState, useAnchors } from "./AnchorsProvider.tsx";
+import type { DrawerState } from "../week/model/drawer.ts";
+import { useWeek } from "../week/WeekProvider.tsx";
 import {
   type AnchorDraft,
   draftFromAnchor,
@@ -31,7 +32,9 @@ type Message =
   | { kind: "failure"; action: "save" | "delete" };
 
 function draftFor(drawer: DrawerState): AnchorDraft {
-  return drawer.mode === "edit" ? draftFromAnchor(drawer.anchor) : newDraft();
+  return drawer.mode === "editAnchor"
+    ? draftFromAnchor(drawer.anchor)
+    : newDraft();
 }
 
 export interface AnchorDrawerProps {
@@ -43,7 +46,8 @@ export interface AnchorDrawerProps {
 export function AnchorDrawer({ returnFocusFallback }: AnchorDrawerProps) {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
-  const { anchors, status, drawer, closeDrawer, save, remove } = useAnchors();
+  const { anchors, status, drawer, closeDrawer, saveAnchor, remove } =
+    useWeek();
   const nameRef = useRef<HTMLInputElement>(null);
 
   const [draft, setDraft] = useState(() => draftFor(drawer));
@@ -71,9 +75,9 @@ export function AnchorDrawer({ returnFocusFallback }: AnchorDrawerProps) {
 
   // Keeps the title and Delete while the dialog closes.
   const editing =
-    drawer.mode === "edit" ||
-    (drawer.mode === "closed" && openedFor.mode === "edit");
-  const editingId = drawer.mode === "edit" ? drawer.anchor.id : null;
+    drawer.mode === "editAnchor" ||
+    (drawer.mode === "closed" && openedFor.mode === "editAnchor");
+  const editingId = drawer.mode === "editAnchor" ? drawer.anchor.id : null;
   const saving = status === "saving";
 
   const update = (change: Partial<AnchorDraft>) =>
@@ -94,7 +98,7 @@ export function AnchorDrawer({ returnFocusFallback }: AnchorDrawerProps) {
       return;
     }
     setMessage(null);
-    const outcome = await save(draft);
+    const outcome = await saveAnchor(draft);
     if (outcome.kind === "problem") {
       setMessage({ kind: "problem", problem: outcome.problem });
     } else if (outcome.kind === "failed") {

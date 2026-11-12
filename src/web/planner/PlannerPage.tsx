@@ -1,7 +1,7 @@
 import { useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import type { PlannerData } from "../../shared/planner.ts";
-import { useAnchors } from "../anchors/AnchorsProvider.tsx";
+import { useWeek } from "../week/WeekProvider.tsx";
 import type { GridDay } from "./components/WeekGrid.tsx";
 import { TodayStrip } from "./components/TodayStrip.tsx";
 import { Tray } from "./components/Tray.tsx";
@@ -47,7 +47,7 @@ export function PlannerPage() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
   const now = useNow();
-  const { anchors, openEdit } = useAnchors();
+  const { anchors, openEditAnchor } = useWeek();
   // Only anchors are stored so far; flexible activities, placements and
   // done marks come with later features.
   const data = useMemo<PlannerData>(
@@ -139,7 +139,7 @@ export function PlannerPage() {
             nowOffset={nowOffset(minutes, pxPerHour)}
             pxPerHour={pxPerHour}
             bodyRef={gridBody}
-            onOpenAnchor={openEdit}
+            onOpenAnchor={openEditAnchor}
           />
         </div>
         <div className={styles.tray}>

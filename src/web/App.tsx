@@ -1,15 +1,15 @@
 import { useRef } from "react";
 import { Navigate, Route, Routes } from "react-router";
 import { AnchorDrawer } from "./anchors/AnchorDrawer.tsx";
-import { AnchorsProvider, useAnchors } from "./anchors/AnchorsProvider.tsx";
+import { WeekProvider, useWeek } from "./week/WeekProvider.tsx";
 import { TopBar } from "./app/TopBar.tsx";
 import { PlannerPage } from "./planner/PlannerPage.tsx";
 import { StatusPage } from "./StatusPage.tsx";
 import { Toast } from "./ui/Toast/Toast.tsx";
 import styles from "./App.module.css";
 
-function AnchorsToast() {
-  const { toast, dismissToast } = useAnchors();
+function WeekToast() {
+  const { toast, dismissToast } = useWeek();
   return (
     <Toast
       message={toast?.text ?? null}
@@ -25,7 +25,7 @@ export function App() {
   const addButton = useRef<HTMLButtonElement>(null);
 
   return (
-    <AnchorsProvider>
+    <WeekProvider>
       <div className={styles.app}>
         <TopBar addButtonRef={addButton} />
         <Routes>
@@ -42,7 +42,7 @@ export function App() {
         </Routes>
       </div>
       <AnchorDrawer returnFocusFallback={addButton} />
-      <AnchorsToast />
-    </AnchorsProvider>
+      <WeekToast />
+    </WeekProvider>
   );
 }

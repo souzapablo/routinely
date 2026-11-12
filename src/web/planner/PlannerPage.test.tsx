@@ -1,10 +1,7 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { Anchor } from "../../shared/planner.ts";
-import {
-  type AnchorsContextValue,
-  useAnchors,
-} from "../anchors/AnchorsProvider.tsx";
+import { type WeekContextValue, useWeek } from "../week/WeekProvider.tsx";
 import en from "../i18n/en.json";
 import i18n from "../i18n/index.ts";
 import ptBR from "../i18n/pt-BR.json";
@@ -13,7 +10,7 @@ import gridBlockStyles from "./components/GridBlock.module.css";
 import gridStyles from "./components/WeekGrid.module.css";
 import { PlannerPage } from "./PlannerPage.tsx";
 
-vi.mock("../anchors/AnchorsProvider.tsx", () => ({ useAnchors: vi.fn() }));
+vi.mock("../week/WeekProvider.tsx", () => ({ useWeek: vi.fn() }));
 
 const SUNDAY_MORNING = new Date(2026, 10, 8, 7, 48);
 // Thursday has a gym class at 07:00 and work, so today's list has two rows.
@@ -34,18 +31,18 @@ const gym: Anchor = {
   end: 480,
 };
 
-const openEdit = vi.fn();
+const openEditAnchor = vi.fn();
 
-function stubAnchors(anchors: Anchor[]) {
-  vi.mocked(useAnchors).mockReturnValue({
+function stubWeek(anchors: Anchor[]) {
+  vi.mocked(useWeek).mockReturnValue({
     anchors,
-    openEdit,
-  } as unknown as AnchorsContextValue);
+    openEditAnchor,
+  } as unknown as WeekContextValue);
 }
 
 beforeEach(() => {
-  openEdit.mockReset();
-  stubAnchors([work, gym]);
+  openEditAnchor.mockReset();
+  stubWeek([work, gym]);
 });
 
 function renderAt(now: Date) {
@@ -189,7 +186,7 @@ describe("PlannerPage", () => {
   });
 
   it("draws Work on Monday to Friday and nothing else on those days", () => {
-    stubAnchors([work]);
+    stubWeek([work]);
     const { container } = renderAt(SUNDAY_MORNING);
 
     const columns = Array.from(
@@ -225,7 +222,7 @@ describe("PlannerPage", () => {
   });
 
   it("shows the empty texts without error styling when no anchors are stored", () => {
-    stubAnchors([]);
+    stubWeek([]);
     const { container } = renderAt(THURSDAY_GYM);
 
     expect(
@@ -250,7 +247,7 @@ describe("PlannerPage", () => {
     fireEvent.click(
       screen.getAllByRole("button", { name: "Edit Gym class" })[0],
     );
-    expect(openEdit).toHaveBeenCalledWith("gym");
+    expect(openEditAnchor).toHaveBeenCalledWith("gym");
   });
 
   it("renders no English text in pt-BR", async () => {

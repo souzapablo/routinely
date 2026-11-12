@@ -6,15 +6,15 @@ import i18n from "../i18n/index.ts";
 import buttonStyles from "../ui/Button/Button.module.css";
 import messageStyles from "../ui/MessageLine/MessageLine.module.css";
 import { AnchorDrawer } from "./AnchorDrawer.tsx";
+import type { DrawerState } from "../week/model/drawer.ts";
 import {
-  type AnchorsContextValue,
   type DrawerOutcome,
-  type DrawerState,
-  useAnchors,
-} from "./AnchorsProvider.tsx";
+  type WeekContextValue,
+  useWeek,
+} from "../week/WeekProvider.tsx";
 import type { SaveStatus } from "../week/model/saveStatus.ts";
 
-vi.mock("./AnchorsProvider.tsx", () => ({ useAnchors: vi.fn() }));
+vi.mock("../week/WeekProvider.tsx", () => ({ useWeek: vi.fn() }));
 
 const work: Anchor = {
   id: "w",
@@ -32,14 +32,14 @@ let drawer: DrawerState;
 let status: SaveStatus;
 
 function stub() {
-  vi.mocked(useAnchors).mockReturnValue({
+  vi.mocked(useWeek).mockReturnValue({
     anchors: [work],
     status,
     drawer,
     closeDrawer,
-    save,
+    saveAnchor: save,
     remove,
-  } as unknown as AnchorsContextValue);
+  } as unknown as WeekContextValue);
 }
 
 function renderDrawer(state: DrawerState) {
@@ -90,7 +90,7 @@ afterEach(async () => {
 
 describe("AnchorDrawer opening", () => {
   it("adds with an empty name, Mon–Fri, 09:00–18:00, focus on the name and no Delete", () => {
-    renderDrawer({ mode: "add" });
+    renderDrawer({ mode: "add", type: "anchor" });
 
     expect(dialog()).toHaveAttribute("open");
     expect(
@@ -106,7 +106,7 @@ describe("AnchorDrawer opening", () => {
   });
 
   it("lists the day toggles Sunday first", () => {
-    renderDrawer({ mode: "add" });
+    renderDrawer({ mode: "add", type: "anchor" });
 
     const group = screen.getByRole("group", { name: "Repeats on" });
     expect(
@@ -118,7 +118,7 @@ describe("AnchorDrawer opening", () => {
 
   it("edits a stored anchor filled from it, with Delete", () => {
     renderDrawer({
-      mode: "edit",
+      mode: "editAnchor",
       anchor: { ...work, name: "Gym", days: [0, 3], start: 1080, end: 1170 },
     });
 
@@ -134,7 +134,7 @@ describe("AnchorDrawer opening", () => {
 
   it("shows the preview line and follows the draft", async () => {
     const user = userEvent.setup();
-    renderDrawer({ mode: "add" });
+    renderDrawer({ mode: "add", type: "anchor" });
 
     expect(dialog()).toHaveTextContent(
       "Untitled · Mon–Fri · 9:00 AM – 6:00 PM · every week",
@@ -147,7 +147,7 @@ describe("AnchorDrawer opening", () => {
 
   it("closes through Cancel without saving", async () => {
     const user = userEvent.setup();
-    renderDrawer({ mode: "add" });
+    renderDrawer({ mode: "add", type: "anchor" });
 
     await user.click(screen.getByRole("button", { name: "Cancel" }));
     expect(closeDrawer).toHaveBeenCalledTimes(1);
@@ -158,7 +158,7 @@ describe("AnchorDrawer opening", () => {
 describe("AnchorDrawer rules", () => {
   it("asks for a name, sends nothing and focuses the name field", async () => {
     const user = userEvent.setup();
-    renderDrawer({ mode: "add" });
+    renderDrawer({ mode: "add", type: "anchor" });
     await user.type(nameField(), "   ");
     await user.click(saveButton());
 
@@ -172,7 +172,7 @@ describe("AnchorDrawer rules", () => {
 
   it("asks for at least one day", async () => {
     const user = userEvent.setup();
-    renderDrawer({ mode: "add" });
+    renderDrawer({ mode: "add", type: "anchor" });
     await user.type(nameField(), "Work");
     for (const day of ["Mon", "Tue", "Wed", "Thu", "Fri"]) {
       await user.click(screen.getByRole("button", { name: day }));
@@ -187,7 +187,7 @@ describe("AnchorDrawer rules", () => {
 
   it("asks for both times", async () => {
     const user = userEvent.setup();
-    renderDrawer({ mode: "add" });
+    renderDrawer({ mode: "add", type: "anchor" });
     await user.type(nameField(), "Work");
     await user.clear(endField());
     await user.click(saveButton());
@@ -198,7 +198,7 @@ describe("AnchorDrawer rules", () => {
 
   it("asks for 15-minute steps with times in the active language", async () => {
     const user = userEvent.setup();
-    renderDrawer({ mode: "add" });
+    renderDrawer({ mode: "add", type: "anchor" });
     await user.type(nameField(), "Work");
     await user.clear(startField());
     await user.type(startField(), "09:10");
@@ -212,7 +212,7 @@ describe("AnchorDrawer rules", () => {
 
   it("asks for an end after the start", async () => {
     const user = userEvent.setup();
-    renderDrawer({ mode: "add" });
+    renderDrawer({ mode: "add", type: "anchor" });
     await user.type(nameField(), "Work");
     await user.clear(endField());
     await user.type(endField(), "09:00");
@@ -226,7 +226,7 @@ describe("AnchorDrawer rules", () => {
 
   it("names the overlapped anchor and the first shared day", async () => {
     const user = userEvent.setup();
-    renderDrawer({ mode: "add" });
+    renderDrawer({ mode: "add", type: "anchor" });
     await user.type(nameField(), "Gym");
     await user.clear(startField());
     await user.type(startField(), "17:00");
@@ -243,7 +243,7 @@ describe("AnchorDrawer rules", () => {
 
   it("does not count the edited anchor's stored version as an overlap", async () => {
     const user = userEvent.setup();
-    renderDrawer({ mode: "edit", anchor: work });
+    renderDrawer({ mode: "editAnchor", anchor: work });
     await user.clear(endField());
     await user.type(endField(), "17:00");
     await user.click(saveButton());
@@ -260,7 +260,7 @@ describe("AnchorDrawer rules", () => {
 describe("AnchorDrawer saving", () => {
   it("sends a valid draft to save", async () => {
     const user = userEvent.setup();
-    renderDrawer({ mode: "add" });
+    renderDrawer({ mode: "add", type: "anchor" });
     await user.type(nameField(), "Gym");
     await user.click(screen.getByRole("button", { name: "Sat" }));
     await user.clear(startField());
@@ -278,7 +278,7 @@ describe("AnchorDrawer saving", () => {
   });
 
   it("disables Save while saving", () => {
-    const view = renderDrawer({ mode: "add" });
+    const view = renderDrawer({ mode: "add", type: "anchor" });
     expect(saveButton()).toBeEnabled();
 
     view.update({ status: "saving" });
@@ -288,7 +288,7 @@ describe("AnchorDrawer saving", () => {
   it("keeps every value and shows the failure in error tone when the save fails", async () => {
     const user = userEvent.setup();
     save.mockResolvedValueOnce({ kind: "failed" });
-    renderDrawer({ mode: "add" });
+    renderDrawer({ mode: "add", type: "anchor" });
     await user.type(nameField(), "Gym");
     await user.click(screen.getByRole("button", { name: "Sat" }));
     await user.clear(startField());
@@ -313,7 +313,7 @@ describe("AnchorDrawer saving", () => {
       kind: "problem",
       problem: { code: "overlap", other: "Therapy", day: 3 },
     });
-    renderDrawer({ mode: "add" });
+    renderDrawer({ mode: "add", type: "anchor" });
     await user.type(nameField(), "Gym");
     await user.clear(startField());
     await user.type(startField(), "06:00");
@@ -331,7 +331,7 @@ describe("AnchorDrawer saving", () => {
 describe("AnchorDrawer delete", () => {
   it("arms on the first click and deletes on the second", async () => {
     const user = userEvent.setup();
-    renderDrawer({ mode: "edit", anchor: work });
+    renderDrawer({ mode: "editAnchor", anchor: work });
 
     await user.click(screen.getByRole("button", { name: "Delete" }));
     const armed = screen.getByRole("button", { name: "Click again to delete" });
@@ -344,11 +344,11 @@ describe("AnchorDrawer delete", () => {
 
   it("is disarmed when the drawer opens again", async () => {
     const user = userEvent.setup();
-    const view = renderDrawer({ mode: "edit", anchor: work });
+    const view = renderDrawer({ mode: "editAnchor", anchor: work });
     await user.click(screen.getByRole("button", { name: "Delete" }));
 
     view.update({ drawer: { mode: "closed" } });
-    view.update({ drawer: { mode: "edit", anchor: work } });
+    view.update({ drawer: { mode: "editAnchor", anchor: work } });
 
     const button = screen.getByRole("button", { name: "Delete" });
     expect(button).not.toHaveClass(buttonStyles.danger);
@@ -357,7 +357,7 @@ describe("AnchorDrawer delete", () => {
   it("shows the failure when the delete fails", async () => {
     const user = userEvent.setup();
     remove.mockResolvedValueOnce({ kind: "failed" });
-    renderDrawer({ mode: "edit", anchor: work });
+    renderDrawer({ mode: "editAnchor", anchor: work });
 
     await user.click(screen.getByRole("button", { name: "Delete" }));
     await user.click(
@@ -374,7 +374,7 @@ describe("AnchorDrawer delete", () => {
 describe("AnchorDrawer reopening", () => {
   it("starts from the defaults with no message after it reopens", async () => {
     const user = userEvent.setup();
-    const view = renderDrawer({ mode: "add" });
+    const view = renderDrawer({ mode: "add", type: "anchor" });
     await user.type(nameField(), "Gym");
     await user.click(screen.getByRole("button", { name: "Mon" }));
     await user.clear(endField());
@@ -382,7 +382,7 @@ describe("AnchorDrawer reopening", () => {
     expect(messageLine()).toHaveTextContent("Set a start and end time.");
 
     view.update({ drawer: { mode: "closed" } });
-    view.update({ drawer: { mode: "add" } });
+    view.update({ drawer: { mode: "add", type: "anchor" } });
 
     expect(nameField()).toHaveValue("");
     expect(pressedDays()).toEqual(["Mon", "Tue", "Wed", "Thu", "Fri"]);
@@ -394,7 +394,7 @@ describe("AnchorDrawer reopening", () => {
 describe("AnchorDrawer language", () => {
   it("re-renders its labels, weekdays, preview and message in pt-BR", async () => {
     const user = userEvent.setup();
-    renderDrawer({ mode: "edit", anchor: work });
+    renderDrawer({ mode: "editAnchor", anchor: work });
     await user.clear(nameField());
     await user.click(saveButton());
 

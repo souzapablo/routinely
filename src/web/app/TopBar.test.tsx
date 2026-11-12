@@ -1,29 +1,26 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import {
-  type AnchorsContextValue,
-  useAnchors,
-} from "../anchors/AnchorsProvider.tsx";
+import { type WeekContextValue, useWeek } from "../week/WeekProvider.tsx";
 import type { SaveStatus } from "../week/model/saveStatus.ts";
 import i18n from "../i18n/index.ts";
 import brandStyles from "../ui/BrandMark/BrandMark.module.css";
 import statusStyles from "../ui/StatusIndicator/StatusIndicator.module.css";
 import { TopBar } from "./TopBar.tsx";
 
-vi.mock("../anchors/AnchorsProvider.tsx", () => ({ useAnchors: vi.fn() }));
+vi.mock("../week/WeekProvider.tsx", () => ({ useWeek: vi.fn() }));
 
 const openAdd = vi.fn();
 
-function stubAnchors(status: SaveStatus) {
-  vi.mocked(useAnchors).mockReturnValue({
+function stubWeek(status: SaveStatus) {
+  vi.mocked(useWeek).mockReturnValue({
     status,
     openAdd,
-  } as unknown as AnchorsContextValue);
+  } as unknown as WeekContextValue);
 }
 
 beforeEach(() => {
   openAdd.mockReset();
-  stubAnchors("saved");
+  stubWeek("saved");
 });
 
 afterEach(async () => {
@@ -57,7 +54,7 @@ describe("TopBar", () => {
     ["notSaved", "Not saved", "error"],
     ["loadFailed", "Couldn't load your week", "error"],
   ] as const)("shows %s as %s with the %s dot", (status, text, tone) => {
-    stubAnchors(status);
+    stubWeek(status);
     render(<TopBar />);
 
     const indicator = screen.getByRole("status");
@@ -72,6 +69,7 @@ describe("TopBar", () => {
     expect(add).toBeEnabled();
     fireEvent.click(add);
     expect(openAdd).toHaveBeenCalledTimes(1);
+    expect(openAdd).toHaveBeenCalledWith("anchor");
   });
 
   it("shows its texts in pt-BR", async () => {

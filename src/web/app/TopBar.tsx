@@ -1,6 +1,6 @@
 import type { Ref } from "react";
 import { useTranslation } from "react-i18next";
-import { useAnchors } from "../anchors/AnchorsProvider.tsx";
+import { useWeek } from "../week/WeekProvider.tsx";
 import { statusView } from "../week/model/saveStatus.ts";
 import { LanguageSwitch } from "../LanguageSwitch.tsx";
 import { BrandMark } from "../ui/BrandMark/BrandMark.tsx";
@@ -14,7 +14,7 @@ export interface TopBarProps {
 
 export function TopBar({ addButtonRef }: TopBarProps) {
   const { t } = useTranslation();
-  const { status, openAdd } = useAnchors();
+  const { status, openAdd } = useWeek();
   const view = statusView(status);
 
   return (
@@ -31,7 +31,7 @@ export function TopBar({ addButtonRef }: TopBarProps) {
         variant="primary"
         icon="plus"
         collapseLabel
-        onClick={openAdd}
+        onClick={() => openAdd("anchor")}
       >
         {t("topBar.addActivity")}
       </Button>

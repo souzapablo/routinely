@@ -313,10 +313,10 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Every assertion from `AnchorsProvider.test.tsx` passes against `WeekProvider` (same count or more)
-- [ ] Tests: `openAdd("anchor")` sets `{ mode: "add", type: "anchor" }`; `openEditAnchor(id)` sets `editAnchor`
-- [ ] `TopBar.test.tsx` and `PlannerPage.test.tsx` pass with the new provider
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Every assertion from `AnchorsProvider.test.tsx` passes against `WeekProvider` (same count or more)
+- [x] Tests: `openAdd("anchor")` sets `{ mode: "add", type: "anchor" }`; `openEditAnchor(id)` sets `editAnchor`
+- [x] `TopBar.test.tsx` and `PlannerPage.test.tsx` pass with the new provider
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: component
 **Gate**: quick

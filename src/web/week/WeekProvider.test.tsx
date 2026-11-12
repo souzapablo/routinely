@@ -2,15 +2,15 @@ import { act, render, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { Anchor } from "../../shared/planner.ts";
 import "../i18n/index.ts";
-import { deleteAnchor, loadAnchors, saveAnchor } from "./api.ts";
+import { deleteAnchor, loadAnchors, saveAnchor } from "../anchors/api.ts";
 import {
-  AnchorsProvider,
-  type AnchorsContextValue,
-  useAnchors,
-} from "./AnchorsProvider.tsx";
-import { newDraft } from "./model/form.ts";
+  WeekProvider,
+  type WeekContextValue,
+  useWeek,
+} from "./WeekProvider.tsx";
+import { newDraft } from "../anchors/model/form.ts";
 
-vi.mock("./api.ts", () => ({
+vi.mock("../anchors/api.ts", () => ({
   loadAnchors: vi.fn(),
   saveAnchor: vi.fn(),
   deleteAnchor: vi.fn(),
@@ -32,21 +32,21 @@ function deferred<T>() {
   return { promise, resolve };
 }
 
-let ctx: AnchorsContextValue;
-const keep = (value: AnchorsContextValue) => {
+let ctx: WeekContextValue;
+const keep = (value: WeekContextValue) => {
   ctx = value;
 };
 function Probe() {
-  keep(useAnchors());
+  keep(useWeek());
   return null;
 }
 
 async function renderLoaded(anchors: Anchor[] = [work]) {
   vi.mocked(loadAnchors).mockResolvedValueOnce(anchors);
   render(
-    <AnchorsProvider>
+    <WeekProvider>
       <Probe />
-    </AnchorsProvider>,
+    </WeekProvider>,
   );
   await waitFor(() => expect(ctx.status).toBe("saved"));
 }
@@ -57,14 +57,14 @@ beforeEach(() => {
   vi.mocked(deleteAnchor).mockReset();
 });
 
-describe("AnchorsProvider loading", () => {
+describe("WeekProvider loading", () => {
   it("is loading, then saved with the stored anchors", async () => {
     const load = deferred<Anchor[] | "failed">();
     vi.mocked(loadAnchors).mockReturnValueOnce(load.promise);
     render(
-      <AnchorsProvider>
+      <WeekProvider>
         <Probe />
-      </AnchorsProvider>,
+      </WeekProvider>,
     );
 
     expect(ctx.status).toBe("loading");
@@ -81,9 +81,9 @@ describe("AnchorsProvider loading", () => {
   it("is loadFailed with no anchors when the load fails", async () => {
     vi.mocked(loadAnchors).mockResolvedValueOnce("failed");
     render(
-      <AnchorsProvider>
+      <WeekProvider>
         <Probe />
-      </AnchorsProvider>,
+      </WeekProvider>,
     );
 
     await waitFor(() => expect(ctx.status).toBe("loadFailed"));
@@ -99,9 +99,9 @@ describe("AnchorsProvider loading", () => {
     const { StrictMode } = await import("react");
     render(
       <StrictMode>
-        <AnchorsProvider>
+        <WeekProvider>
           <Probe />
-        </AnchorsProvider>
+        </WeekProvider>
       </StrictMode>,
     );
 
@@ -117,32 +117,32 @@ describe("AnchorsProvider loading", () => {
   });
 });
 
-describe("AnchorsProvider drawer", () => {
+describe("WeekProvider drawer", () => {
   it("opens to add, opens to edit a loaded anchor, and closes", async () => {
     await renderLoaded();
     expect(ctx.drawer).toEqual({ mode: "closed" });
 
-    act(() => ctx.openAdd());
-    expect(ctx.drawer).toEqual({ mode: "add" });
+    act(() => ctx.openAdd("anchor"));
+    expect(ctx.drawer).toEqual({ mode: "add", type: "anchor" });
 
-    act(() => ctx.openEdit("w"));
-    expect(ctx.drawer).toEqual({ mode: "edit", anchor: work });
+    act(() => ctx.openEditAnchor("w"));
+    expect(ctx.drawer).toEqual({ mode: "editAnchor", anchor: work });
 
     act(() => ctx.closeDrawer());
     expect(ctx.drawer).toEqual({ mode: "closed" });
   });
 });
 
-describe("AnchorsProvider save", () => {
+describe("WeekProvider save", () => {
   it("is saving while the request runs, then closes, stores, is saved and toasts", async () => {
     await renderLoaded([gym]);
-    act(() => ctx.openAdd());
+    act(() => ctx.openAdd("anchor"));
     const request = deferred<Awaited<ReturnType<typeof saveAnchor>>>();
     vi.mocked(saveAnchor).mockReturnValueOnce(request.promise);
 
     let outcome: Promise<unknown> = Promise.resolve();
     act(() => {
-      outcome = ctx.save({ ...newDraft(), name: "Work" });
+      outcome = ctx.saveAnchor({ ...newDraft(), name: "Work" });
     });
     expect(ctx.status).toBe("saving");
     expect(saveAnchor).toHaveBeenCalledWith(null, {
@@ -165,12 +165,12 @@ describe("AnchorsProvider save", () => {
 
   it("replaces the edited anchor in place", async () => {
     await renderLoaded([work]);
-    act(() => ctx.openEdit("w"));
+    act(() => ctx.openEditAnchor("w"));
     const edited = { ...work, end: 1020 };
     vi.mocked(saveAnchor).mockResolvedValueOnce({ kind: "ok", anchor: edited });
 
     await act(() =>
-      ctx.save({
+      ctx.saveAnchor({
         name: "Work",
         days: [1, 2, 3, 4, 5],
         start: "09:00",
@@ -184,7 +184,7 @@ describe("AnchorsProvider save", () => {
 
   it("keeps the drawer open on a rule, returns the problem and restores the status", async () => {
     await renderLoaded();
-    act(() => ctx.openAdd());
+    act(() => ctx.openAdd("anchor"));
     const problem = {
       code: "overlap" as const,
       other: "Work",
@@ -194,11 +194,11 @@ describe("AnchorsProvider save", () => {
 
     let outcome: unknown;
     await act(async () => {
-      outcome = await ctx.save({ ...newDraft(), name: "Gym" });
+      outcome = await ctx.saveAnchor({ ...newDraft(), name: "Gym" });
     });
 
     expect(outcome).toEqual({ kind: "problem", problem });
-    expect(ctx.drawer).toEqual({ mode: "add" });
+    expect(ctx.drawer).toEqual({ mode: "add", type: "anchor" });
     expect(ctx.status).toBe("saved");
     expect(ctx.anchors).toEqual([work]);
     expect(ctx.toast).toBeNull();
@@ -206,29 +206,29 @@ describe("AnchorsProvider save", () => {
 
   it("returns the failure and is notSaved when the save fails", async () => {
     await renderLoaded();
-    act(() => ctx.openAdd());
+    act(() => ctx.openAdd("anchor"));
     vi.mocked(saveAnchor).mockResolvedValueOnce({ kind: "failed" });
 
     let outcome: unknown;
     await act(async () => {
-      outcome = await ctx.save({ ...newDraft(), name: "Gym" });
+      outcome = await ctx.saveAnchor({ ...newDraft(), name: "Gym" });
     });
 
     expect(outcome).toEqual({ kind: "failed" });
-    expect(ctx.drawer).toEqual({ mode: "add" });
+    expect(ctx.drawer).toEqual({ mode: "add", type: "anchor" });
     expect(ctx.status).toBe("notSaved");
     expect(ctx.anchors).toEqual([work]);
   });
 
   it("closes, reloads and toasts when the anchor was deleted elsewhere", async () => {
     await renderLoaded([work, gym]);
-    act(() => ctx.openEdit("g"));
+    act(() => ctx.openEditAnchor("g"));
     vi.mocked(saveAnchor).mockResolvedValueOnce({ kind: "notFound" });
     vi.mocked(loadAnchors).mockResolvedValueOnce([work]);
 
     let outcome: unknown;
     await act(async () => {
-      outcome = await ctx.save({ ...newDraft(), name: "Gym" });
+      outcome = await ctx.saveAnchor({ ...newDraft(), name: "Gym" });
     });
 
     expect(outcome).toEqual({ kind: "closed" });
@@ -240,10 +240,10 @@ describe("AnchorsProvider save", () => {
   });
 });
 
-describe("AnchorsProvider remove", () => {
+describe("WeekProvider remove", () => {
   it("drops the anchor, closes, is saved and toasts", async () => {
     await renderLoaded([work, gym]);
-    act(() => ctx.openEdit("w"));
+    act(() => ctx.openEditAnchor("w"));
     vi.mocked(deleteAnchor).mockResolvedValueOnce({ kind: "ok" });
 
     let outcome: unknown;
@@ -261,7 +261,7 @@ describe("AnchorsProvider remove", () => {
 
   it("keeps the anchor and is notSaved when the delete fails", async () => {
     await renderLoaded();
-    act(() => ctx.openEdit("w"));
+    act(() => ctx.openEditAnchor("w"));
     vi.mocked(deleteAnchor).mockResolvedValueOnce({ kind: "failed" });
 
     let outcome: unknown;
@@ -271,13 +271,13 @@ describe("AnchorsProvider remove", () => {
 
     expect(outcome).toEqual({ kind: "failed" });
     expect(ctx.anchors).toEqual([work]);
-    expect(ctx.drawer).toEqual({ mode: "edit", anchor: work });
+    expect(ctx.drawer).toEqual({ mode: "editAnchor", anchor: work });
     expect(ctx.status).toBe("notSaved");
   });
 
   it("closes, reloads and toasts when the anchor was already deleted", async () => {
     await renderLoaded([work]);
-    act(() => ctx.openEdit("w"));
+    act(() => ctx.openEditAnchor("w"));
     vi.mocked(deleteAnchor).mockResolvedValueOnce({ kind: "notFound" });
     vi.mocked(loadAnchors).mockResolvedValueOnce([]);
 
@@ -289,15 +289,15 @@ describe("AnchorsProvider remove", () => {
   });
 });
 
-describe("AnchorsProvider toast", () => {
+describe("WeekProvider toast", () => {
   it("gives the same text a new id each time and clears on dismiss", async () => {
     await renderLoaded([]);
     vi.mocked(saveAnchor).mockResolvedValue({ kind: "ok", anchor: work });
-    act(() => ctx.openAdd());
-    await act(() => ctx.save({ ...newDraft(), name: "Work" }));
+    act(() => ctx.openAdd("anchor"));
+    await act(() => ctx.saveAnchor({ ...newDraft(), name: "Work" }));
     const firstId = ctx.toast?.id;
-    act(() => ctx.openEdit("w"));
-    await act(() => ctx.save({ ...newDraft(), name: "Work" }));
+    act(() => ctx.openEditAnchor("w"));
+    await act(() => ctx.saveAnchor({ ...newDraft(), name: "Work" }));
 
     expect(ctx.toast?.text).toBe("Saved Work.");
     expect(ctx.toast?.id).not.toBe(firstId);
