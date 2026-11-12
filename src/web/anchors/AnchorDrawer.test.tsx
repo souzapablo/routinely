@@ -12,7 +12,7 @@ import {
   type DrawerState,
   useAnchors,
 } from "./AnchorsProvider.tsx";
-import type { SaveStatus } from "./model/saveStatus.ts";
+import type { SaveStatus } from "../week/model/saveStatus.ts";
 
 vi.mock("./AnchorsProvider.tsx", () => ({ useAnchors: vi.fn() }));
 

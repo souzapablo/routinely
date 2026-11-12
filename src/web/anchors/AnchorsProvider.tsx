@@ -13,7 +13,7 @@ import type { AnchorProblem } from "../../shared/anchors.ts";
 import type { Anchor } from "../../shared/planner.ts";
 import { deleteAnchor, loadAnchors, saveAnchor } from "./api.ts";
 import { type AnchorDraft, draftToInput } from "./model/form.ts";
-import type { SaveStatus } from "./model/saveStatus.ts";
+import type { SaveStatus } from "../week/model/saveStatus.ts";
 
 export type DrawerState =
   { mode: "closed" } | { mode: "add" } | { mode: "edit"; anchor: Anchor };

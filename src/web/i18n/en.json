@@ -80,13 +80,6 @@
       "time": "{{range}}",
       "everyWeek": "every week"
     },
-    "status": {
-      "loading": "Loading your week…",
-      "saving": "Saving…",
-      "saved": "Saved",
-      "notSaved": "Not saved",
-      "loadFailed": "Couldn't load your week"
-    },
     "toast": {
       "saved": "Saved {{name}}.",
       "deleted": "Deleted {{name}}.",
@@ -104,6 +97,15 @@
       "save": "Save anchor",
       "delete": "Delete",
       "confirmDelete": "Click again to delete"
+    }
+  },
+  "week": {
+    "status": {
+      "loading": "Loading your week…",
+      "saving": "Saving…",
+      "saved": "Saved",
+      "notSaved": "Not saved",
+      "loadFailed": "Couldn't load your week"
     }
   }
 }

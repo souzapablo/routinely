@@ -256,8 +256,8 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Tests: the old `statusView` tests pass against the new keys; `afterLoads` gives `loading` when either is pending, `loadFailed` when either failed and neither is pending, `saved` when both are ok
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: the old `statusView` tests pass against the new keys; `afterLoads` gives `loading` when either is pending, `loadFailed` when either failed and neither is pending, `saved` when both are ok
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: unit
 **Gate**: quick

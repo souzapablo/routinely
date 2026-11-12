@@ -213,9 +213,9 @@ The planner stores anchors but no flexible activities, so the "Fit in this week"
 | FLX-12 | P1: Tray - left count | - | Pending |
 | FLX-13 | P1: Tray - week meter total | - | Pending |
 | FLX-14 | P1: Tray - Find a time disabled, no drag | - | Pending |
-| FLX-15 | P1: Tray - loading status | - | Pending |
-| FLX-16 | P1: Tray - loaded status | - | Pending |
-| FLX-17 | P1: Tray - load failure | - | Pending |
+| FLX-15 | P1: Tray - loading status | T9 | In progress |
+| FLX-16 | P1: Tray - loaded status | T9 | In progress |
+| FLX-17 | P1: Tray - load failure | T9 | In progress |
 | FLX-18 | P1: Tray - empty | - | Pending |
 | FLX-19 | P1: Drawer - open from tray | - | Pending |
 | FLX-20 | P1: Drawer - open from + | - | Pending |

@@ -1,7 +1,7 @@
 import type { Ref } from "react";
 import { useTranslation } from "react-i18next";
 import { useAnchors } from "../anchors/AnchorsProvider.tsx";
-import { statusView } from "../anchors/model/saveStatus.ts";
+import { statusView } from "../week/model/saveStatus.ts";
 import { LanguageSwitch } from "../LanguageSwitch.tsx";
 import { BrandMark } from "../ui/BrandMark/BrandMark.tsx";
 import { Button } from "../ui/Button/Button.tsx";

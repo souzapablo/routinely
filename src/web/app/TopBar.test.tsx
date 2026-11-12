@@ -4,7 +4,7 @@ import {
   type AnchorsContextValue,
   useAnchors,
 } from "../anchors/AnchorsProvider.tsx";
-import type { SaveStatus } from "../anchors/model/saveStatus.ts";
+import type { SaveStatus } from "../week/model/saveStatus.ts";
 import i18n from "../i18n/index.ts";
 import brandStyles from "../ui/BrandMark/BrandMark.module.css";
 import statusStyles from "../ui/StatusIndicator/StatusIndicator.module.css";
