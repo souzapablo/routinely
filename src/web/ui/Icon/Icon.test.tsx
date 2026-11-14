@@ -13,6 +13,7 @@ const lucideIconOf: Record<IconName, string> = {
   check: "lucide-check",
   info: "lucide-info",
   moveHorizontal: "lucide-move-horizontal",
+  minus: "lucide-minus",
 };
 
 function renderIcon(name: IconName, size?: 12 | 16): SVGSVGElement {

@@ -488,8 +488,8 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Tests: + calls `onChange(value + 1)` and − calls `onChange(value - 1)`; − is disabled at `min` and + at `max`; the value sits in an `output` with `aria-live="polite"`; the group is labelled
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: + calls `onChange(value + 1)` and − calls `onChange(value - 1)`; − is disabled at `min` and + at `max`; the value sits in an `output` with `aria-live="polite"`; the group is labelled
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: component
 **Gate**: quick

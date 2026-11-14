@@ -1,0 +1,26 @@
+.stepper {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* The box around them draws the border, so the buttons sit flush inside it. */
+.stepper > button {
+  height: 38px;
+  border: 0;
+  border-radius: 0;
+}
+
+.stepper > button:not(:disabled):hover {
+  background: var(--sunk);
+}
+
+.value {
+  min-width: 44px;
+  text-align: center;
+  font-family: var(--f-mono);
+  font-variant-numeric: tabular-nums;
+}
