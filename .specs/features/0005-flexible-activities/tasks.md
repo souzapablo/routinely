@@ -526,8 +526,8 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Tests: the group is named by its legend; each chip is a radio named by its label; each chip carries its tone's color variables; choosing one calls `onChange`
-- [ ] Gate passes: `npm run check`
+- [x] Tests: the group is named by its legend; each chip is a radio named by its label; each chip carries its tone's color variables; choosing one calls `onChange`
+- [x] Gate passes: `npm run check`
 
 **Tests**: component
 **Gate**: build
