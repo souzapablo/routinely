@@ -5,6 +5,7 @@ import {
   GripVertical,
   Info,
   Lock,
+  MoveHorizontal,
   Plus,
   X,
   type LucideIcon,
@@ -19,6 +20,7 @@ const icons = {
   x: X,
   check: Check,
   info: Info,
+  moveHorizontal: MoveHorizontal,
 } satisfies Record<string, LucideIcon>;
 
 export type IconName = keyof typeof icons;

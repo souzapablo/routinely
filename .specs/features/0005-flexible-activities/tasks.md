@@ -469,8 +469,8 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Tests: renders a radio group named by its legend; each option is a radio named by its title and described by its description; the checked option matches `value`; choosing another calls `onChange` with its value
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: renders a radio group named by its legend; each option is a radio named by its title and described by its description; the checked option matches `value`; choosing another calls `onChange` with its value
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: component
 **Gate**: quick
