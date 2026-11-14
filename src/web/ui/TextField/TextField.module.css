@@ -1,4 +1,4 @@
-/* Shared by TimeField, so every form field lines up. */
+/* Shared by TimeField and SelectField, so every form field lines up. */
 .field {
   display: flex;
   flex-direction: column;

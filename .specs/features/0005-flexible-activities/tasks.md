@@ -507,8 +507,8 @@ T29 → T30 → T31 → T32
 
 **Done when**:
 
-- [ ] Tests: the select is named by its label; it lists the options in order with the current one selected; choosing one calls `onChange` with its value
-- [ ] Gate passes: `npm run typecheck && npx vitest run --project web`
+- [x] Tests: the select is named by its label; it lists the options in order with the current one selected; choosing one calls `onChange` with its value
+- [x] Gate passes: `npm run typecheck && npx vitest run --project web`
 
 **Tests**: component
 **Gate**: quick
